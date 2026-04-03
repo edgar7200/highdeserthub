@@ -353,12 +353,12 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .hero-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; color: var(--sand); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1rem; }
 .hero-title em { font-style: normal; font-family: 'Syne', sans-serif; color: var(--terra); }
 .hero-sub { color: rgba(247,240,230,0.6); font-size: 1.1rem; max-width: 500px; line-height: 1.7; margin-bottom: 2.5rem; font-weight: 300; }
-.search-bar { display: flex; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.3); max-width: 680px; }
-.search-bar input { flex: 1; border: none; padding: 1.1rem 1.5rem; font-size: 1rem; font-family: 'DM Sans', sans-serif; color: var(--ink); background: transparent; outline: none; }
+.search-bar { display: flex; flex-wrap: wrap; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.3); max-width: 680px; }
+.search-bar input { flex: 1; border: none; padding: 1.1rem 1.5rem; font-size: 1rem; font-family: 'DM Sans', sans-serif; color: var(--ink); background: transparent; outline: none; min-width: 0; }
 .search-bar input::placeholder { color: var(--muted); }
 .search-divider { width: 1px; background: #E8DDD0; margin: 0.75rem 0; }
 .search-bar select { border: none; padding: 1rem 1.25rem; font-size: 0.9rem; font-family: 'DM Sans', sans-serif; color: var(--ink); background: transparent; outline: none; cursor: pointer; min-width: 140px; }
-.search-btn { background: var(--terra); color: white; border: none; padding: 1rem 2rem; font-size: 0.95rem; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s; }
+.search-btn { background: var(--terra); color: white; border: none; padding: 1rem 2rem; font-size: 0.95rem; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s; flex: 1; min-width: 100%; }
 .search-btn:hover { background: var(--rust); }
 .hero-stats { display: flex; gap: 0.75rem; margin-top: 2rem; flex-wrap: wrap; }
 .stat { display: flex; flex-direction: column; gap: 0.2rem; }
@@ -947,6 +947,21 @@ export default function HighDesertHub() {
       </section>
 
       <hr className="divider" />
+      <div style={{maxWidth:'1100px', margin:'0 auto', padding:'1.5rem 2rem 0'}}>
+        <div className="search-bar" style={{maxWidth:'100%'}}>
+          <input
+            placeholder="Search businesses, services..."
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && setSearchQuery(searchInput)}
+          />
+          <div className="search-divider" />
+          <select value={activeCity} onChange={(e) => setActiveCity(e.target.value)}>
+            {CITIES.map((c) => <option key={c}>{c}</option>)}
+          </select>
+          <button className="search-btn" onClick={() => { setSearchQuery(searchInput); logSearch(searchInput); }}>Search</button>
+        </div>
+      </div>
 
       <section className="listings-section">
         <div className="listings-toolbar">
