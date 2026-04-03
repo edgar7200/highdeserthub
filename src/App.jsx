@@ -602,10 +602,10 @@ export default function HighDesertHub() {
     if (!reportReason) return;
     setReportLoading(true);
     const templateParams = {
-      business_name: reportBiz.name,
-      report_reason: reportReason,
-      business_phone: reportBiz.phone,
-      business_city: reportBiz.city,
+      business_name: reportBiz ? reportBiz.name : 'Unknown',
+      report_reason: reportReason || 'No reason provided',
+      business_phone: reportBiz ? reportBiz.phone : 'Not listed',
+      business_city: reportBiz ? reportBiz.city : 'Not listed',
     };
     window.emailjs.send('service_19u4v9n', 'template_x2d6dlk', templateParams)
       .then(() => { setReportLoading(false); setReportSubmitted(true); })
