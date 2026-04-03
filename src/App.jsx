@@ -1787,7 +1787,7 @@ export default function HighDesertHub() {
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Email contact button and full hours</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Priority over free listings</div>
                 </div>
-                <button className="pricing-btn" onClick={() => setShowPricing(false)}>Get Started</button>
+                <a className="pricing-btn" href="mailto:admin@highdeserthub.com?subject=Interested%20in%20Standard%20Listing%20-%20$25/month&body=Hi%2C%20I%20am%20interested%20in%20upgrading%20to%20a%20Standard%20listing%20on%20HighDesertHub.com.%20Please%20contact%20me%20with%20next%20steps." style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Started</a>
               </div>
               <div className="pricing-tier popular">
                 <div className="pricing-popular-badge">Most Popular</div>
@@ -1802,7 +1802,7 @@ export default function HighDesertHub() {
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Homepage carousel feature</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Priority in search results</div>
                 </div>
-                <button className="pricing-btn main" onClick={() => setShowPricing(false)}>Get Featured</button>
+                <a className="pricing-btn main" href="mailto:admin@highdeserthub.com?subject=Interested%20in%20Featured%20Listing%20-%20$60/month&body=Hi%2C%20I%20am%20interested%20in%20upgrading%20to%20a%20Featured%20listing%20on%20HighDesertHub.com.%20Please%20contact%20me%20with%20next%20steps." style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Featured</a>
               </div>
               <div className="pricing-tier">
                 <div className="pricing-tier-name">Premium</div>
@@ -1817,7 +1817,7 @@ export default function HighDesertHub() {
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Monthly performance report</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Dedicated support</div>
                 </div>
-                <button className="pricing-btn" onClick={() => setShowPricing(false)}>Go Premium</button>
+                <a className="pricing-btn" href="mailto:admin@highdeserthub.com?subject=Interested%20in%20Premium%20Listing%20-%20$120/month&body=Hi%2C%20I%20am%20interested%20in%20upgrading%20to%20a%20Premium%20listing%20on%20HighDesertHub.com.%20Please%20contact%20me%20with%20next%20steps." style={{textDecoration:"none",textAlign:"center",display:"block"}}>Go Premium</a>
               </div>
             </div>
             <div className="pricing-footer">
