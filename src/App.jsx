@@ -636,7 +636,7 @@ export default function HighDesertHub() {
       hours: formData.hours || 'Not provided',
       description: formData.description || 'Not provided',
     };
-    window.emailjs.send('service_19u4v9n', 'template_9lq0adm', templateParams)
+    window.emailjs.send('service_19u4v9n', 'template_bkmqip8', templateParams)
       .then(() => { setFormLoading(false); setFormSubmitted(true); })
       .catch((err) => { console.error('EmailJS error:', err); setFormLoading(false); setFormError(true); });
   };
