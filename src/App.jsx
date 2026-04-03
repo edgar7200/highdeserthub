@@ -958,7 +958,7 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .pricing-tier-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: #1A1208; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
 .pricing-tier.popular .pricing-sub-tag { font-size: 0.75rem; color: var(--muted); font-style: italic; margin-bottom: 1rem; line-height: 1.4; }
 .pricing-tier.popular .pricing-sub-tag { color: rgba(247,240,230,0.5); }
-.pricing-tier-name { color: rgba(247,240,230,0.5); }
+.pricing-tier.popular .pricing-tier-name { color: #FFFFFF; }
 .pricing-price { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 0.25rem; }
 .pricing-tier.popular .pricing-price { color: var(--sand); }
 .pricing-period { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.25rem; }
