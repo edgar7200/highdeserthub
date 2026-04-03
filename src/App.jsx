@@ -393,6 +393,8 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .biz-card { background: var(--cream); border: 1.5px solid #E8DDD0; border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.2s; position: relative; }
 .biz-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: transparent; }
 .biz-card.featured-card { border-color: var(--gold); }
+.spotlight-card-badge { position: absolute; top: 0.75rem; right: 0.75rem; background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 2rem; display: flex; align-items: center; gap: 0.3rem; z-index: 2; }
+.spotlight-card-border { border-color: var(--gold) !important; box-shadow: 0 0 0 1px var(--gold), 0 4px 20px rgba(232,160,48,0.2); }
 .featured-badge { position: absolute; top: 0.75rem; right: 0.75rem; background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 2rem; }
 .biz-card-header { padding: 1.25rem 1.25rem 0.75rem; display: flex; gap: 0.85rem; align-items: flex-start; }
 .biz-avatar { width: 48px; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: white; flex-shrink: 0; }
@@ -834,8 +836,9 @@ export default function HighDesertHub() {
   });
 
   const sorted = [
-    ...filtered.filter((b) => b.tier === "featured"),
-    ...filtered.filter((b) => b.tier !== "featured"),
+    ...filtered.filter((b) => b.carousel),
+    ...filtered.filter((b) => !b.carousel && b.tier === "featured"),
+    ...filtered.filter((b) => !b.carousel && b.tier !== "featured"),
   ];
 
   return (
@@ -979,7 +982,10 @@ export default function HighDesertHub() {
                 className={`biz-card ${biz.tier === "featured" ? "featured-card" : ""}`}
                 onClick={() => { setSelectedBiz(biz); logView(biz); }}
               >
-                {biz.tier === "featured" && <div className="featured-badge">⭐ Featured</div>}
+                {biz.carousel && (
+                  <div className="spotlight-card-badge">⭐ Spotlight</div>
+                )}
+                {biz.tier === "featured" && !biz.carousel && <div className="featured-badge">⭐ Featured</div>}
                 <div className="biz-card-header">
                   <div className="biz-avatar" style={{ background: biz.color }}>{biz.initials}</div>
                   <div className="biz-info">
