@@ -1238,19 +1238,6 @@ export default function HighDesertHub() {
           <div className="hero-eyebrow">📍 Victorville · Hesperia · Apple Valley · Adelanto</div>
           <h1 className="hero-title">Your High Desert<br />Business Directory</h1>
           <p className="hero-sub">Helping local businesses get found. Connect with local services across Victorville, Hesperia, Apple Valley, and Adelanto.</p>
-          <div className="search-bar">
-            <input
-              placeholder="Search businesses, services..."
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && setSearchQuery(searchInput)}
-            />
-            <div className="search-divider" />
-            <select value={activeCity} onChange={(e) => setActiveCity(e.target.value)}>
-              {CITIES.map((c) => <option key={c}>{c}</option>)}
-            </select>
-            <button className="search-btn" onClick={() => { setSearchQuery(searchInput); logSearch(searchInput); }}>Search</button>
-          </div>
           <div className="hero-stats">
             <div className="stat-pill">Find Local. Fast.</div>
             <div className="stat-pill">Helping Local Businesses Get Found.</div>
