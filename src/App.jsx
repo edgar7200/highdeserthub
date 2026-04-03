@@ -23,6 +23,10 @@ const BUSINESSES = [
   {
     id: 1,
     name: "G&S Rolloff Rentals",
+    baseThumbsUp: 3,
+    verified: true,
+    dateAdded: "March 2026",
+    lastVerified: "April 2026",
     category: "contractors",
     city: "Victor Valley",
     phone: "(951) 505-1546",
@@ -44,6 +48,10 @@ const BUSINESSES = [
   {
     id: 2,
     name: "Agape Pest Control",
+    baseThumbsUp: 5,
+    verified: true,
+    dateAdded: "March 2026",
+    lastVerified: "April 2026",
     category: "contractors",
     city: "Victor Valley",
     phone: "(442) 353-7522",
@@ -65,6 +73,10 @@ const BUSINESSES = [
   {
     id: 3,
     name: "High Desert General Construction",
+    baseThumbsUp: 7,
+    verified: true,
+    dateAdded: "March 2026",
+    lastVerified: "April 2026",
     category: "contractors",
     city: "Victor Valley",
     phone: "(714) 398-1899",
@@ -86,6 +98,10 @@ const BUSINESSES = [
   {
     id: 4,
     name: "Alvarez Appliances",
+    baseThumbsUp: 4,
+    verified: true,
+    dateAdded: "March 2026",
+    lastVerified: "April 2026",
     category: "homeservices",
     city: "Victorville",
     phone: "(909) 376-3777",
@@ -107,6 +123,10 @@ const BUSINESSES = [
   {
     id: 5,
     name: "Fence-MD",
+    baseThumbsUp: 6,
+    verified: true,
+    dateAdded: "March 2026",
+    lastVerified: "April 2026",
     category: "contractors",
     city: "Victor Valley",
     phone: "(442) 336-2363",
@@ -128,6 +148,10 @@ const BUSINESSES = [
   {
     id: 6,
     name: "Field Fix",
+    baseThumbsUp: 4,
+    verified: true,
+    dateAdded: "March 2026",
+    lastVerified: "April 2026",
     category: "contractors",
     city: "Victor Valley",
     phone: "(909) 329-3034",
@@ -150,6 +174,10 @@ const BUSINESSES = [
   {
     id: 7,
     name: "DBS Disposal",
+    baseThumbsUp: 2,
+    verified: false,
+    dateAdded: "March 2026",
+    lastVerified: "March 2026",
     category: "contractors",
     city: "Victor Valley",
     phone: "(323) 763-3155",
@@ -171,6 +199,10 @@ const BUSINESSES = [
   {
     id: 8,
     name: "SoCal Pest Pros",
+    baseThumbsUp: 8,
+    verified: true,
+    dateAdded: "March 2026",
+    lastVerified: "April 2026",
     category: "contractors",
     city: "Victor Valley",
     phone: "(833) 955-3503",
@@ -192,6 +224,10 @@ const BUSINESSES = [
   {
     id: 9,
     name: "Kiki Landscaping",
+    baseThumbsUp: 5,
+    verified: true,
+    dateAdded: "March 2026",
+    lastVerified: "April 2026",
     category: "landscaping",
     city: "Victor Valley",
     phone: "(714) 501-6247",
@@ -213,6 +249,10 @@ const BUSINESSES = [
   {
     id: 10,
     name: "Miss Cleandipity",
+    baseThumbsUp: 9,
+    verified: true,
+    dateAdded: "March 2026",
+    lastVerified: "April 2026",
     category: "homeservices",
     city: "Victor Valley",
     phone: "(760) 215-5941",
@@ -234,6 +274,10 @@ const BUSINESSES = [
   {
     id: 11,
     name: "Empire RE Properties",
+    baseThumbsUp: 6,
+    verified: true,
+    dateAdded: "March 2026",
+    lastVerified: "April 2026",
     category: "realestate",
     city: "Victor Valley",
     phone: "(909) 495-5397",
@@ -256,6 +300,10 @@ const BUSINESSES = [
   {
     id: 12,
     name: "Virginia's Drinking Water",
+    baseThumbsUp: 11,
+    verified: true,
+    dateAdded: "March 2026",
+    lastVerified: "April 2026",
     category: "health",
     city: "Victorville",
     phone: "(760) 955-1560",
@@ -387,6 +435,32 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .card-viewer-close { background: rgba(255,255,255,0.1); color: white; border: 1.5px solid rgba(255,255,255,0.2); padding: 0.75rem 2rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; }
 .card-viewer-close:hover { background: rgba(255,255,255,0.2); }
 
+.verified-badge { display: inline-flex; align-items: center; gap: 0.3rem; background: rgba(107,143,113,0.15); border: 1px solid rgba(107,143,113,0.4); color: #4A7A52; font-size: 0.68rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 2rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.unverified-badge { display: inline-flex; align-items: center; gap: 0.3rem; background: rgba(154,142,130,0.1); border: 1px solid rgba(154,142,130,0.3); color: var(--muted); font-size: 0.68rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 2rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.biz-meta { padding: 0 1.25rem 0.75rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+.biz-date { font-size: 0.72rem; color: var(--muted); }
+.thumbs-btn { display: inline-flex; align-items: center; gap: 0.3rem; background: transparent; border: 1.5px solid #E8DDD0; color: var(--muted); font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.65rem; border-radius: 2rem; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+.thumbs-btn:hover { border-color: var(--sage); color: var(--sage); }
+.thumbs-btn.thumbed { background: rgba(107,143,113,0.1); border-color: var(--sage); color: var(--sage); }
+.modal-badges { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.modal-date-row { padding: 0 2rem 0.5rem; font-size: 0.78rem; color: var(--muted); display: flex; gap: 1.5rem; }
+.report-btn { background: transparent; border: none; color: var(--muted); font-size: 0.78rem; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: underline; padding: 0; transition: color 0.2s; }
+.report-btn:hover { color: var(--terra); }
+.report-modal { background: var(--cream); border-radius: 16px; max-width: 440px; width: 100%; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.3); }
+.report-header { padding: 1.5rem 2rem 1rem; border-bottom: 1.5px solid #E8DDD0; }
+.report-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--ink); margin-bottom: 0.25rem; }
+.report-sub { font-size: 0.82rem; color: var(--muted); }
+.report-body { padding: 1.25rem 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.report-option { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; border: 1.5px solid #E8DDD0; border-radius: 8px; cursor: pointer; transition: all 0.15s; font-size: 0.875rem; color: var(--ink); }
+.report-option:hover { border-color: var(--terra); background: rgba(196,96,58,0.04); }
+.report-option.selected { border-color: var(--terra); background: rgba(196,96,58,0.08); font-weight: 600; }
+.report-option input { accent-color: var(--terra); }
+.report-footer { padding: 1rem 2rem 1.5rem; display: flex; gap: 0.75rem; }
+.report-success { padding: 2.5rem 2rem; text-align: center; }
+.report-success-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.report-success-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--ink); margin-bottom: 0.5rem; }
+.report-success-sub { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
 .form-modal-overlay { position: fixed; inset: 0; background: rgba(13,27,42,0.75); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1.5rem; backdrop-filter: blur(4px); }
 .form-modal { background: var(--cream); border-radius: 16px; max-width: 600px; width: 100%; max-height: 92vh; overflow-y: auto; box-shadow: 0 24px 80px rgba(0,0,0,0.3); }
 .form-modal-header { padding: 1.75rem 2rem 1.25rem; border-bottom: 1.5px solid #E8DDD0; }
@@ -502,6 +576,41 @@ export default function HighDesertHub() {
   const [cardViewer, setCardViewer] = useState(null);
   const [showListForm, setShowListForm] = useState(false);
   const [showPricing, setShowPricing] = useState(false);
+  const [thumbsUp, setThumbsUp] = useState({});
+  const [thumbed, setThumbed] = useState({});
+  const [showReport, setShowReport] = useState(false);
+  const [reportBiz, setReportBiz] = useState(null);
+  const [reportReason, setReportReason] = useState('');
+  const [reportSubmitted, setReportSubmitted] = useState(false);
+  const [reportLoading, setReportLoading] = useState(false);
+
+  const handleThumbsUp = (biz, e) => {
+    e.stopPropagation();
+    if (thumbed[biz.id]) return;
+    setThumbsUp(prev => ({ ...prev, [biz.id]: (prev[biz.id] || 0) + 1 }));
+    setThumbed(prev => ({ ...prev, [biz.id]: true }));
+  };
+
+  const handleReport = (biz) => {
+    setReportBiz(biz);
+    setReportReason('');
+    setReportSubmitted(false);
+    setShowReport(true);
+  };
+
+  const submitReport = () => {
+    if (!reportReason) return;
+    setReportLoading(true);
+    const templateParams = {
+      business_name: reportBiz.name,
+      report_reason: reportReason,
+      business_phone: reportBiz.phone,
+      business_city: reportBiz.city,
+    };
+    window.emailjs.send('service_19u4v9n', 'template_x2d6dlk', templateParams)
+      .then(() => { setReportLoading(false); setReportSubmitted(true); })
+      .catch(() => { setReportLoading(false); setReportSubmitted(true); });
+  };
   const [formData, setFormData] = useState({ name:'', phone:'', email:'', address:'', city:'', category:'', services:'', hours:'', website:'', description:'' });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
@@ -527,7 +636,7 @@ export default function HighDesertHub() {
       hours: formData.hours || 'Not provided',
       description: formData.description || 'Not provided',
     };
-    window.emailjs.send('service_19u4v9n', 'template_x2d6dlk', templateParams)
+    window.emailjs.send('service_19u4v9n', 'template_9lq0adm', templateParams)
       .then(() => { setFormLoading(false); setFormSubmitted(true); })
       .catch((err) => { console.error('EmailJS error:', err); setFormLoading(false); setFormError(true); });
   };
@@ -767,9 +876,18 @@ export default function HighDesertHub() {
                   ))}
                   {biz.services.length > 3 && <span className="service-tag">+{biz.services.length - 3}</span>}
                 </div>
+                <div className="biz-meta">
+                  {biz.verified
+                    ? <span className="verified-badge">✓ Verified</span>
+                    : <span className="unverified-badge">Unverified</span>
+                  }
+                  <button className={`thumbs-btn ${thumbed[biz.id] ? 'thumbed' : ''}`} onClick={(e) => handleThumbsUp(biz, e)}>
+                    👍 {(biz.baseThumbsUp || 0) + (thumbsUp[biz.id] || 0)} recommend
+                  </button>
+                </div>
                 <div className="biz-footer">
                   <a className="biz-phone" href={`tel:${biz.phone}`} onClick={(e) => { e.stopPropagation(); logCall(biz); }}>{biz.phone}</a>
-                  <span className="biz-hours">{biz.hours}</span>
+                  <span className="biz-date">Updated {biz.lastVerified}</span>
                 </div>
               </div>
             ))}
@@ -820,11 +938,18 @@ export default function HighDesertHub() {
                 <div className="modal-services-wrap">{selectedBiz.services.map((s) => <span key={s} className="service-tag">{s}</span>)}</div>
               </div>
               <div className="modal-row"><span className="modal-row-label">About</span><span className="modal-row-val">{selectedBiz.description}</span></div>
+              <div className="modal-date-row">
+                <span>📅 Listed: {selectedBiz.dateAdded}</span>
+                <span>✓ Verified: {selectedBiz.lastVerified}</span>
+              </div>
             </div>
             <div className="modal-footer">
               <button className="btn-primary">📞 Call Now</button>
               <button className="btn-card" onClick={() => setCardViewer(selectedBiz)}>🪪 View Card</button>
               <button className="btn-secondary" onClick={() => setSelectedBiz(null)}>Close</button>
+            </div>
+            <div style={{padding:'0.75rem 2rem', borderTop:'1px solid #EDE5D8', textAlign:'right'}}>
+              <button className="report-btn" onClick={() => { handleReport(selectedBiz); }}>⚑ Report this listing</button>
             </div>
           </div>
         </div>
@@ -1125,6 +1250,56 @@ export default function HighDesertHub() {
               <span className="pricing-footer-note">📞 Questions? Email us at hello@highdeserthub.com</span>
               <button className="btn-secondary" onClick={() => setShowPricing(false)}>Close</button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* REPORT MODAL */}
+      {showReport && (
+        <div className="form-modal-overlay" onClick={() => setShowReport(false)}>
+          <div className="report-modal" onClick={(e) => e.stopPropagation()}>
+            {!reportSubmitted ? (
+              <>
+                <div className="report-header">
+                  <div className="report-title">⚑ Report a Listing Issue</div>
+                  <div className="report-sub">{reportBiz?.name} — Help us keep the directory accurate</div>
+                </div>
+                <div className="report-body">
+                  {[
+                    'Business is permanently closed',
+                    'Phone number is incorrect or disconnected',
+                    'Wrong address listed',
+                    'Business does not exist',
+                    'Duplicate listing',
+                    'Other issue',
+                  ].map((reason) => (
+                    <div
+                      key={reason}
+                      className={`report-option ${reportReason === reason ? 'selected' : ''}`}
+                      onClick={() => setReportReason(reason)}
+                    >
+                      <input type="radio" readOnly checked={reportReason === reason} />
+                      {reason}
+                    </div>
+                  ))}
+                </div>
+                <div className="report-footer">
+                  <button className="btn-primary" onClick={submitReport} disabled={!reportReason || reportLoading}>
+                    {reportLoading ? 'Sending...' : 'Submit Report'}
+                  </button>
+                  <button className="btn-secondary" onClick={() => setShowReport(false)}>Cancel</button>
+                </div>
+              </>
+            ) : (
+              <div className="report-success">
+                <div className="report-success-icon">✅</div>
+                <div className="report-success-title">Report Received</div>
+                <p className="report-success-sub">
+                  Thank you for helping keep HighDesertHub accurate. We will review this listing within 24 hours and take appropriate action.
+                </p>
+                <button className="btn-primary" style={{marginTop:'1rem'}} onClick={() => setShowReport(false)}>Done</button>
+              </div>
+            )}
           </div>
         </div>
       )}
