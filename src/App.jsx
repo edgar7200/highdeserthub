@@ -1012,6 +1012,7 @@ export default function HighDesertHub() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeCity, setActiveCity] = useState("All Cities");
   const [searchQuery, setSearchQuery] = useState("");
+  const [socialOnly, setSocialOnly] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [selectedBiz, setSelectedBiz] = useState(null);
   const [cardViewer, setCardViewer] = useState(null);
@@ -1204,6 +1205,8 @@ export default function HighDesertHub() {
       'dumpster': ['dumpster rental', 'rolloff'],
     };
     const expandedTerms = synonyms[query] || [query];
+    const hasSocial = biz.instagram || biz.website || biz.email;
+    const socialMatch = !socialOnly || hasSocial;
     const searchMatch =
       expandedTerms.some(term =>
         b.name.toLowerCase().includes(term) ||
@@ -1212,7 +1215,7 @@ export default function HighDesertHub() {
         b.city.toLowerCase().includes(query) ||
         (b.contact && b.contact.toLowerCase().includes(query))
       );
-    return catMatch && cityMatch && searchMatch;
+    return catMatch && cityMatch && searchMatch && socialMatch;
   });
 
   const sorted = [
@@ -1347,6 +1350,12 @@ export default function HighDesertHub() {
                 {city}
               </button>
             ))}
+            <button
+              className={`pill ${socialOnly ? "active" : ""}`}
+              onClick={() => setSocialOnly(!socialOnly)}
+            >
+              📱 Has Social Media
+            </button>
           </div>
         </div>
 
