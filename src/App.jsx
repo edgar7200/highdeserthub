@@ -1085,9 +1085,25 @@ export default function HighDesertHub() {
     setShowContactPopup(true);
   };
 
+  const [emailCopied, setEmailCopied] = useState(false);
+
   const copyEmail = () => {
-    navigator.clipboard.writeText('admin@highdeserthub.com');
-    alert('Email copied to clipboard!');
+    const email = 'admin@highdeserthub.com';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(() => {
+        setEmailCopied(true);
+        setTimeout(() => setEmailCopied(false), 3000);
+      });
+    } else {
+      const el = document.createElement('textarea');
+      el.value = email;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 3000);
+    }
   };
   const [thumbsUp, setThumbsUp] = useState({});
   const [carouselIndex, setCarouselIndex] = useState(0);
@@ -1881,7 +1897,7 @@ export default function HighDesertHub() {
                 📧 Open Email App
               </a>
               <button className="btn-secondary" onClick={copyEmail}>
-                📋 Copy Email Address
+                {emailCopied ? '✅ Copied!' : '📋 Copy Email Address'}
               </button>
               <button className="btn-secondary" onClick={() => setShowContactPopup(false)}>
                 Close
