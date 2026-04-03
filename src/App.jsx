@@ -1083,7 +1083,7 @@ export default function HighDesertHub() {
               </div>
             </div>
             <div className="modal-footer">
-              <a className="btn-primary" href={`tel:${selectedBiz.phone}`} style={{textDecoration:"none",textAlign:"center"}}>📞 {selectedBiz.phone}</a>
+              <a className="btn-primary" href={`tel:${selectedBiz.phone}`} style={{textDecoration:"none",textAlign:"center"}}>📞 Call Now</a>
               <button className="btn-card" onClick={() => setCardViewer(selectedBiz)}>🪪 View Card</button>
               <button className="btn-secondary" onClick={() => setSelectedBiz(null)}>Close</button>
             </div>
