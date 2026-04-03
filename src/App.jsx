@@ -328,6 +328,7 @@ const BUSINESSES = [
   {
     id: 13,
     name: "Carlos Barber",
+    expiresOn: "July 2026",
     category: "beauty",
     city: "Victor Valley",
     phone: "(760) 221-3339",
@@ -355,6 +356,7 @@ const BUSINESSES = [
   {
     id: 14,
     name: "Clean Bee & Co",
+    expiresOn: "July 2026",
     category: "homeservices",
     city: "Victor Valley",
     phone: "(442) 229-5522",
@@ -382,6 +384,7 @@ const BUSINESSES = [
   {
     id: 15,
     name: "De La Torre Handyman",
+    expiresOn: "July 2026",
     category: "homeservices",
     city: "Victor Valley",
     phone: "(760) 601-0484",
@@ -409,6 +412,7 @@ const BUSINESSES = [
   {
     id: 16,
     name: "Dog Waste Removal",
+    expiresOn: "July 2026",
     category: "homeservices",
     city: "Victor Valley",
     phone: "(909) 821-8427",
@@ -436,6 +440,7 @@ const BUSINESSES = [
   {
     id: 17,
     name: "Eliss Mariscos",
+    expiresOn: "July 2026",
     category: "restaurants",
     city: "Victor Valley",
     phone: "",
@@ -463,6 +468,7 @@ const BUSINESSES = [
   {
     id: 18,
     name: "FreshStead Cleaning Service",
+    expiresOn: "July 2026",
     category: "homeservices",
     city: "Victor Valley",
     phone: "(760) 985-9716",
@@ -490,6 +496,7 @@ const BUSINESSES = [
   {
     id: 19,
     name: "HD Pest Control",
+    expiresOn: "July 2026",
     category: "contractors",
     city: "Phelan",
     phone: "(909) 538-9788",
@@ -517,6 +524,7 @@ const BUSINESSES = [
   {
     id: 20,
     name: "HQE High Quality Epoxy Floors",
+    expiresOn: "July 2026",
     category: "contractors",
     city: "Victor Valley",
     phone: "(714) 737-6394",
@@ -544,6 +552,7 @@ const BUSINESSES = [
   {
     id: 21,
     name: "M.A.G.Z. Welding Mobile Services",
+    expiresOn: "July 2026",
     category: "contractors",
     city: "Victor Valley",
     phone: "(951) 306-4323",
@@ -571,6 +580,7 @@ const BUSINESSES = [
   {
     id: 22,
     name: "Ortiz Welding",
+    expiresOn: "July 2026",
     category: "contractors",
     city: "Victor Valley",
     phone: "(714) 409-7276",
@@ -598,6 +608,7 @@ const BUSINESSES = [
   {
     id: 23,
     name: "Sherwood Handyman Services",
+    expiresOn: "July 2026",
     category: "homeservices",
     city: "Victor Valley",
     phone: "(760) 596-9227",
@@ -625,6 +636,7 @@ const BUSINESSES = [
   {
     id: 24,
     name: "SoCalHi Driving Lessons",
+    expiresOn: "July 2026",
     category: "auto",
     city: "Victor Valley",
     phone: "(760) 780-3454",
@@ -652,6 +664,7 @@ const BUSINESSES = [
   {
     id: 25,
     name: "Steam Carpet Cleaning",
+    expiresOn: "July 2026",
     category: "homeservices",
     city: "Victor Valley",
     phone: "(760) 596-7419",
@@ -680,6 +693,7 @@ const BUSINESSES = [
   {
     id: 26,
     name: "The Party Pooper Scoopers LLC",
+    expiresOn: "July 2026",
     category: "homeservices",
     city: "Victor Valley",
     phone: "(909) 656-7790",
@@ -773,6 +787,9 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .biz-card { background: var(--cream); border: 1.5px solid #E8DDD0; border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.2s; position: relative; }
 .biz-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: transparent; }
 .biz-card.featured-card { border-color: var(--gold); }
+.expiring-badge { position: absolute; top: 0.75rem; left: 0.75rem; background: #E8A030; color: #0D1B2A; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2rem; z-index: 2; }
+.expired-badge { position: absolute; top: 0.75rem; left: 0.75rem; background: #C0392B; color: white; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2rem; z-index: 2; }
+.expired-card { opacity: 0.7; }
 .spotlight-card-badge { position: absolute; top: 0.75rem; right: 0.75rem; background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 2rem; display: flex; align-items: center; gap: 0.3rem; z-index: 2; }
 .spotlight-card-border { border-color: var(--gold) !important; box-shadow: 0 0 0 1px var(--gold), 0 4px 20px rgba(232,160,48,0.2); }
 .featured-badge { position: absolute; top: 0.75rem; right: 0.75rem; background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 2rem; }
@@ -1013,6 +1030,19 @@ export default function HighDesertHub() {
   const [activeCity, setActiveCity] = useState("All Cities");
   const [searchQuery, setSearchQuery] = useState("");
   const [socialOnly, setSocialOnly] = useState(false);
+
+  const getExpirationStatus = (biz) => {
+    if (biz.tier !== 'free') return 'active';
+    if (!biz.expiresOn) return 'active';
+    const months = {'January':0,'February':1,'March':2,'April':3,'May':4,'June':5,'July':6,'August':7,'September':8,'October':9,'November':10,'December':11};
+    const parts = biz.expiresOn.split(' ');
+    const expDate = new Date(parseInt(parts[1]), months[parts[0]], 1);
+    const now = new Date();
+    const daysUntil = Math.floor((expDate - now) / (1000 * 60 * 60 * 24));
+    if (daysUntil < 0) return 'expired';
+    if (daysUntil <= 30) return 'expiring';
+    return 'active';
+  };
   const [emailOnly, setEmailOnly] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [selectedBiz, setSelectedBiz] = useState(null);
@@ -1384,6 +1414,12 @@ export default function HighDesertHub() {
                 {biz.carousel && (
                   <div className="spotlight-card-badge">⭐ Spotlight</div>
                 )}
+                {getExpirationStatus(biz) === 'expiring' && (
+                  <div className="expiring-badge">⏰ Renewal Due</div>
+                )}
+                {getExpirationStatus(biz) === 'expired' && (
+                  <div className="expired-badge">⚠️ Unconfirmed</div>
+                )}
                 {biz.tier === "featured" && !biz.carousel && <div className="featured-badge">⭐ Featured</div>}
                 <div className="biz-card-header">
                   <div className="biz-avatar" style={{ background: biz.color }}>{biz.initials}</div>
@@ -1464,6 +1500,14 @@ export default function HighDesertHub() {
               <div className="modal-date-row">
                 <span>📅 Listed: {selectedBiz.dateAdded}</span>
                 <span>✓ Verified: {selectedBiz.lastVerified}</span>
+                {selectedBiz.expiresOn && selectedBiz.tier === 'free' && (
+                  <span style={{
+                    color: getExpirationStatus(selectedBiz) === 'expired' ? '#C0392B' :
+                           getExpirationStatus(selectedBiz) === 'expiring' ? '#E8A030' : 'var(--muted)'
+                  }}>
+                    🔄 Renews: {selectedBiz.expiresOn}
+                  </span>
+                )}
               </div>
             </div>
             <div className="modal-footer">
