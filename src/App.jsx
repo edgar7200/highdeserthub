@@ -301,7 +301,7 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(196,96,58,0.2); border: 1px solid rgba(196,96,58,0.4); color: var(--gold); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 2rem; margin-bottom: 1.5rem; }
 .hero-title { font-family: 'Syne', sans-serif; font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 800; color: var(--sand); line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 1rem; }
-.hero-title em { font-style: italic; font-family: 'DM Serif Display', serif; color: var(--terra); }
+.hero-title em { font-style: normal; font-family: 'Syne', sans-serif; color: var(--terra); }
 .hero-sub { color: rgba(247,240,230,0.6); font-size: 1.1rem; max-width: 500px; line-height: 1.7; margin-bottom: 2.5rem; font-weight: 300; }
 .search-bar { display: flex; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.3); max-width: 680px; }
 .search-bar input { flex: 1; border: none; padding: 1.1rem 1.5rem; font-size: 1rem; font-family: 'DM Sans', sans-serif; color: var(--ink); background: transparent; outline: none; }
@@ -314,6 +314,7 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .stat { display: flex; flex-direction: column; gap: 0.2rem; }
 .stat-num { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--gold); }
 .stat-label { font-size: 0.8rem; color: rgba(247,240,230,0.5); text-transform: uppercase; letter-spacing: 0.08em; }
+.stat-pill { background: rgba(196,96,58,0.15); border: 1px solid rgba(196,96,58,0.3); color: var(--sand); font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; padding: 0.6rem 1.25rem; border-radius: 2rem; letter-spacing: 0.01em; }
 .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
 .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2rem; }
 .section-title { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
@@ -503,12 +504,32 @@ export default function HighDesertHub() {
   const [showPricing, setShowPricing] = useState(false);
   const [formData, setFormData] = useState({ name:'', phone:'', email:'', address:'', city:'', category:'', services:'', hours:'', website:'', description:'' });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formLoading, setFormLoading] = useState(false);
+  const [formError, setFormError] = useState(false);
 
   const handleFormChange = (e) => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   const handleFormSubmit = () => {
-    if (formData.name && formData.phone && formData.email && formData.city && formData.category) {
-      setFormSubmitted(true);
+    if (!formData.name || !formData.phone || !formData.email || !formData.city || !formData.category) {
+      alert('Please fill in all required fields marked with *');
+      return;
     }
+    setFormLoading(true);
+    setFormError(false);
+    const templateParams = {
+      business_name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      city: formData.city,
+      category: CATEGORIES.find(c => c.id === formData.category)?.label || formData.category,
+      website: formData.website || 'Not provided',
+      address: formData.address || 'Not provided',
+      services: formData.services || 'Not provided',
+      hours: formData.hours || 'Not provided',
+      description: formData.description || 'Not provided',
+    };
+    window.emailjs.send('service_19u4v9n', 'template_x2d6dlk', templateParams)
+      .then(() => { setFormLoading(false); setFormSubmitted(true); })
+      .catch((err) => { console.error('EmailJS error:', err); setFormLoading(false); setFormError(true); });
   };
 
   // ── ADMIN ANALYTICS ──────────────────────────────────────────
@@ -556,7 +577,7 @@ export default function HighDesertHub() {
     .map(([name, count]) => ({ name, count }))
     .sort((a, b) => b.count - a.count).slice(0, 10);
 
-  const topCategories = Object.entries(categoryLog)
+  const topNeighborhood = Object.entries(categoryLog)
     .map(([cat, count]) => ({ cat, count }))
     .sort((a, b) => b.count - a.count);
 
@@ -644,7 +665,7 @@ export default function HighDesertHub() {
         <div className="nav-logo">High<span>Desert</span>Hub</div>
         <ul className="nav-links">
           <li><a href="#">Browse</a></li>
-          <li><a href="#">Cities</a></li>
+          <li><a href="#">Cities Served</a></li>
           <li><a href="#">Jobs</a></li>
           <li><a href="#" className="nav-cta" onClick={(e) => { e.preventDefault(); setShowListForm(true); setFormSubmitted(false); }}>List Your Business</a></li>
         </ul>
@@ -653,8 +674,8 @@ export default function HighDesertHub() {
       <section className="hero">
         <div className="hero-inner">
           <div className="hero-eyebrow">📍 Victorville · Hesperia · Apple Valley · Adelanto</div>
-          <h1 className="hero-title">Your High Desert<br /><em>Business Directory</em></h1>
-          <p className="hero-sub">Find trusted local businesses across the Victor Valley. From contractors to restaurants — all in one place.</p>
+          <h1 className="hero-title">Your High Desert<br />Business Directory</h1>
+          <p className="hero-sub">Helping local businesses get found. Discover trusted services across Victorville, Hesperia, Apple Valley, and Adelanto.</p>
           <div className="search-bar">
             <input
               placeholder="Search businesses, services..."
@@ -669,9 +690,9 @@ export default function HighDesertHub() {
             <button className="search-btn" onClick={() => { setSearchQuery(searchInput); logSearch(searchInput); }}>Search</button>
           </div>
           <div className="hero-stats">
-            <div className="stat"><span className="stat-num">{BUSINESSES.length}+</span><span className="stat-label">Businesses</span></div>
-            <div className="stat"><span className="stat-num">{CATEGORIES.length}</span><span className="stat-label">Categories</span></div>
-            <div className="stat"><span className="stat-num">4</span><span className="stat-label">Cities</span></div>
+            <div className="stat-pill">Find Local. Fast.</div>
+            <div className="stat-pill">Helping Local Businesses Get Found.</div>
+            <div className="stat-pill">Where Communities and Businesses Connect.</div>
           </div>
         </div>
       </section>
@@ -894,10 +915,10 @@ export default function HighDesertHub() {
 
             {/* TOP CATEGORIES */}
             <div className="admin-card">
-              <div className="admin-card-title">📂 Top Categories</div>
-              {topCategories.length === 0
+              <div className="admin-card-title">📂 Top Neighborhood</div>
+              {topNeighborhood.length === 0
                 ? <p className="admin-empty">No category clicks yet</p>
-                : topCategories.map((c,i) => (
+                : topNeighborhood.map((c,i) => (
                   <div key={i} className="admin-row">
                     <span className="admin-row-label">{CATEGORIES.find(cat=>cat.id===c.cat)?.label || c.cat}</span>
                     <span className="admin-row-count">{c.count}x</span>
@@ -1013,7 +1034,10 @@ export default function HighDesertHub() {
                   ✅ Free listings are reviewed and added within 24 hours. Want to appear at the top of your category? Ask about our Featured listing options after submitting.
                 </p>
                 <div className="form-footer">
-                  <button className="btn-primary" onClick={handleFormSubmit}>Submit My Business</button>
+                  <button className="btn-primary" onClick={handleFormSubmit} disabled={formLoading}>
+                    {formLoading ? 'Sending...' : 'Submit My Business'}
+                  </button>
+                  {formError && <p style={{color:'var(--terra)',fontSize:'0.82rem',marginTop:'0.5rem'}}>Something went wrong. Please email hello@highdeserthub.com</p>}
                   <button className="btn-secondary" onClick={() => setShowListForm(false)}>Cancel</button>
                 </div>
               </>
