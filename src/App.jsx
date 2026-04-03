@@ -607,7 +607,7 @@ export default function HighDesertHub() {
       business_phone: reportBiz ? reportBiz.phone : 'Not listed',
       business_city: reportBiz ? reportBiz.city : 'Not listed',
     };
-    window.emailjs.send('service_19u4v9n', 'template_x2d6dlk', templateParams)
+    window.emailjs.send('service_19u4v9n', 'template_bkmqip8', templateParams)
       .then(() => { setReportLoading(false); setReportSubmitted(true); })
       .catch(() => { setReportLoading(false); setReportSubmitted(true); });
   };
@@ -636,7 +636,7 @@ export default function HighDesertHub() {
       hours: formData.hours || 'Not provided',
       description: formData.description || 'Not provided',
     };
-    window.emailjs.send('service_19u4v9n', 'template_bkmqip8', templateParams)
+    window.emailjs.send('service_19u4v9n', 'template_x2d6dlk', templateParams)
       .then(() => { setFormLoading(false); setFormSubmitted(true); })
       .catch((err) => { console.error('EmailJS error:', err); setFormLoading(false); setFormError(true); });
   };
