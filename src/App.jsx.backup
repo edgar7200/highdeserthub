@@ -1,0 +1,1162 @@
+import { useState, useEffect } from "react";
+
+const GOOGLE_FONTS = `
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap');
+`;
+
+const CATEGORIES = [
+  { id: "contractors", label: "Contractors", icon: "🔨", color: "#C4603A" },
+  { id: "restaurants", label: "Restaurants", icon: "🍽️", color: "#D4824A" },
+  { id: "auto", label: "Auto Services", icon: "🚗", color: "#8B5E3C" },
+  { id: "health", label: "Health & Wellness", icon: "💊", color: "#6B8F71" },
+  { id: "legal", label: "Legal & Financial", icon: "⚖️", color: "#1B3A5C" },
+  { id: "beauty", label: "Beauty & Salons", icon: "✂️", color: "#B85C8A" },
+  { id: "realestate", label: "Real Estate", icon: "🏠", color: "#4A7A8F" },
+  { id: "retail", label: "Retail & Shopping", icon: "🛍️", color: "#7A6B3C" },
+  { id: "community", label: "Churches & Community", icon: "🤝", color: "#5C6B4A" },
+  { id: "careers", label: "Jobs & Careers", icon: "💼", color: "#3C5C7A" },
+];
+
+const SAMPLE_BUSINESSES = [
+  {
+    id: 1,
+    name: "Desert Pro Plumbing",
+    category: "contractors",
+    city: "Hesperia",
+    phone: "(760) 555-0192",
+    address: "14220 Main St, Hesperia CA 92345",
+    services: ["Leak Repair", "Water Heaters", "Drain Cleaning", "Re-piping"],
+    hours: "Mon–Sat 7am–6pm",
+    featured: true,
+    tier: "featured",
+    description: "Family-owned plumbing serving the High Desert for over 15 years. Licensed & insured.",
+    initials: "DP",
+    color: "#C4603A",
+  },
+  {
+    id: 2,
+    name: "Victor Valley Auto Repair",
+    category: "auto",
+    city: "Victorville",
+    phone: "(760) 555-0348",
+    address: "18320 Bear Valley Rd, Victorville CA 92395",
+    services: ["Oil Change", "Brakes", "Transmission", "A/C Service"],
+    hours: "Mon–Fri 8am–5pm",
+    featured: true,
+    tier: "featured",
+    description: "ASE certified mechanics. Honest pricing. Serving Victorville & surrounding areas.",
+    initials: "VV",
+    color: "#8B5E3C",
+  },
+  {
+    id: 3,
+    name: "High Desert Realty Group",
+    category: "realestate",
+    city: "Apple Valley",
+    phone: "(760) 555-0521",
+    address: "22150 Highway 18, Apple Valley CA 92307",
+    services: ["Home Buying", "Home Selling", "Property Management", "Commercial"],
+    hours: "Mon–Sun 9am–7pm",
+    featured: true,
+    tier: "featured",
+    description: "Your trusted local real estate experts in the Victor Valley since 2005.",
+    initials: "HD",
+    color: "#4A7A8F",
+  },
+  {
+    id: 4,
+    name: "Desert Bloom Salon",
+    category: "beauty",
+    city: "Hesperia",
+    phone: "(760) 555-0277",
+    address: "9840 Hesperia Rd, Hesperia CA 92344",
+    services: ["Cuts", "Color", "Keratin", "Nails"],
+    hours: "Tue–Sat 9am–6pm",
+    featured: false,
+    tier: "standard",
+    description: "Full-service salon in the heart of Hesperia. Walk-ins welcome.",
+    initials: "DB",
+    color: "#B85C8A",
+  },
+  {
+    id: 5,
+    name: "Mojave Legal Services",
+    category: "legal",
+    city: "Victorville",
+    phone: "(760) 555-0419",
+    address: "15500 Civic Dr, Victorville CA 92392",
+    services: ["Immigration", "Family Law", "Business Law", "Estate Planning"],
+    hours: "Mon–Fri 9am–5pm",
+    featured: false,
+    tier: "standard",
+    description: "Bilingual legal services for the High Desert community.",
+    initials: "ML",
+    color: "#1B3A5C",
+  },
+  {
+    id: 6,
+    name: "El Rancho Mexican Grill",
+    category: "restaurants",
+    city: "Apple Valley",
+    phone: "(760) 555-0633",
+    address: "21300 Bear Valley Rd, Apple Valley CA 92308",
+    services: ["Dine-In", "Take-Out", "Catering", "Party Trays"],
+    hours: "Daily 10am–9pm",
+    featured: false,
+    tier: "free",
+    description: "Authentic Mexican food made fresh daily. Family recipes since 1988.",
+    initials: "ER",
+    color: "#D4824A",
+  },
+{
+    id: 7,
+    name: "Virginia's Drinking Water",
+    category: "health",
+    city: "Victorville",
+    phone: "(760) 955-1560",
+    textNumber: "(714) 928-1342",
+    address: "14592 Palmdale Road, Suite D7, Victorville, CA 92392",
+    services: ["R.O. Water", "Alkaline Water", "24/7 Vending Machine"],
+    hours: "Open 24/7",
+    featured: false,
+    tier: "free",
+    description: "Purified R.O. and alkaline drinking water for the High Desert community. Vending machine available 24/7. Call or text for info.",
+    initials: "VD",
+    color: "#4A7A8F",
+  },
+];
+
+const CITIES = ["All Cities", "Victorville", "Hesperia", "Apple Valley", "Adelanto"];
+
+const css = `
+${GOOGLE_FONTS}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #F7F0E6;
+  color: #1A1208;
+  min-height: 100vh;
+}
+
+:root {
+  --sand: #F7F0E6;
+  --terra: #C4603A;
+  --rust: #8B3A1A;
+  --gold: #E8A030;
+  --ink: #1A1208;
+  --navy: #0D1B2A;
+  --sage: #6B8F71;
+  --cream: #FDF8F2;
+  --muted: #9A8E82;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+/* NAV */
+.nav {
+  background: var(--navy);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 3px solid var(--terra);
+}
+
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--sand);
+  letter-spacing: -0.02em;
+}
+
+.nav-logo span {
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(247,240,230,0.7);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+.nav-cta {
+  background: var(--terra);
+  color: white !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  font-weight: 600 !important;
+  transition: background 0.2s !important;
+}
+
+.nav-cta:hover { background: var(--rust) !important; color: white !important; }
+
+/* HERO */
+.hero {
+  background: var(--navy);
+  padding: 5rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(196,96,58,0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 10% 80%, rgba(232,160,48,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(196,96,58,0.2);
+  border: 1px solid rgba(196,96,58,0.4);
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 800;
+  color: var(--sand);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-family: 'DM Serif Display', serif;
+  color: var(--terra);
+}
+
+.hero-sub {
+  color: rgba(247,240,230,0.6);
+  font-size: 1.1rem;
+  max-width: 500px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.search-bar {
+  display: flex;
+  gap: 0;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+  max-width: 680px;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  padding: 1.1rem 1.5rem;
+  font-size: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  background: transparent;
+  outline: none;
+}
+
+.search-bar input::placeholder { color: var(--muted); }
+
+.search-divider {
+  width: 1px;
+  background: #E8DDD0;
+  margin: 0.75rem 0;
+}
+
+.search-bar select {
+  border: none;
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  min-width: 140px;
+}
+
+.search-btn {
+  background: var(--terra);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+  letter-spacing: 0.02em;
+}
+
+.search-btn:hover { background: var(--rust); }
+
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--gold);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: rgba(247,240,230,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* CATEGORIES */
+.section {
+  padding: 4rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.section-link {
+  color: var(--terra);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .categories-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-links { display: none; }
+}
+
+.cat-card {
+  background: var(--cream);
+  border: 1.5px solid #E8DDD0;
+  border-radius: 10px;
+  padding: 1.4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.cat-card:hover {
+  border-color: var(--terra);
+  box-shadow: 0 4px 20px rgba(196,96,58,0.12);
+  transform: translateY(-2px);
+}
+
+.cat-card.active {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.cat-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.cat-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+.cat-card.active .cat-label { color: var(--sand); }
+
+/* DIVIDER */
+.divider {
+  border: none;
+  border-top: 1.5px solid #E8DDD0;
+  margin: 0 2rem;
+}
+
+/* LISTINGS */
+.listings-section {
+  padding: 3rem 2rem 5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.listings-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.listings-count {
+  font-size: 0.875rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.listings-count strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.filter-pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  background: var(--cream);
+  border: 1.5px solid #E8DDD0;
+  color: var(--ink);
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.pill:hover { border-color: var(--terra); color: var(--terra); }
+.pill.active { background: var(--terra); border-color: var(--terra); color: white; }
+
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .listings-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .listings-grid { grid-template-columns: 1fr; }
+}
+
+.biz-card {
+  background: var(--cream);
+  border: 1.5px solid #E8DDD0;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.biz-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+  border-color: transparent;
+}
+
+.biz-card.featured-card {
+  border-color: var(--gold);
+}
+
+.featured-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2rem;
+}
+
+.biz-card-header {
+  padding: 1.25rem 1.25rem 0.75rem;
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.biz-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: white;
+  flex-shrink: 0;
+}
+
+.biz-info { flex: 1; min-width: 0; }
+
+.biz-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.biz-location {
+  font-size: 0.78rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.biz-desc {
+  padding: 0 1.25rem 0.85rem;
+  font-size: 0.82rem;
+  color: #5C5248;
+  line-height: 1.6;
+}
+
+.biz-services {
+  padding: 0 1.25rem 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.service-tag {
+  background: #EDE5D8;
+  color: #6B5A48;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+}
+
+.biz-footer {
+  border-top: 1px solid #EDE5D8;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.biz-phone {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--terra);
+  text-decoration: none;
+}
+
+.biz-phone:hover { text-decoration: underline; }
+
+.biz-hours {
+  font-size: 0.73rem;
+  color: var(--muted);
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13,27,42,0.7);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  background: var(--cream);
+  border-radius: 16px;
+  max-width: 560px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+}
+
+.modal-header {
+  padding: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1.5px solid #E8DDD0;
+}
+
+.modal-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: white;
+  flex-shrink: 0;
+}
+
+.modal-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+
+.modal-city {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.modal-body {
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.modal-row {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.modal-row-label {
+  font-weight: 600;
+  color: var(--ink);
+  min-width: 70px;
+}
+
+.modal-row-val {
+  color: #5C5248;
+}
+
+.modal-row-val.link {
+  color: var(--terra);
+  cursor: pointer;
+}
+
+.modal-services-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.modal-footer {
+  padding: 1.25rem 2rem;
+  border-top: 1.5px solid #E8DDD0;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-primary {
+  flex: 1;
+  background: var(--terra);
+  color: white;
+  border: none;
+  padding: 0.85rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover { background: var(--rust); }
+
+.btn-secondary {
+  flex: 1;
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid #E8DDD0;
+  padding: 0.85rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover { border-color: var(--ink); }
+
+/* CTA BANNER */
+.cta-banner {
+  background: var(--navy);
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 100% at 50% 50%, rgba(196,96,58,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+
+.cta-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--sand);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.cta-sub {
+  color: rgba(247,240,230,0.6);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.cta-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn-main {
+  background: var(--terra);
+  color: white;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cta-btn-main:hover { background: var(--rust); }
+
+.cta-btn-ghost {
+  background: transparent;
+  color: var(--sand);
+  border: 1.5px solid rgba(247,240,230,0.3);
+  padding: 0.9rem 2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cta-btn-ghost:hover { border-color: var(--sand); }
+
+/* FOOTER */
+.footer {
+  background: #0A1520;
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--sand);
+  margin-bottom: 0.5rem;
+}
+
+.footer-logo span { color: var(--gold); }
+
+.footer-sub {
+  font-size: 0.8rem;
+  color: rgba(247,240,230,0.35);
+  margin-bottom: 0.5rem;
+}
+
+.footer-disclaimer {
+  font-size: 0.72rem;
+  color: rgba(247,240,230,0.2);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-inner > * {
+  animation: fadeUp 0.6s ease both;
+}
+
+.hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+.hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
+.hero-inner > *:nth-child(3) { animation-delay: 0.25s; }
+.hero-inner > *:nth-child(4) { animation-delay: 0.35s; }
+.hero-inner > *:nth-child(5) { animation-delay: 0.45s; }
+`;
+
+export default function HighDesertHub() {
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [activeCity, setActiveCity] = useState("All Cities");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+  const [selectedBiz, setSelectedBiz] = useState(null);
+
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = css;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
+
+  const filtered = SAMPLE_BUSINESSES.filter((b) => {
+    const catMatch = !activeCategory || b.category === activeCategory;
+    const cityMatch = activeCity === "All Cities" || b.city === activeCity;
+    const query = searchQuery.toLowerCase();
+    const searchMatch =
+      !query ||
+      b.name.toLowerCase().includes(query) ||
+      b.services.some((s) => s.toLowerCase().includes(query)) ||
+      b.city.toLowerCase().includes(query);
+    return catMatch && cityMatch && searchMatch;
+  });
+
+  const featured = filtered.filter((b) => b.tier === "featured");
+  const rest = filtered.filter((b) => b.tier !== "featured");
+  const sorted = [...featured, ...rest];
+
+  return (
+    <div className="app">
+      {/* NAV */}
+      <nav className="nav">
+        <div className="nav-logo">
+          High<span>Desert</span>Hub
+        </div>
+        <ul className="nav-links">
+          <li><a href="#">Browse</a></li>
+          <li><a href="#">Cities</a></li>
+          <li><a href="#">Jobs</a></li>
+          <li><a href="#" className="nav-cta">List Your Business</a></li>
+        </ul>
+      </nav>
+
+      {/* HERO */}
+      <section className="hero">
+        <div className="hero-inner">
+          <div className="hero-eyebrow">
+            📍 Victorville · Hesperia · Apple Valley · Adelanto
+          </div>
+          <h1 className="hero-title">
+            Your High Desert<br />
+            <em>Business Directory</em>
+          </h1>
+          <p className="hero-sub">
+            Find trusted local businesses across the Victor Valley. From contractors to restaurants — all in one place.
+          </p>
+          <div className="search-bar">
+            <input
+              placeholder="Search businesses, services..."
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && setSearchQuery(searchInput)}
+            />
+            <div className="search-divider" />
+            <select
+              value={activeCity}
+              onChange={(e) => setActiveCity(e.target.value)}
+            >
+              {CITIES.map((c) => (
+                <option key={c}>{c}</option>
+              ))}
+            </select>
+            <button
+              className="search-btn"
+              onClick={() => setSearchQuery(searchInput)}
+            >
+              Search
+            </button>
+          </div>
+          <div className="hero-stats">
+            <div className="stat">
+              <span className="stat-num">200+</span>
+              <span className="stat-label">Businesses</span>
+            </div>
+            <div className="stat">
+              <span className="stat-num">10</span>
+              <span className="stat-label">Categories</span>
+            </div>
+            <div className="stat">
+              <span className="stat-num">4</span>
+              <span className="stat-label">Cities</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CATEGORIES */}
+      <section className="section">
+        <div className="section-header">
+          <h2 className="section-title">Browse by Category</h2>
+          <span
+            className="section-link"
+            onClick={() => setActiveCategory(null)}
+          >
+            View all →
+          </span>
+        </div>
+        <div className="categories-grid">
+          {CATEGORIES.map((cat) => (
+            <div
+              key={cat.id}
+              className={`cat-card ${activeCategory === cat.id ? "active" : ""}`}
+              onClick={() =>
+                setActiveCategory(activeCategory === cat.id ? null : cat.id)
+              }
+            >
+              <span className="cat-icon">{cat.icon}</span>
+              <span className="cat-label">{cat.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <hr className="divider" />
+
+      {/* LISTINGS */}
+      <section className="listings-section">
+        <div className="listings-toolbar">
+          <p className="listings-count">
+            Showing <strong>{sorted.length}</strong>{" "}
+            {activeCategory
+              ? CATEGORIES.find((c) => c.id === activeCategory)?.label
+              : "businesses"}
+            {activeCity !== "All Cities" ? ` in ${activeCity}` : ""}
+          </p>
+          <div className="filter-pills">
+            {CITIES.slice(1).map((city) => (
+              <button
+                key={city}
+                className={`pill ${activeCity === city ? "active" : ""}`}
+                onClick={() =>
+                  setActiveCity(activeCity === city ? "All Cities" : city)
+                }
+              >
+                {city}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {sorted.length === 0 ? (
+          <div style={{ textAlign: "center", padding: "4rem", color: "var(--muted)" }}>
+            <p style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>🏜️</p>
+            <p style={{ fontWeight: 600 }}>No businesses found</p>
+            <p style={{ fontSize: "0.875rem" }}>Try adjusting your filters or search</p>
+          </div>
+        ) : (
+          <div className="listings-grid">
+            {sorted.map((biz) => (
+              <div
+                key={biz.id}
+                className={`biz-card ${biz.tier === "featured" ? "featured-card" : ""}`}
+                onClick={() => setSelectedBiz(biz)}
+              >
+                {biz.tier === "featured" && (
+                  <div className="featured-badge">⭐ Featured</div>
+                )}
+                <div className="biz-card-header">
+                  <div
+                    className="biz-avatar"
+                    style={{ background: biz.color }}
+                  >
+                    {biz.initials}
+                  </div>
+                  <div className="biz-info">
+                    <div className="biz-name">{biz.name}</div>
+                    <div className="biz-location">📍 {biz.city} · {CATEGORIES.find(c => c.id === biz.category)?.label}</div>
+                  </div>
+                </div>
+                <div className="biz-desc">{biz.description}</div>
+                <div className="biz-services">
+                  {biz.services.slice(0, 3).map((s) => (
+                    <span key={s} className="service-tag">{s}</span>
+                  ))}
+                  {biz.services.length > 3 && (
+                    <span className="service-tag">+{biz.services.length - 3}</span>
+                  )}
+                </div>
+                <div className="biz-footer">
+                  <a
+                    className="biz-phone"
+                    href={`tel:${biz.phone}`}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {biz.phone}
+                  </a>
+                  <span className="biz-hours">{biz.hours}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* CTA BANNER */}
+      <section className="cta-banner">
+        <div className="cta-inner">
+          <h2 className="cta-title">Own a Local Business?</h2>
+          <p className="cta-sub">
+            Get listed on the High Desert's #1 local directory. Free to start — be seen by thousands of residents.
+          </p>
+          <div className="cta-btns">
+            <button className="cta-btn-main">List My Business — Free</button>
+            <button className="cta-btn-ghost">View Pricing Plans</button>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="footer">
+        <div className="footer-logo">High<span>Desert</span>Hub</div>
+        <p className="footer-sub">Serving Victorville · Hesperia · Apple Valley · Adelanto</p>
+        <p className="footer-disclaimer">
+          Listings on HighDesertHub.com are provided for informational purposes only. 
+          We do not verify, endorse, or guarantee any business listed. Please conduct your own due diligence.
+        </p>
+      </footer>
+
+      {/* MODAL */}
+      {selectedBiz && (
+        <div className="modal-overlay" onClick={() => setSelectedBiz(null)}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <div
+                className="modal-avatar"
+                style={{ background: selectedBiz.color }}
+              >
+                {selectedBiz.initials}
+              </div>
+              <div>
+                <div className="modal-name">{selectedBiz.name}</div>
+                <div className="modal-city">📍 {selectedBiz.city}, CA</div>
+              </div>
+            </div>
+            <div className="modal-body">
+              <div className="modal-row">
+                <span className="modal-row-label">Phone</span>
+                <span className="modal-row-val link">{selectedBiz.phone}</span>
+              </div>
+              <div className="modal-row">
+                <span className="modal-row-label">Address</span>
+                <span className="modal-row-val">{selectedBiz.address}</span>
+              </div>
+              <div className="modal-row">
+                <span className="modal-row-label">Hours</span>
+                <span className="modal-row-val">{selectedBiz.hours}</span>
+              </div>
+              <div className="modal-row">
+                <span className="modal-row-label">Services</span>
+                <div className="modal-services-wrap">
+                  {selectedBiz.services.map((s) => (
+                    <span key={s} className="service-tag">{s}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="modal-row">
+                <span className="modal-row-label">About</span>
+                <span className="modal-row-val">{selectedBiz.description}</span>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button className="btn-primary">📞 Call Now</button>
+              <button className="btn-secondary" onClick={() => setSelectedBiz(null)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

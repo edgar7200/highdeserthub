@@ -1,0 +1,912 @@
+import { useState, useEffect } from "react";
+
+const GOOGLE_FONTS = `
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap');
+`;
+
+const CATEGORIES = [
+  { id: "contractors", label: "Contractors", icon: "🔨", color: "#C4603A" },
+  { id: "restaurants", label: "Restaurants", icon: "🍽️", color: "#D4824A" },
+  { id: "auto", label: "Auto Services", icon: "🚗", color: "#8B5E3C" },
+  { id: "health", label: "Health & Wellness", icon: "💊", color: "#6B8F71" },
+  { id: "legal", label: "Legal & Financial", icon: "⚖️", color: "#1B3A5C" },
+  { id: "beauty", label: "Beauty & Salons", icon: "✂️", color: "#B85C8A" },
+  { id: "realestate", label: "Real Estate", icon: "🏠", color: "#4A7A8F" },
+  { id: "retail", label: "Retail & Shopping", icon: "🛍️", color: "#7A6B3C" },
+  { id: "community", label: "Churches & Community", icon: "🤝", color: "#5C6B4A" },
+  { id: "careers", label: "Jobs & Careers", icon: "💼", color: "#3C5C7A" },
+  { id: "homeservices", label: "Home Services", icon: "🏡", color: "#7A4A6B" },
+  { id: "landscaping", label: "Landscaping", icon: "🌿", color: "#4A6B3C" },
+];
+
+const BUSINESSES = [
+  {
+    id: 1,
+    name: "G&S Rolloff Rentals",
+    category: "contractors",
+    city: "Victor Valley",
+    phone: "(951) 505-1546",
+    contact: "Alfonzo",
+    address: "",
+    email: "",
+    website: "",
+    license: "",
+    services: ["Rolloff Rentals", "Tractor Rental", "Dumpster Rental", "Wood Removal", "Garage Cleanouts", "Junk Removal", "Demolition", "Construction Debris Removal", "Dirt & Rock Removal", "Carpet Disposal"],
+    hours: "Call for hours",
+    featured: false,
+    tier: "free",
+    description: "Rolloff rentals and tractor services for the High Desert. Specializing in hauling, junk removal, demolition, and dumpster rental. Call Alfonzo for a quote.",
+    initials: "GS",
+    color: "#8B3A1A",
+    cardFront: "/cards/gs-rolloff-front.png",
+    cardBack: "/cards/gs-rolloff-back.png",
+  },
+  {
+    id: 2,
+    name: "Agape Pest Control",
+    category: "contractors",
+    city: "Victor Valley",
+    phone: "(442) 353-7522",
+    contact: "Jorge Deras",
+    address: "",
+    email: "info@agapepest.com",
+    website: "agapepest.com",
+    license: "OPR1460B",
+    services: ["Pest Control", "Residential Treatment", "Commercial Treatment", "Inspections"],
+    hours: "Call for hours",
+    featured: false,
+    tier: "free",
+    description: "Professional pest control serving the High Desert. Licensed service technician. Residential and commercial treatments available.",
+    initials: "AP",
+    color: "#1B3A5C",
+    cardFront: "/cards/agape-front.png",
+    cardBack: "/cards/agape-back.png",
+  },
+  {
+    id: 3,
+    name: "High Desert General Construction",
+    category: "contractors",
+    city: "Victor Valley",
+    phone: "(714) 398-1899",
+    contact: "Enrique Velasco",
+    address: "",
+    email: "hdconstruction714@gmail.com",
+    website: "",
+    license: "1077588",
+    services: ["Additions", "New Construction", "Remodels", "Kitchen & Bathrooms", "Demolition & Clean Ups", "Patios & Masonry", "General Repairs"],
+    hours: "Call for hours",
+    featured: false,
+    tier: "free",
+    description: "Full-service general contractor serving the High Desert. Residential and commercial. Interior and exterior. Licensed and insured.",
+    initials: "HC",
+    color: "#C4603A",
+    cardFront: "/cards/hdgc-front.png",
+    cardBack: "/cards/hdgc-back.png",
+  },
+  {
+    id: 4,
+    name: "Alvarez Appliances",
+    category: "homeservices",
+    city: "Victorville",
+    phone: "(909) 376-3777",
+    contact: "Salvador Alvarez",
+    address: "14560 Palmdale Rd, Victorville, CA 92345, Space 16",
+    email: "",
+    website: "",
+    license: "",
+    services: ["Appliance Repair", "Appliance Sales", "Washer Repair", "Dryer Repair", "Refrigerator Repair"],
+    hours: "Call for hours",
+    featured: false,
+    tier: "free",
+    description: "Appliance repair and sales in Victorville. Hablamos Español. Serving the High Desert with honest, affordable appliance services.",
+    initials: "AA",
+    color: "#4A7A8F",
+    cardFront: "/cards/alvarez-front.png",
+    cardBack: "/cards/alvarez-back.png",
+  },
+  {
+    id: 5,
+    name: "Fence-MD",
+    category: "contractors",
+    city: "Victor Valley",
+    phone: "(442) 336-2363",
+    contact: "Mike Delgado",
+    address: "",
+    email: "fencemd82@gmail.com",
+    website: "FenceMD.org",
+    license: "1142830",
+    services: ["Fence Installation", "Fence Repair", "Wood Fencing", "Chain Link", "Vinyl Fencing", "Custom Gates"],
+    hours: "Call for hours",
+    featured: false,
+    tier: "free",
+    description: "Professional fence installation and repair for the High Desert. Licensed contractor. Residential and commercial. Free estimates.",
+    initials: "FM",
+    color: "#0D1B2A",
+    cardFront: "/cards/fencemd-front.png",
+    cardBack: "/cards/fencemd-back.png",
+  },
+  {
+    id: 6,
+    name: "Field Fix",
+    category: "contractors",
+    city: "Victor Valley",
+    phone: "(909) 329-3034",
+    contact: "Jesse Lozano",
+    address: "",
+    email: "",
+    website: "",
+    instagram: "@_FIELDFIX_",
+    license: "",
+    services: ["Fire Prevention", "Weed Abatement", "Grading", "Road Repair", "Land Clearing"],
+    hours: "Call or Text for hours",
+    featured: false,
+    tier: "free",
+    description: "Specializing in fire prevention, weed abatement, grading, and road repair throughout the High Desert. Free estimates available.",
+    initials: "FF",
+    color: "#C4603A",
+    cardFront: "/cards/fieldfix-front.png",
+    cardBack: "/cards/fieldfix-back.png",
+  },
+  {
+    id: 7,
+    name: "DBS Disposal",
+    category: "contractors",
+    city: "Victor Valley",
+    phone: "(323) 763-3155",
+    contact: "",
+    address: "",
+    email: "dumpboyzzjr@gmail.com",
+    website: "",
+    license: "",
+    services: ["Demo", "Clean Outs", "Dumpster Rental", "Material Move", "Junk Removal"],
+    hours: "Call for hours",
+    featured: false,
+    tier: "free",
+    description: "Demolition, clean outs, dumpster rentals, and material moving services for the High Desert. Fast and reliable.",
+    initials: "DB",
+    color: "#3C3C3C",
+    cardFront: "/cards/dbs-front.png",
+    cardBack: "/cards/dbs-back.png",
+  },
+  {
+    id: 8,
+    name: "SoCal Pest Pros",
+    category: "contractors",
+    city: "Victor Valley",
+    phone: "(833) 955-3503",
+    contact: "Frederick G. Tellez",
+    address: "",
+    email: "",
+    website: "SoCalPestPros.com",
+    license: "OPR 13823",
+    services: ["Pest Control", "Residential Treatment", "Commercial Treatment", "Inspections", "Extermination"],
+    hours: "Call for hours",
+    featured: false,
+    tier: "free",
+    description: "Licensed pest control serving residential and commercial clients throughout Southern California. Tell us what's buggin' you!",
+    initials: "SP",
+    color: "#1B3A5C",
+    cardFront: "/cards/socalpest-front.png",
+    cardBack: "/cards/socalpest-back.jpg",
+  },
+  {
+    id: 9,
+    name: "Kiki Landscaping",
+    category: "landscaping",
+    city: "Victor Valley",
+    phone: "(714) 501-6247",
+    contact: "Luis Aguilar",
+    address: "",
+    email: "",
+    website: "",
+    license: "",
+    services: ["Clean-Ups", "Lawn Work", "Tree Trimming", "Maintenance", "Fertilizing", "Planting", "Sprinkler Systems", "Gardening"],
+    hours: "Call for hours",
+    featured: false,
+    tier: "free",
+    description: "Full-service landscaping for the High Desert. Clean-ups, lawn care, tree trimming, sprinkler systems, and more. Free estimates.",
+    initials: "KL",
+    color: "#4A6B3C",
+    cardFront: "/cards/kiki-front.png",
+    cardBack: "/cards/kiki-back.jpg",
+  },
+  {
+    id: 10,
+    name: "Miss Cleandipity",
+    category: "homeservices",
+    city: "Victor Valley",
+    phone: "(760) 215-5941",
+    contact: "",
+    address: "",
+    email: "redes.misscleandipity@gmail.com",
+    website: "",
+    license: "",
+    services: ["Professional Cleaning", "Organizing", "Deep Cleaning", "Regular Cleaning"],
+    hours: "Call for hours",
+    featured: false,
+    tier: "free",
+    description: "Professional cleaning, organizing, deep cleaning, and regular cleaning services for the High Desert. The Smells Good Spirit.",
+    initials: "MC",
+    color: "#6B8F71",
+    cardFront: "/cards/misscleandipity-front.png",
+    cardBack: "/cards/misscleandipity-back.jpg",
+  },
+  {
+    id: 11,
+    name: "Empire RE Properties",
+    category: "realestate",
+    city: "Victor Valley",
+    phone: "(909) 495-5397",
+    contact: "Jesse Ramirez",
+    address: "9431 Haven Ave, Ste. 124, Rancho Cucamonga, CA 91730",
+    email: "jramirezrealty4@gmail.com",
+    website: "",
+    instagram: "@jesseramirez_empire_properties",
+    license: "",
+    services: ["Home Buying", "Home Selling", "Residential Real Estate", "Commercial Real Estate"],
+    hours: "Call for hours",
+    featured: false,
+    tier: "free",
+    description: "Licensed Realtor serving the High Desert and Inland Empire. Helping buyers and sellers navigate the real estate market with confidence.",
+    initials: "EP",
+    color: "#0D1B2A",
+    cardFront: "/cards/empire-re-front.png",
+    cardBack: "/cards/empire-re-back.png",
+  },
+  {
+    id: 12,
+    name: "Virginia's Drinking Water",
+    category: "health",
+    city: "Victorville",
+    phone: "(760) 955-1560",
+    textNumber: "(714) 928-1342",
+    contact: "",
+    address: "14592 Palmdale Road, Suite D7, Victorville, CA 92392",
+    email: "",
+    website: "",
+    license: "",
+    services: ["R.O. Water", "Alkaline Water", "24/7 Vending Machine"],
+    hours: "Open 24/7",
+    featured: false,
+    tier: "free",
+    description: "Purified R.O. and alkaline drinking water for the High Desert community. Vending machine available 24/7. Call or text for info.",
+    initials: "VD",
+    color: "#4A7A8F",
+    cardFront: "/cards/virginias-water-front.jpg",
+    cardBack: null,
+  },
+];
+
+const CITIES = ["All Cities", "Victorville", "Hesperia", "Apple Valley", "Adelanto", "Victor Valley"];
+
+const css = `
+${GOOGLE_FONTS}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; min-height: 100vh; }
+:root {
+  --sand: #F7F0E6; --terra: #C4603A; --rust: #8B3A1A; --gold: #E8A030;
+  --ink: #1A1208; --navy: #0D1B2A; --cream: #FDF8F2; --muted: #9A8E82;
+}
+.app { min-height: 100vh; }
+.nav { background: var(--navy); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; border-bottom: 3px solid var(--terra); }
+.nav-logo { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--sand); letter-spacing: -0.02em; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(247,240,230,0.7); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--terra); color: white !important; padding: 0.5rem 1.25rem; border-radius: 4px; font-weight: 600 !important; }
+.nav-cta:hover { background: var(--rust) !important; }
+.hero { background: var(--navy); padding: 5rem 2rem 4rem; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(196,96,58,0.15) 0%, transparent 70%); pointer-events: none; }
+.hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(196,96,58,0.2); border: 1px solid rgba(196,96,58,0.4); color: var(--gold); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 2rem; margin-bottom: 1.5rem; }
+.hero-title { font-family: 'Syne', sans-serif; font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 800; color: var(--sand); line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 1rem; }
+.hero-title em { font-style: italic; font-family: 'DM Serif Display', serif; color: var(--terra); }
+.hero-sub { color: rgba(247,240,230,0.6); font-size: 1.1rem; max-width: 500px; line-height: 1.7; margin-bottom: 2.5rem; font-weight: 300; }
+.search-bar { display: flex; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.3); max-width: 680px; }
+.search-bar input { flex: 1; border: none; padding: 1.1rem 1.5rem; font-size: 1rem; font-family: 'DM Sans', sans-serif; color: var(--ink); background: transparent; outline: none; }
+.search-bar input::placeholder { color: var(--muted); }
+.search-divider { width: 1px; background: #E8DDD0; margin: 0.75rem 0; }
+.search-bar select { border: none; padding: 1rem 1.25rem; font-size: 0.9rem; font-family: 'DM Sans', sans-serif; color: var(--ink); background: transparent; outline: none; cursor: pointer; min-width: 140px; }
+.search-btn { background: var(--terra); color: white; border: none; padding: 1rem 2rem; font-size: 0.95rem; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s; }
+.search-btn:hover { background: var(--rust); }
+.hero-stats { display: flex; gap: 2.5rem; margin-top: 2.5rem; }
+.stat { display: flex; flex-direction: column; gap: 0.2rem; }
+.stat-num { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--gold); }
+.stat-label { font-size: 0.8rem; color: rgba(247,240,230,0.5); text-transform: uppercase; letter-spacing: 0.08em; }
+.section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+.section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2rem; }
+.section-title { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
+.section-link { color: var(--terra); font-size: 0.875rem; font-weight: 600; cursor: pointer; }
+.categories-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
+@media (max-width: 900px) { .categories-grid { grid-template-columns: repeat(3, 1fr); } .nav-links { display: none; } }
+@media (max-width: 600px) { .categories-grid { grid-template-columns: repeat(2, 1fr); } }
+.cat-card { background: var(--cream); border: 1.5px solid #E8DDD0; border-radius: 10px; padding: 1.2rem 0.75rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; cursor: pointer; transition: all 0.2s; text-align: center; }
+.cat-card:hover { border-color: var(--terra); box-shadow: 0 4px 20px rgba(196,96,58,0.12); transform: translateY(-2px); }
+.cat-card.active { background: var(--navy); border-color: var(--navy); }
+.cat-icon { font-size: 1.6rem; line-height: 1; }
+.cat-label { font-size: 0.72rem; font-weight: 600; color: var(--ink); }
+.cat-card.active .cat-label { color: var(--sand); }
+.divider { border: none; border-top: 1.5px solid #E8DDD0; margin: 0 2rem; }
+.listings-section { padding: 3rem 2rem 5rem; max-width: 1100px; margin: 0 auto; }
+.listings-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.75rem; flex-wrap: wrap; gap: 1rem; }
+.listings-count { font-size: 0.875rem; color: var(--muted); font-weight: 500; }
+.listings-count strong { color: var(--ink); font-weight: 700; }
+.filter-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.pill { background: var(--cream); border: 1.5px solid #E8DDD0; color: var(--ink); padding: 0.4rem 1rem; border-radius: 2rem; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.15s; font-family: 'DM Sans', sans-serif; }
+.pill:hover { border-color: var(--terra); color: var(--terra); }
+.pill.active { background: var(--terra); border-color: var(--terra); color: white; }
+.listings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+@media (max-width: 900px) { .listings-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .listings-grid { grid-template-columns: 1fr; } }
+.biz-card { background: var(--cream); border: 1.5px solid #E8DDD0; border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.2s; position: relative; }
+.biz-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: transparent; }
+.biz-card.featured-card { border-color: var(--gold); }
+.featured-badge { position: absolute; top: 0.75rem; right: 0.75rem; background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 2rem; }
+.biz-card-header { padding: 1.25rem 1.25rem 0.75rem; display: flex; gap: 0.85rem; align-items: flex-start; }
+.biz-avatar { width: 48px; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: white; flex-shrink: 0; }
+.biz-info { flex: 1; min-width: 0; }
+.biz-name { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--ink); line-height: 1.2; margin-bottom: 0.25rem; }
+.biz-location { font-size: 0.75rem; color: var(--muted); }
+.biz-desc { padding: 0 1.25rem 0.85rem; font-size: 0.82rem; color: #5C5248; line-height: 1.6; }
+.biz-services { padding: 0 1.25rem 0.85rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.service-tag { background: #EDE5D8; color: #6B5A48; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 3px; }
+.biz-footer { border-top: 1px solid #EDE5D8; padding: 0.85rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+.biz-phone { font-size: 0.82rem; font-weight: 600; color: var(--terra); text-decoration: none; }
+.biz-phone:hover { text-decoration: underline; }
+.biz-hours { font-size: 0.73rem; color: var(--muted); }
+.modal-overlay { position: fixed; inset: 0; background: rgba(13,27,42,0.75); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(4px); }
+.modal { background: var(--cream); border-radius: 16px; max-width: 560px; width: 100%; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.3); max-height: 90vh; overflow-y: auto; }
+.modal-header { padding: 2rem; display: flex; gap: 1rem; align-items: center; border-bottom: 1.5px solid #E8DDD0; }
+.modal-avatar { width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: white; flex-shrink: 0; }
+.modal-name { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--ink); margin-bottom: 0.2rem; }
+.modal-city { font-size: 0.85rem; color: var(--muted); }
+.modal-body { padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 1rem; }
+.modal-row { display: flex; gap: 0.75rem; font-size: 0.88rem; align-items: flex-start; }
+.modal-row-label { font-weight: 600; color: var(--ink); min-width: 80px; flex-shrink: 0; }
+.modal-row-val { color: #5C5248; line-height: 1.5; }
+.modal-row-val.link { color: var(--terra); }
+.modal-services-wrap { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.modal-footer { padding: 1.25rem 2rem; border-top: 1.5px solid #E8DDD0; display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.btn-primary { flex: 1; background: var(--terra); color: white; border: none; padding: 0.85rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s; min-width: 110px; }
+.btn-primary:hover { background: var(--rust); }
+.btn-secondary { flex: 1; background: transparent; color: var(--ink); border: 1.5px solid #E8DDD0; padding: 0.85rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; min-width: 110px; }
+.btn-secondary:hover { border-color: var(--ink); }
+.btn-card { flex: 1; background: var(--navy); color: var(--sand); border: none; padding: 0.85rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s; min-width: 110px; }
+.btn-card:hover { background: #1a3050; }
+.card-viewer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 300; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(8px); }
+.card-viewer-inner { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; max-width: 720px; width: 100%; }
+.card-viewer-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: white; }
+.card-viewer-images { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+.card-img-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.card-img-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+.card-img { width: 100%; max-width: 300px; border-radius: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); object-fit: cover; }
+.card-img-placeholder { width: 300px; height: 170px; background: rgba(255,255,255,0.06); border: 2px dashed rgba(255,255,255,0.2); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; color: rgba(255,255,255,0.4); font-size: 0.82rem; text-align: center; }
+.card-img-placeholder span:first-child { font-size: 2rem; }
+.card-viewer-close { background: rgba(255,255,255,0.1); color: white; border: 1.5px solid rgba(255,255,255,0.2); padding: 0.75rem 2rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+.card-viewer-close:hover { background: rgba(255,255,255,0.2); }
+.admin-gate { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--navy); }
+.admin-gate-box { background: var(--cream); border-radius: 16px; padding: 3rem; max-width: 400px; width: 100%; text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+.admin-gate-title { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--ink); margin-bottom: 0.5rem; }
+.admin-gate-sub { color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
+.admin-gate input { width: 100%; border: 1.5px solid #E8DDD0; border-radius: 8px; padding: 0.85rem 1rem; font-size: 1rem; font-family: 'DM Sans', sans-serif; outline: none; margin-bottom: 1rem; text-align: center; letter-spacing: 0.1em; }
+.admin-gate input:focus { border-color: var(--terra); }
+.admin-gate .btn-primary { width: 100%; }
+.admin-error { color: var(--terra); font-size: 0.82rem; margin-top: 0.5rem; }
+.admin-page { min-height: 100vh; background: #F0EBE1; }
+.admin-nav { background: var(--navy); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--terra); }
+.admin-nav-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--sand); }
+.admin-nav-title span { color: var(--gold); }
+.admin-badge { background: var(--terra); color: white; font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 2rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.admin-body { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+@media (max-width: 700px) { .admin-body { grid-template-columns: 1fr; } }
+.admin-card { background: var(--cream); border-radius: 12px; padding: 1.75rem; border: 1.5px solid #E8DDD0; }
+.admin-card-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: var(--ink); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
+.admin-row { display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid #EDE5D8; font-size: 0.875rem; }
+.admin-row:last-child { border-bottom: none; }
+.admin-row-label { color: #5C5248; font-weight: 500; }
+.admin-row-count { background: var(--terra); color: white; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.65rem; border-radius: 2rem; min-width: 32px; text-align: center; }
+.admin-empty { color: var(--muted); font-size: 0.85rem; text-align: center; padding: 1.5rem 0; }
+.admin-stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+.admin-stat-box { background: var(--navy); border-radius: 10px; padding: 1.25rem; text-align: center; }
+.admin-stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--gold); }
+.admin-stat-label { font-size: 0.75rem; color: rgba(247,240,230,0.5); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.25rem; }
+.admin-log { max-height: 220px; overflow-y: auto; }
+.admin-log-row { display: flex; justify-content: space-between; padding: 0.4rem 0; border-bottom: 1px solid #EDE5D8; font-size: 0.8rem; }
+.admin-log-term { color: var(--ink); font-weight: 500; }
+.admin-log-time { color: var(--muted); }
+.card-promo-banner { background: var(--gold); color: var(--navy); padding: 0.85rem 1.75rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; text-align: center; line-height: 1.6; letter-spacing: 0.01em; }
+.cta-banner { background: var(--navy); padding: 4rem 2rem; text-align: center; position: relative; overflow: hidden; }
+.cta-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 100% at 50% 50%, rgba(196,96,58,0.12) 0%, transparent 70%); pointer-events: none; }
+.cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+.cta-title { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--sand); margin-bottom: 0.75rem; letter-spacing: -0.02em; }
+.cta-sub { color: rgba(247,240,230,0.6); font-size: 1rem; margin-bottom: 2rem; font-weight: 300; }
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.cta-btn-main { background: var(--terra); color: white; border: none; padding: 0.9rem 2rem; border-radius: 6px; font-size: 0.95rem; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+.cta-btn-main:hover { background: var(--rust); }
+.cta-btn-ghost { background: transparent; color: var(--sand); border: 1.5px solid rgba(247,240,230,0.3); padding: 0.9rem 2rem; border-radius: 6px; font-size: 0.95rem; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+.cta-btn-ghost:hover { border-color: var(--sand); }
+.footer { background: #0A1520; padding: 2rem; text-align: center; }
+.footer-logo { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--sand); margin-bottom: 0.5rem; }
+.footer-logo span { color: var(--gold); }
+.footer-sub { font-size: 0.8rem; color: rgba(247,240,230,0.35); margin-bottom: 0.5rem; }
+.footer-disclaimer { font-size: 0.72rem; color: rgba(247,240,230,0.2); max-width: 500px; margin: 0 auto; line-height: 1.6; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.hero-inner > * { animation: fadeUp 0.6s ease both; }
+.hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+.hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
+.hero-inner > *:nth-child(3) { animation-delay: 0.25s; }
+.hero-inner > *:nth-child(4) { animation-delay: 0.35s; }
+.hero-inner > *:nth-child(5) { animation-delay: 0.45s; }
+`;
+
+export default function HighDesertHub() {
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [activeCity, setActiveCity] = useState("All Cities");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+  const [selectedBiz, setSelectedBiz] = useState(null);
+  const [cardViewer, setCardViewer] = useState(null);
+
+  // ── ADMIN ANALYTICS ──────────────────────────────────────────
+  const [adminMode, setAdminMode] = useState(false);
+  const [adminInput, setAdminInput] = useState('');
+  const [adminError, setAdminError] = useState(false);
+  const [searchLog, setSearchLog] = useState([]);
+  const [viewLog, setViewLog] = useState({});
+  const [categoryLog, setCategoryLog] = useState({});
+  const [callLog, setCallLog] = useState({});
+  const ADMIN_PASSWORD = 'hdhub2024';
+
+  const checkAdmin = () => {
+    if (adminInput === ADMIN_PASSWORD) {
+      setAdminMode(true);
+      setAdminError(false);
+    } else {
+      setAdminError(true);
+    }
+  };
+
+  const isAdminPage = window.location.search.includes('admin');
+
+  const logSearch = (q) => {
+    if (q.trim()) setSearchLog(prev => [...prev, { term: q.trim().toLowerCase(), time: new Date().toLocaleTimeString() }]);
+  };
+
+  const logView = (biz) => {
+    setViewLog(prev => ({ ...prev, [biz.name]: (prev[biz.name] || 0) + 1 }));
+  };
+
+  const logCategory = (cat) => {
+    if (cat) setCategoryLog(prev => ({ ...prev, [cat]: (prev[cat] || 0) + 1 }));
+  };
+
+  const logCall = (biz) => {
+    setCallLog(prev => ({ ...prev, [biz.name]: (prev[biz.name] || 0) + 1 }));
+  };
+
+  const topSearches = [...new Set(searchLog.map(s => s.term))]
+    .map(term => ({ term, count: searchLog.filter(s => s.term === term).length }))
+    .sort((a, b) => b.count - a.count).slice(0, 10);
+
+  const topViews = Object.entries(viewLog)
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count).slice(0, 10);
+
+  const topCategories = Object.entries(categoryLog)
+    .map(([cat, count]) => ({ cat, count }))
+    .sort((a, b) => b.count - a.count);
+
+  const topCalls = Object.entries(callLog)
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count).slice(0, 10);
+
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = css;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
+
+  const filtered = BUSINESSES.filter((b) => {
+    const catMatch = !activeCategory || b.category === activeCategory;
+    const cityMatch = activeCity === "All Cities" || b.city === activeCity;
+    const query = searchQuery.toLowerCase();
+    const synonyms = {
+      'weed': ['weed abatement', 'landscaping', 'lawn'],
+      'weed remover': ['weed abatement', 'landscaping'],
+      'weed removal': ['weed abatement', 'landscaping'],
+      'trash': ['junk removal', 'clean outs', 'disposal', 'dumpster'],
+      'garbage': ['junk removal', 'disposal', 'dumpster'],
+      'junk': ['junk removal', 'clean outs', 'disposal'],
+      'hauling': ['junk removal', 'dumpster', 'disposal', 'rolloff'],
+      'dump': ['dumpster', 'disposal', 'rolloff'],
+      'bugs': ['pest control', 'extermination'],
+      'roaches': ['pest control', 'extermination'],
+      'ants': ['pest control', 'extermination'],
+      'termites': ['pest control', 'extermination'],
+      'insects': ['pest control', 'extermination'],
+      'exterminator': ['pest control', 'extermination'],
+      'plumber': ['plumbing'],
+      'roofer': ['roofing'],
+      'electrician': ['electrical'],
+      'handyman': ['general repairs', 'remodels'],
+      'house cleaning': ['cleaning', 'deep cleaning'],
+      'maid': ['cleaning', 'organizing'],
+      'lawn': ['landscaping', 'lawn work', 'gardening'],
+      'tree': ['tree trimming', 'landscaping'],
+      'sprinkler': ['sprinkler systems', 'landscaping'],
+      'garden': ['gardening', 'landscaping', 'planting'],
+      'fence': ['fence installation', 'fence repair'],
+      'fencing': ['fence installation', 'fence repair'],
+      'gate': ['custom gates', 'fence'],
+      'construction': ['remodels', 'additions', 'new construction'],
+      'remodel': ['remodels', 'kitchen', 'bathroom'],
+      'renovation': ['remodels', 'additions'],
+      'appliance': ['appliance repair', 'appliance sales'],
+      'washer': ['washer repair', 'appliance repair'],
+      'dryer': ['dryer repair', 'appliance repair'],
+      'fridge': ['refrigerator repair', 'appliance repair'],
+      'refrigerator': ['refrigerator repair', 'appliance repair'],
+      'house': ['real estate', 'home buying', 'home selling'],
+      'home': ['real estate', 'home buying', 'home selling'],
+      'realtor': ['real estate', 'home buying'],
+      'water': ['r.o. water', 'alkaline water', 'drinking water'],
+      'drinking water': ['r.o. water', 'alkaline water'],
+      'purified': ['r.o. water', 'alkaline water'],
+      'fire': ['fire prevention', 'weed abatement'],
+      'tractor': ['tractor rental', 'rolloff'],
+      'dumpster': ['dumpster rental', 'rolloff'],
+    };
+    const expandedTerms = synonyms[query] || [query];
+    const searchMatch =
+      expandedTerms.some(term =>
+        b.name.toLowerCase().includes(term) ||
+        b.services.some((s) => s.toLowerCase().includes(term)) ||
+        b.description.toLowerCase().includes(term) ||
+        b.city.toLowerCase().includes(query) ||
+        (b.contact && b.contact.toLowerCase().includes(query))
+      );
+    return catMatch && cityMatch && searchMatch;
+  });
+
+  const sorted = [
+    ...filtered.filter((b) => b.tier === "featured"),
+    ...filtered.filter((b) => b.tier !== "featured"),
+  ];
+
+  return (
+    <div className="app">
+      <nav className="nav">
+        <div className="nav-logo">High<span>Desert</span>Hub</div>
+        <ul className="nav-links">
+          <li><a href="#">Browse</a></li>
+          <li><a href="#">Cities</a></li>
+          <li><a href="#">Jobs</a></li>
+          <li><a href="#" className="nav-cta">List Your Business</a></li>
+        </ul>
+      </nav>
+
+      <section className="hero">
+        <div className="hero-inner">
+          <div className="hero-eyebrow">📍 Victorville · Hesperia · Apple Valley · Adelanto</div>
+          <h1 className="hero-title">Your High Desert<br /><em>Business Directory</em></h1>
+          <p className="hero-sub">Find trusted local businesses across the Victor Valley. From contractors to restaurants — all in one place.</p>
+          <div className="search-bar">
+            <input
+              placeholder="Search businesses, services..."
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && setSearchQuery(searchInput)}
+            />
+            <div className="search-divider" />
+            <select value={activeCity} onChange={(e) => setActiveCity(e.target.value)}>
+              {CITIES.map((c) => <option key={c}>{c}</option>)}
+            </select>
+            <button className="search-btn" onClick={() => { setSearchQuery(searchInput); logSearch(searchInput); }}>Search</button>
+          </div>
+          <div className="hero-stats">
+            <div className="stat"><span className="stat-num">{BUSINESSES.length}+</span><span className="stat-label">Businesses</span></div>
+            <div className="stat"><span className="stat-num">{CATEGORIES.length}</span><span className="stat-label">Categories</span></div>
+            <div className="stat"><span className="stat-num">4</span><span className="stat-label">Cities</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-header">
+          <h2 className="section-title">Browse by Category</h2>
+          <span className="section-link" onClick={() => setActiveCategory(null)}>View all →</span>
+        </div>
+        <div className="categories-grid">
+          {CATEGORIES.map((cat) => (
+            <div
+              key={cat.id}
+              className={`cat-card ${activeCategory === cat.id ? "active" : ""}`}
+              onClick={() => { const next = activeCategory === cat.id ? null : cat.id; setActiveCategory(next); logCategory(next); }}
+            >
+              <span className="cat-icon">{cat.icon}</span>
+              <span className="cat-label">{cat.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <hr className="divider" />
+
+      <section className="listings-section">
+        <div className="listings-toolbar">
+          <p className="listings-count">
+            Showing <strong>{sorted.length}</strong>{" "}
+            {activeCategory ? CATEGORIES.find((c) => c.id === activeCategory)?.label : "businesses"}
+            {activeCity !== "All Cities" ? ` in ${activeCity}` : ""}
+          </p>
+          <div className="filter-pills">
+            {CITIES.slice(1).map((city) => (
+              <button
+                key={city}
+                className={`pill ${activeCity === city ? "active" : ""}`}
+                onClick={() => setActiveCity(activeCity === city ? "All Cities" : city)}
+              >
+                {city}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {sorted.length === 0 ? (
+          <div style={{ textAlign: "center", padding: "4rem", color: "var(--muted)" }}>
+            <p style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>🏜️</p>
+            <p style={{ fontWeight: 600 }}>No businesses found</p>
+            <p style={{ fontSize: "0.875rem" }}>Try adjusting your filters or search</p>
+          </div>
+        ) : (
+          <div className="listings-grid">
+            {sorted.map((biz) => (
+              <div
+                key={biz.id}
+                className={`biz-card ${biz.tier === "featured" ? "featured-card" : ""}`}
+                onClick={() => { setSelectedBiz(biz); logView(biz); }}
+              >
+                {biz.tier === "featured" && <div className="featured-badge">⭐ Featured</div>}
+                <div className="biz-card-header">
+                  <div className="biz-avatar" style={{ background: biz.color }}>{biz.initials}</div>
+                  <div className="biz-info">
+                    <div className="biz-name">{biz.name}</div>
+                    <div className="biz-location">📍 {biz.city} · {CATEGORIES.find(c => c.id === biz.category)?.label}</div>
+                  </div>
+                </div>
+                <div className="biz-desc">{biz.description}</div>
+                <div className="biz-services">
+                  {biz.services.slice(0, 3).map((s) => (
+                    <span key={s} className="service-tag">{s}</span>
+                  ))}
+                  {biz.services.length > 3 && <span className="service-tag">+{biz.services.length - 3}</span>}
+                </div>
+                <div className="biz-footer">
+                  <a className="biz-phone" href={`tel:${biz.phone}`} onClick={(e) => { e.stopPropagation(); logCall(biz); }}>{biz.phone}</a>
+                  <span className="biz-hours">{biz.hours}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section className="cta-banner">
+        <div className="cta-inner">
+          <h2 className="cta-title">Own a Local Business?</h2>
+          <p className="cta-sub">Get listed on the High Desert's #1 local directory. Free to start — be seen by thousands of residents.</p>
+          <div className="cta-btns">
+            <button className="cta-btn-main">List My Business — Free</button>
+            <button className="cta-btn-ghost">View Pricing Plans</button>
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="footer-logo">High<span>Desert</span>Hub</div>
+        <p className="footer-sub">Serving Victorville · Hesperia · Apple Valley · Adelanto</p>
+        <p className="footer-disclaimer">Listings on HighDesertHub.com are provided for informational purposes only. We do not verify, endorse, or guarantee any business listed. Please conduct your own due diligence.</p>
+      </footer>
+
+      {/* BUSINESS MODAL */}
+      {selectedBiz && (
+        <div className="modal-overlay" onClick={() => setSelectedBiz(null)}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <div className="modal-avatar" style={{ background: selectedBiz.color }}>{selectedBiz.initials}</div>
+              <div>
+                <div className="modal-name">{selectedBiz.name}</div>
+                <div className="modal-city">📍 {selectedBiz.city} · {CATEGORIES.find(c => c.id === selectedBiz.category)?.label}</div>
+              </div>
+            </div>
+            <div className="modal-body">
+              {selectedBiz.contact && <div className="modal-row"><span className="modal-row-label">Contact</span><span className="modal-row-val">{selectedBiz.contact}</span></div>}
+              <div className="modal-row"><span className="modal-row-label">Phone</span><span className="modal-row-val link">{selectedBiz.phone}</span></div>
+              {selectedBiz.textNumber && <div className="modal-row"><span className="modal-row-label">Text Only</span><span className="modal-row-val link">{selectedBiz.textNumber}</span></div>}
+              {selectedBiz.email && <div className="modal-row"><span className="modal-row-label">Email</span><span className="modal-row-val link">{selectedBiz.email}</span></div>}
+              {selectedBiz.website && <div className="modal-row"><span className="modal-row-label">Website</span><span className="modal-row-val link">{selectedBiz.website}</span></div>}
+              {selectedBiz.instagram && <div className="modal-row"><span className="modal-row-label">Instagram</span><span className="modal-row-val link">{selectedBiz.instagram}</span></div>}
+              {selectedBiz.address && <div className="modal-row"><span className="modal-row-label">Address</span><span className="modal-row-val">{selectedBiz.address}</span></div>}
+              {selectedBiz.license && <div className="modal-row"><span className="modal-row-label">License #</span><span className="modal-row-val">{selectedBiz.license}</span></div>}
+              <div className="modal-row"><span className="modal-row-label">Hours</span><span className="modal-row-val">{selectedBiz.hours}</span></div>
+              <div className="modal-row">
+                <span className="modal-row-label">Services</span>
+                <div className="modal-services-wrap">{selectedBiz.services.map((s) => <span key={s} className="service-tag">{s}</span>)}</div>
+              </div>
+              <div className="modal-row"><span className="modal-row-label">About</span><span className="modal-row-val">{selectedBiz.description}</span></div>
+            </div>
+            <div className="modal-footer">
+              <button className="btn-primary">📞 Call Now</button>
+              <button className="btn-card" onClick={() => setCardViewer(selectedBiz)}>🪪 View Card</button>
+              <button className="btn-secondary" onClick={() => setSelectedBiz(null)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ADMIN PAGE */}
+      {isAdminPage && !adminMode && (
+        <div className="admin-gate" style={{position:'fixed',inset:0,zIndex:500}}>
+          <div className="admin-gate-box">
+            <div className="admin-gate-title">🔒 Admin Access</div>
+            <p className="admin-gate-sub">High Desert Hub — Analytics Dashboard</p>
+            <input
+              type="password"
+              placeholder="Enter password"
+              value={adminInput}
+              onChange={(e) => setAdminInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && checkAdmin()}
+            />
+            <button className="btn-primary" onClick={checkAdmin}>Login</button>
+            {adminError && <p className="admin-error">Incorrect password. Try again.</p>}
+          </div>
+        </div>
+      )}
+
+      {isAdminPage && adminMode && (
+        <div className="admin-page" style={{position:'fixed',inset:0,zIndex:500,overflowY:'auto'}}>
+          <div className="admin-nav">
+            <div className="admin-nav-title">High<span>Desert</span>Hub</div>
+            <div style={{display:'flex',alignItems:'center',gap:'1rem'}}>
+              <span className="admin-badge">Admin Analytics</span>
+              <button onClick={() => { setAdminMode(false); window.history.pushState({}, '', '/'); }}
+                style={{background:'transparent',border:'1px solid rgba(247,240,230,0.3)',color:'var(--sand)',padding:'0.35rem 0.85rem',borderRadius:'4px',cursor:'pointer',fontSize:'0.8rem',fontFamily:"'DM Sans',sans-serif"}}>
+                Exit
+              </button>
+            </div>
+          </div>
+          <div className="admin-body">
+            {/* OVERVIEW STATS */}
+            <div className="admin-card" style={{gridColumn:'1/-1'}}>
+              <div className="admin-card-title">📊 Overview</div>
+              <div className="admin-stat-grid">
+                <div className="admin-stat-box">
+                  <div className="admin-stat-num">{searchLog.length}</div>
+                  <div className="admin-stat-label">Total Searches</div>
+                </div>
+                <div className="admin-stat-box">
+                  <div className="admin-stat-num">{Object.values(viewLog).reduce((a,b)=>a+b,0)}</div>
+                  <div className="admin-stat-label">Listing Views</div>
+                </div>
+                <div className="admin-stat-box">
+                  <div className="admin-stat-num">{Object.values(callLog).reduce((a,b)=>a+b,0)}</div>
+                  <div className="admin-stat-label">Calls Clicked</div>
+                </div>
+                <div className="admin-stat-box">
+                  <div className="admin-stat-num">{BUSINESSES.length}</div>
+                  <div className="admin-stat-label">Total Listings</div>
+                </div>
+              </div>
+            </div>
+
+            {/* TOP SEARCHES */}
+            <div className="admin-card">
+              <div className="admin-card-title">🔍 Top Searches</div>
+              {topSearches.length === 0
+                ? <p className="admin-empty">No searches yet</p>
+                : topSearches.map((s,i) => (
+                  <div key={i} className="admin-row">
+                    <span className="admin-row-label">"{s.term}"</span>
+                    <span className="admin-row-count">{s.count}x</span>
+                  </div>
+                ))
+              }
+            </div>
+
+            {/* TOP VIEWED LISTINGS */}
+            <div className="admin-card">
+              <div className="admin-card-title">👁️ Most Viewed Listings</div>
+              {topViews.length === 0
+                ? <p className="admin-empty">No views tracked yet</p>
+                : topViews.map((v,i) => (
+                  <div key={i} className="admin-row">
+                    <span className="admin-row-label">{v.name}</span>
+                    <span className="admin-row-count">{v.count}x</span>
+                  </div>
+                ))
+              }
+            </div>
+
+            {/* TOP CATEGORIES */}
+            <div className="admin-card">
+              <div className="admin-card-title">📂 Top Categories</div>
+              {topCategories.length === 0
+                ? <p className="admin-empty">No category clicks yet</p>
+                : topCategories.map((c,i) => (
+                  <div key={i} className="admin-row">
+                    <span className="admin-row-label">{CATEGORIES.find(cat=>cat.id===c.cat)?.label || c.cat}</span>
+                    <span className="admin-row-count">{c.count}x</span>
+                  </div>
+                ))
+              }
+            </div>
+
+            {/* TOP CALLS */}
+            <div className="admin-card">
+              <div className="admin-card-title">📞 Most Called Businesses</div>
+              {topCalls.length === 0
+                ? <p className="admin-empty">No calls tracked yet</p>
+                : topCalls.map((c,i) => (
+                  <div key={i} className="admin-row">
+                    <span className="admin-row-label">{c.name}</span>
+                    <span className="admin-row-count">{c.count}x</span>
+                  </div>
+                ))
+              }
+            </div>
+
+            {/* LIVE SEARCH LOG */}
+            <div className="admin-card" style={{gridColumn:'1/-1'}}>
+              <div className="admin-card-title">📝 Live Search Log</div>
+              {searchLog.length === 0
+                ? <p className="admin-empty">Searches will appear here in real time</p>
+                : <div className="admin-log">
+                    {[...searchLog].reverse().map((s,i) => (
+                      <div key={i} className="admin-log-row">
+                        <span className="admin-log-term">"{s.term}"</span>
+                        <span className="admin-log-time">{s.time}</span>
+                      </div>
+                    ))}
+                  </div>
+              }
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CARD PHOTO VIEWER */}
+      {cardViewer && (
+        <div className="card-viewer-overlay" onClick={() => setCardViewer(null)}>
+          <div className="card-viewer-inner" onClick={(e) => e.stopPropagation()}>
+            <div className="card-viewer-title">🪪 {cardViewer.name} — Business Card</div>
+            <div className="card-promo-banner">🏷️ Mention <strong>HighDesertHub</strong> and ask if you qualify for a <strong>5% discount!</strong></div>
+            <div className="card-viewer-images">
+              <div className="card-img-wrap">
+                <span className="card-img-label">Front</span>
+                {cardViewer.cardFront
+                  ? <img src={cardViewer.cardFront} alt="front" className="card-img" />
+                  : <div className="card-img-placeholder"><span>📇</span><span>Coming soon</span></div>
+                }
+              </div>
+              {cardViewer.cardBack && (
+                <div className="card-img-wrap">
+                  <span className="card-img-label">Back</span>
+                  <img src={cardViewer.cardBack} alt="back" className="card-img" />
+                </div>
+              )}
+              {cardViewer.cardBack === null && (
+                <div className="card-img-wrap">
+                  <span className="card-img-label">Back</span>
+                  <div className="card-img-placeholder"><span>📇</span><span>No back available</span></div>
+                </div>
+              )}
+            </div>
+            <button className="card-viewer-close" onClick={() => setCardViewer(null)}>Close</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
