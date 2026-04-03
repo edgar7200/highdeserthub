@@ -540,7 +540,7 @@ export default function HighDesertHub() {
   const [viewLog, setViewLog] = useState({});
   const [categoryLog, setCategoryLog] = useState({});
   const [callLog, setCallLog] = useState({});
-  const ADMIN_PASSWORD = 'hdhub2024';
+  const ADMIN_PASSWORD = 'Ketchup117!?';
 
   const checkAdmin = () => {
     if (adminInput === ADMIN_PASSWORD) {
