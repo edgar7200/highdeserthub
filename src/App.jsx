@@ -1297,6 +1297,9 @@ export default function HighDesertHub() {
                 <p className="success-sub">
                   Thanks for submitting <strong>{formData.name}</strong>. We will review your info and have your listing live within 24 hours. We will reach out to {formData.email} to confirm.
                 </p>
+                <p style={{fontSize:'0.85rem', color:'var(--terra)', background:'rgba(196,96,58,0.08)', border:'1px solid rgba(196,96,58,0.2)', borderRadius:'8px', padding:'0.85rem 1rem', marginTop:'0.5rem', lineHeight:'1.6'}}>
+                  📸 Want to include your business card? Email front and back photos to <strong>listings@highdeserthub.com</strong> with your business name in the subject line.
+                </p>
                 <button className="btn-primary" onClick={() => setShowListForm(false)}>Done</button>
               </div>
             )}
