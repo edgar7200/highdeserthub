@@ -23,7 +23,7 @@ const BUSINESSES = [
   {
     id: 1,
     name: "G&S Rolloff Rentals",
-    baseThumbsUp: 3,
+    baseThumbsUp: 1,
     verified: true,
     dateAdded: "March 2026",
     lastVerified: "April 2026",
@@ -48,7 +48,7 @@ const BUSINESSES = [
   {
     id: 2,
     name: "Agape Pest Control",
-    baseThumbsUp: 5,
+    baseThumbsUp: 1,
     verified: true,
     dateAdded: "March 2026",
     lastVerified: "April 2026",
@@ -73,7 +73,7 @@ const BUSINESSES = [
   {
     id: 3,
     name: "High Desert General Construction",
-    baseThumbsUp: 7,
+    baseThumbsUp: 3,
     verified: true,
     dateAdded: "March 2026",
     lastVerified: "April 2026",
@@ -99,7 +99,7 @@ const BUSINESSES = [
     id: 4,
     name: "Alvarez Appliances",
     carousel: true,
-    baseThumbsUp: 4,
+    baseThumbsUp: 2,
     verified: true,
     dateAdded: "March 2026",
     lastVerified: "April 2026",
@@ -124,7 +124,7 @@ const BUSINESSES = [
   {
     id: 5,
     name: "Fence-MD",
-    baseThumbsUp: 6,
+    baseThumbsUp: 1,
     verified: true,
     dateAdded: "March 2026",
     lastVerified: "April 2026",
@@ -149,7 +149,7 @@ const BUSINESSES = [
   {
     id: 6,
     name: "Field Fix",
-    baseThumbsUp: 4,
+    baseThumbsUp: 0,
     verified: true,
     dateAdded: "March 2026",
     lastVerified: "April 2026",
@@ -200,7 +200,7 @@ const BUSINESSES = [
   {
     id: 8,
     name: "SoCal Pest Pros",
-    baseThumbsUp: 8,
+    baseThumbsUp: 3,
     verified: true,
     dateAdded: "March 2026",
     lastVerified: "April 2026",
@@ -225,7 +225,7 @@ const BUSINESSES = [
   {
     id: 9,
     name: "Kiki Landscaping",
-    baseThumbsUp: 5,
+    baseThumbsUp: 2,
     verified: true,
     dateAdded: "March 2026",
     lastVerified: "April 2026",
@@ -251,7 +251,7 @@ const BUSINESSES = [
     id: 10,
     name: "Miss Cleandipity",
     carousel: true,
-    baseThumbsUp: 9,
+    baseThumbsUp: 4,
     verified: true,
     dateAdded: "March 2026",
     lastVerified: "April 2026",
@@ -276,7 +276,7 @@ const BUSINESSES = [
   {
     id: 11,
     name: "Empire RE Properties",
-    baseThumbsUp: 6,
+    baseThumbsUp: 2,
     verified: true,
     dateAdded: "March 2026",
     lastVerified: "April 2026",
@@ -302,7 +302,7 @@ const BUSINESSES = [
   {
     id: 12,
     name: "Virginia's Drinking Water",
-    baseThumbsUp: 11,
+    baseThumbsUp: 3,
     verified: true,
     dateAdded: "March 2026",
     lastVerified: "April 2026",
