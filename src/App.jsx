@@ -965,11 +965,7 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .contact-popup-email { background: #EDE5D8; border-radius: 8px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600; color: var(--terra); margin-bottom: 1.25rem; letter-spacing: 0.01em; }
 .contact-popup-btns { display: flex; gap: 0.75rem; flex-direction: column; }
 .pricing-sub-tag { font-size: 0.75rem; color: var(--muted); font-style: italic; margin-bottom: 1rem; line-height: 1.4; }
-.pricing-tier.popular .biz-owner-strip { background: var(--terra); padding: 0.85rem 2rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
-.biz-owner-strip-text { color: white; font-size: 0.875rem; font-weight: 500; }
-.biz-owner-strip-text strong { font-weight: 700; }
-.biz-owner-strip-btn { background: white; color: var(--terra); border: none; padding: 0.45rem 1.25rem; border-radius: 2rem; font-size: 0.8rem; font-weight: 700; font-family: "DM Sans", sans-serif; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-.biz-owner-strip-btn:hover { background: var(--sand); }
+.pricing-tier.popular 
 .contact-popup-overlay { position: fixed; inset: 0; background: rgba(13,27,42,0.75); z-index: 400; display: flex; align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(4px); }
 .contact-popup { background: var(--cream); border-radius: 16px; max-width: 420px; width: 100%; padding: 2rem; box-shadow: 0 24px 80px rgba(0,0,0,0.3); text-align: center; }
 .contact-popup-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--ink); margin-bottom: 0.5rem; }
@@ -978,11 +974,7 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .contact-popup-btns { display: flex; gap: 0.75rem; flex-direction: column; }
 .pricing-sub-tag { color: rgba(247,240,230,0.5); }
 .pricing-tier-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: #1A1208; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
-.pricing-tier.popular .biz-owner-strip { background: var(--terra); padding: 0.85rem 2rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
-.biz-owner-strip-text { color: white; font-size: 0.875rem; font-weight: 500; }
-.biz-owner-strip-text strong { font-weight: 700; }
-.biz-owner-strip-btn { background: white; color: var(--terra); border: none; padding: 0.45rem 1.25rem; border-radius: 2rem; font-size: 0.8rem; font-weight: 700; font-family: "DM Sans", sans-serif; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-.biz-owner-strip-btn:hover { background: var(--sand); }
+.pricing-tier.popular 
 .contact-popup-overlay { position: fixed; inset: 0; background: rgba(13,27,42,0.75); z-index: 400; display: flex; align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(4px); }
 .contact-popup { background: var(--cream); border-radius: 16px; max-width: 420px; width: 100%; padding: 2rem; box-shadow: 0 24px 80px rgba(0,0,0,0.3); text-align: center; }
 .contact-popup-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--ink); margin-bottom: 0.5rem; }
@@ -990,11 +982,7 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .contact-popup-email { background: #EDE5D8; border-radius: 8px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600; color: var(--terra); margin-bottom: 1.25rem; letter-spacing: 0.01em; }
 .contact-popup-btns { display: flex; gap: 0.75rem; flex-direction: column; }
 .pricing-sub-tag { font-size: 0.75rem; color: var(--muted); font-style: italic; margin-bottom: 1rem; line-height: 1.4; }
-.pricing-tier.popular .biz-owner-strip { background: var(--terra); padding: 0.85rem 2rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
-.biz-owner-strip-text { color: white; font-size: 0.875rem; font-weight: 500; }
-.biz-owner-strip-text strong { font-weight: 700; }
-.biz-owner-strip-btn { background: white; color: var(--terra); border: none; padding: 0.45rem 1.25rem; border-radius: 2rem; font-size: 0.8rem; font-weight: 700; font-family: "DM Sans", sans-serif; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-.biz-owner-strip-btn:hover { background: var(--sand); }
+.pricing-tier.popular 
 .contact-popup-overlay { position: fixed; inset: 0; background: rgba(13,27,42,0.75); z-index: 400; display: flex; align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(4px); }
 .contact-popup { background: var(--cream); border-radius: 16px; max-width: 420px; width: 100%; padding: 2rem; box-shadow: 0 24px 80px rgba(0,0,0,0.3); text-align: center; }
 .contact-popup-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--ink); margin-bottom: 0.5rem; }
@@ -1918,7 +1906,7 @@ export default function HighDesertHub() {
             </p>
             <div className="contact-popup-email">admin@highdeserthub.com</div>
             <div className="contact-popup-btns">
-              
+              <a
                 className="btn-primary"
                 href={`mailto:admin@highdeserthub.com?subject=Interested in ${contactTier}&body=Hi, I am interested in upgrading my listing on HighDesertHub.com. Please contact me with next steps.`}
                 style={{textDecoration:"none",textAlign:"center",display:"block"}}
