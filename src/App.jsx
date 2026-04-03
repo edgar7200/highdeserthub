@@ -1013,6 +1013,7 @@ export default function HighDesertHub() {
   const [activeCity, setActiveCity] = useState("All Cities");
   const [searchQuery, setSearchQuery] = useState("");
   const [socialOnly, setSocialOnly] = useState(false);
+  const [emailOnly, setEmailOnly] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [selectedBiz, setSelectedBiz] = useState(null);
   const [cardViewer, setCardViewer] = useState(null);
@@ -1205,7 +1206,7 @@ export default function HighDesertHub() {
       'dumpster': ['dumpster rental', 'rolloff'],
     };
     const expandedTerms = synonyms[query] || [query];
-    const hasSocial = biz.instagram || biz.website || biz.email;
+    const hasSocial = !!(b.instagram || b.facebook);
     const socialMatch = !socialOnly || hasSocial;
     const searchMatch =
       expandedTerms.some(term =>
@@ -1215,7 +1216,8 @@ export default function HighDesertHub() {
         b.city.toLowerCase().includes(query) ||
         (b.contact && b.contact.toLowerCase().includes(query))
       );
-    return catMatch && cityMatch && searchMatch && socialMatch;
+    const emailMatch = !emailOnly || !!b.email;
+    return catMatch && cityMatch && searchMatch && socialMatch && emailMatch;
   });
 
   const sorted = [
