@@ -360,11 +360,11 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .search-bar select { border: none; padding: 1rem 1.25rem; font-size: 0.9rem; font-family: 'DM Sans', sans-serif; color: var(--ink); background: transparent; outline: none; cursor: pointer; min-width: 140px; }
 .search-btn { background: var(--terra); color: white; border: none; padding: 1rem 2rem; font-size: 0.95rem; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s; }
 .search-btn:hover { background: var(--rust); }
-.hero-stats { display: flex; gap: 2.5rem; margin-top: 2.5rem; }
+.hero-stats { display: flex; gap: 0.75rem; margin-top: 2rem; flex-wrap: wrap; }
 .stat { display: flex; flex-direction: column; gap: 0.2rem; }
 .stat-num { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--gold); }
 .stat-label { font-size: 0.8rem; color: rgba(247,240,230,0.5); text-transform: uppercase; letter-spacing: 0.08em; }
-.stat-pill { background: rgba(196,96,58,0.15); border: 1px solid rgba(196,96,58,0.3); color: var(--sand); font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; padding: 0.6rem 1.25rem; border-radius: 2rem; letter-spacing: 0.01em; }
+.stat-pill { background: rgba(196,96,58,0.15); border: 1px solid rgba(196,96,58,0.3); color: var(--sand); font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700; padding: 0.5rem 0.85rem; border-radius: 2rem; letter-spacing: 0.01em; white-space: nowrap; }
 .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; clear: both; }
 .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2rem; }
 .section-title { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
@@ -448,8 +448,8 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .carousel-dots { display: flex; gap: 0.5rem; align-items: center; }
 .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(247,240,230,0.2); border: none; cursor: pointer; transition: all 0.2s; padding: 0; }
 .carousel-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
-.carousel-track { display: flex; gap: 1.25rem; transition: none; flex-wrap: nowrap; }
-.carousel-card { background: rgba(255,255,255,0.05); border: 1.5px solid rgba(247,240,230,0.1); border-radius: 14px; padding: 1.75rem; flex: 1; min-width: 0; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+.carousel-track { display: flex; gap: 1.25rem; transition: none; flex-wrap: wrap; }
+.carousel-card { background: rgba(255,255,255,0.05); border: 1.5px solid rgba(247,240,230,0.1); border-radius: 14px; padding: 1.75rem; flex: 1; min-width: 280px; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
 .carousel-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(196,96,58,0.08) 0%, transparent 60%); pointer-events: none; }
 .carousel-card:hover { border-color: rgba(232,160,48,0.4); background: rgba(255,255,255,0.08); transform: translateY(-3px); }
 .carousel-card-top { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; position: relative; z-index: 1; }
@@ -476,8 +476,8 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .carousel-dots { display: flex; gap: 0.5rem; align-items: center; }
 .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(247,240,230,0.2); border: none; cursor: pointer; transition: all 0.2s; padding: 0; }
 .carousel-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
-.carousel-track { display: flex; gap: 1.25rem; transition: none; flex-wrap: nowrap; }
-.carousel-card { background: rgba(255,255,255,0.05); border: 1.5px solid rgba(247,240,230,0.1); border-radius: 14px; padding: 1.75rem; flex: 1; min-width: 0; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+.carousel-track { display: flex; gap: 1.25rem; transition: none; flex-wrap: wrap; }
+.carousel-card { background: rgba(255,255,255,0.05); border: 1.5px solid rgba(247,240,230,0.1); border-radius: 14px; padding: 1.75rem; flex: 1; min-width: 280px; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
 .carousel-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(196,96,58,0.08) 0%, transparent 60%); pointer-events: none; }
 .carousel-card:hover { border-color: rgba(232,160,48,0.4); background: rgba(255,255,255,0.08); transform: translateY(-3px); }
 .carousel-card-top { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; position: relative; z-index: 1; }
