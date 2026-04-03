@@ -953,11 +953,35 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .pricing-tier:last-child { border-right: none; }
 .pricing-tier.popular { background: var(--navy); position: relative; }
 .pricing-popular-badge { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 0 0 6px 6px; }
+.contact-popup-overlay { position: fixed; inset: 0; background: rgba(13,27,42,0.75); z-index: 400; display: flex; align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(4px); }
+.contact-popup { background: var(--cream); border-radius: 16px; max-width: 420px; width: 100%; padding: 2rem; box-shadow: 0 24px 80px rgba(0,0,0,0.3); text-align: center; }
+.contact-popup-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--ink); margin-bottom: 0.5rem; }
+.contact-popup-sub { font-size: 0.875rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
+.contact-popup-email { background: #EDE5D8; border-radius: 8px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600; color: var(--terra); margin-bottom: 1.25rem; letter-spacing: 0.01em; }
+.contact-popup-btns { display: flex; gap: 0.75rem; flex-direction: column; }
 .pricing-sub-tag { font-size: 0.75rem; color: var(--muted); font-style: italic; margin-bottom: 1rem; line-height: 1.4; }
-.pricing-tier.popular .pricing-sub-tag { color: rgba(247,240,230,0.5); }
+.pricing-tier.popular .contact-popup-overlay { position: fixed; inset: 0; background: rgba(13,27,42,0.75); z-index: 400; display: flex; align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(4px); }
+.contact-popup { background: var(--cream); border-radius: 16px; max-width: 420px; width: 100%; padding: 2rem; box-shadow: 0 24px 80px rgba(0,0,0,0.3); text-align: center; }
+.contact-popup-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--ink); margin-bottom: 0.5rem; }
+.contact-popup-sub { font-size: 0.875rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
+.contact-popup-email { background: #EDE5D8; border-radius: 8px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600; color: var(--terra); margin-bottom: 1.25rem; letter-spacing: 0.01em; }
+.contact-popup-btns { display: flex; gap: 0.75rem; flex-direction: column; }
+.pricing-sub-tag { color: rgba(247,240,230,0.5); }
 .pricing-tier-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: #1A1208; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
-.pricing-tier.popular .pricing-sub-tag { font-size: 0.75rem; color: var(--muted); font-style: italic; margin-bottom: 1rem; line-height: 1.4; }
-.pricing-tier.popular .pricing-sub-tag { color: rgba(247,240,230,0.5); }
+.pricing-tier.popular .contact-popup-overlay { position: fixed; inset: 0; background: rgba(13,27,42,0.75); z-index: 400; display: flex; align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(4px); }
+.contact-popup { background: var(--cream); border-radius: 16px; max-width: 420px; width: 100%; padding: 2rem; box-shadow: 0 24px 80px rgba(0,0,0,0.3); text-align: center; }
+.contact-popup-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--ink); margin-bottom: 0.5rem; }
+.contact-popup-sub { font-size: 0.875rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
+.contact-popup-email { background: #EDE5D8; border-radius: 8px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600; color: var(--terra); margin-bottom: 1.25rem; letter-spacing: 0.01em; }
+.contact-popup-btns { display: flex; gap: 0.75rem; flex-direction: column; }
+.pricing-sub-tag { font-size: 0.75rem; color: var(--muted); font-style: italic; margin-bottom: 1rem; line-height: 1.4; }
+.pricing-tier.popular .contact-popup-overlay { position: fixed; inset: 0; background: rgba(13,27,42,0.75); z-index: 400; display: flex; align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(4px); }
+.contact-popup { background: var(--cream); border-radius: 16px; max-width: 420px; width: 100%; padding: 2rem; box-shadow: 0 24px 80px rgba(0,0,0,0.3); text-align: center; }
+.contact-popup-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--ink); margin-bottom: 0.5rem; }
+.contact-popup-sub { font-size: 0.875rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
+.contact-popup-email { background: #EDE5D8; border-radius: 8px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600; color: var(--terra); margin-bottom: 1.25rem; letter-spacing: 0.01em; }
+.contact-popup-btns { display: flex; gap: 0.75rem; flex-direction: column; }
+.pricing-sub-tag { color: rgba(247,240,230,0.5); }
 .pricing-tier.popular .pricing-tier-name { color: #FFFFFF; }
 .pricing-price { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 0.25rem; }
 .pricing-tier.popular .pricing-price { color: var(--sand); }
@@ -1053,6 +1077,18 @@ export default function HighDesertHub() {
   const [cardViewer, setCardViewer] = useState(null);
   const [showListForm, setShowListForm] = useState(false);
   const [showPricing, setShowPricing] = useState(false);
+  const [showContactPopup, setShowContactPopup] = useState(false);
+  const [contactTier, setContactTier] = useState('');
+
+  const handlePricingContact = (tier) => {
+    setContactTier(tier);
+    setShowContactPopup(true);
+  };
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText('admin@highdeserthub.com');
+    alert('Email copied to clipboard!');
+  };
   const [thumbsUp, setThumbsUp] = useState({});
   const [carouselIndex, setCarouselIndex] = useState(0);
 
@@ -1787,7 +1823,7 @@ export default function HighDesertHub() {
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Email contact button and full hours</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Priority over free listings</div>
                 </div>
-                <a className="pricing-btn" href="mailto:admin@highdeserthub.com?subject=Interested%20in%20Standard%20Listing%20-%20$25/month&body=Hi%2C%20I%20am%20interested%20in%20upgrading%20to%20a%20Standard%20listing%20on%20HighDesertHub.com.%20Please%20contact%20me%20with%20next%20steps." style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Started</a>
+                <a className="pricing-btn" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Standard — $25/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Started</a>
               </div>
               <div className="pricing-tier popular">
                 <div className="pricing-popular-badge">Most Popular</div>
@@ -1802,7 +1838,7 @@ export default function HighDesertHub() {
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Homepage carousel feature</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Priority in search results</div>
                 </div>
-                <a className="pricing-btn main" href="mailto:admin@highdeserthub.com?subject=Interested%20in%20Featured%20Listing%20-%20$60/month&body=Hi%2C%20I%20am%20interested%20in%20upgrading%20to%20a%20Featured%20listing%20on%20HighDesertHub.com.%20Please%20contact%20me%20with%20next%20steps." style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Featured</a>
+                <a className="pricing-btn main" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Featured — $60/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Featured</a>
               </div>
               <div className="pricing-tier">
                 <div className="pricing-tier-name">Premium</div>
@@ -1817,12 +1853,39 @@ export default function HighDesertHub() {
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Monthly performance report</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Dedicated support</div>
                 </div>
-                <a className="pricing-btn" href="mailto:admin@highdeserthub.com?subject=Interested%20in%20Premium%20Listing%20-%20$120/month&body=Hi%2C%20I%20am%20interested%20in%20upgrading%20to%20a%20Premium%20listing%20on%20HighDesertHub.com.%20Please%20contact%20me%20with%20next%20steps." style={{textDecoration:"none",textAlign:"center",display:"block"}}>Go Premium</a>
+                <a className="pricing-btn" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Premium — $120/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Go Premium</a>
               </div>
             </div>
             <div className="pricing-footer">
               <span className="pricing-footer-note">📞 Questions? Email us at hello@highdeserthub.com</span>
               <button className="btn-secondary" onClick={() => setShowPricing(false)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CONTACT POPUP */}
+      {showContactPopup && (
+        <div className="contact-popup-overlay" onClick={() => setShowContactPopup(false)}>
+          <div className="contact-popup" onClick={(e) => e.stopPropagation()}>
+            <p className="contact-popup-sub">
+              You selected <strong>{contactTier}</strong>. Reach out and we'll get you set up right away.
+            </p>
+            <div className="contact-popup-email">admin@highdeserthub.com</div>
+            <div className="contact-popup-btns">
+              
+                className="btn-primary"
+                href={`mailto:admin@highdeserthub.com?subject=Interested in ${contactTier}&body=Hi, I am interested in upgrading my listing on HighDesertHub.com. Please contact me with next steps.`}
+                style={{textDecoration:"none",textAlign:"center",display:"block"}}
+              >
+                📧 Open Email App
+              </a>
+              <button className="btn-secondary" onClick={copyEmail}>
+                📋 Copy Email Address
+              </button>
+              <button className="btn-secondary" onClick={() => setShowContactPopup(false)}>
+                Close
+              </button>
             </div>
           </div>
         </div>
