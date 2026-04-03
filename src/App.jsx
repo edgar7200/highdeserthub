@@ -1358,6 +1358,12 @@ export default function HighDesertHub() {
             >
               📱 Has Social Media
             </button>
+            <button
+              className={`pill ${emailOnly ? "active" : ""}`}
+              onClick={() => setEmailOnly(!emailOnly)}
+            >
+              📧 Has Email
+            </button>
           </div>
         </div>
 
