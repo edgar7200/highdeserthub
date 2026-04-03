@@ -784,7 +784,7 @@ export default function HighDesertHub() {
         <div className="hero-inner">
           <div className="hero-eyebrow">📍 Victorville · Hesperia · Apple Valley · Adelanto</div>
           <h1 className="hero-title">Your High Desert<br />Business Directory</h1>
-          <p className="hero-sub">Helping local businesses get found. Discover trusted services across Victorville, Hesperia, Apple Valley, and Adelanto.</p>
+          <p className="hero-sub">Helping local businesses get found. Connect with local services across Victorville, Hesperia, Apple Valley, and Adelanto.</p>
           <div className="search-bar">
             <input
               placeholder="Search businesses, services..."
