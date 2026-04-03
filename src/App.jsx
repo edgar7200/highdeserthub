@@ -98,6 +98,7 @@ const BUSINESSES = [
   {
     id: 4,
     name: "Alvarez Appliances",
+    carousel: true,
     baseThumbsUp: 4,
     verified: true,
     dateAdded: "March 2026",
@@ -249,6 +250,7 @@ const BUSINESSES = [
   {
     id: 10,
     name: "Miss Cleandipity",
+    carousel: true,
     baseThumbsUp: 9,
     verified: true,
     dateAdded: "March 2026",
@@ -363,7 +365,7 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .stat-num { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--gold); }
 .stat-label { font-size: 0.8rem; color: rgba(247,240,230,0.5); text-transform: uppercase; letter-spacing: 0.08em; }
 .stat-pill { background: rgba(196,96,58,0.15); border: 1px solid rgba(196,96,58,0.3); color: var(--sand); font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; padding: 0.6rem 1.25rem; border-radius: 2rem; letter-spacing: 0.01em; }
-.section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+.section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; clear: both; }
 .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2rem; }
 .section-title { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
 .section-link { color: var(--terra); font-size: 0.875rem; font-weight: 600; cursor: pointer; }
@@ -434,6 +436,63 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .card-img-placeholder span:first-child { font-size: 2rem; }
 .card-viewer-close { background: rgba(255,255,255,0.1); color: white; border: 1.5px solid rgba(255,255,255,0.2); padding: 0.75rem 2rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; }
 .card-viewer-close:hover { background: rgba(255,255,255,0.2); }
+
+.carousel-section { background: var(--navy); padding: 3rem 2rem 3.5rem; position: relative; overflow: hidden; display: block; width: 100%; clear: both; box-sizing: border-box; }
+.carousel-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(196,96,58,0.1) 0%, transparent 70%); pointer-events: none; }
+.carousel-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+.carousel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.75rem; }
+.carousel-title { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--sand); letter-spacing: -0.02em; }
+.carousel-title span { color: var(--gold); }
+.carousel-dots { display: flex; gap: 0.5rem; align-items: center; }
+.carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(247,240,230,0.2); border: none; cursor: pointer; transition: all 0.2s; padding: 0; }
+.carousel-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
+.carousel-track { display: flex; gap: 1.25rem; transition: none; flex-wrap: nowrap; }
+.carousel-card { background: rgba(255,255,255,0.05); border: 1.5px solid rgba(247,240,230,0.1); border-radius: 14px; padding: 1.75rem; flex: 1; min-width: 0; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+.carousel-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(196,96,58,0.08) 0%, transparent 60%); pointer-events: none; }
+.carousel-card:hover { border-color: rgba(232,160,48,0.4); background: rgba(255,255,255,0.08); transform: translateY(-3px); }
+.carousel-card-top { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; position: relative; z-index: 1; }
+.carousel-avatar { width: 56px; height: 56px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: white; flex-shrink: 0; }
+.carousel-biz-name { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--sand); margin-bottom: 0.25rem; line-height: 1.2; }
+.carousel-biz-meta { font-size: 0.78rem; color: rgba(247,240,230,0.5); margin-bottom: 0.25rem; }
+.carousel-spotlight-badge { display: inline-flex; align-items: center; gap: 0.3rem; background: rgba(232,160,48,0.2); border: 1px solid rgba(232,160,48,0.4); color: var(--gold); font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 2rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.carousel-desc { font-size: 0.85rem; color: rgba(247,240,230,0.65); line-height: 1.6; margin-bottom: 1.25rem; position: relative; z-index: 1; }
+.carousel-footer { display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1; }
+.carousel-phone { font-size: 0.875rem; font-weight: 600; color: var(--gold); text-decoration: none; }
+.carousel-phone:hover { text-decoration: underline; }
+.carousel-view-btn { background: rgba(196,96,58,0.3); color: var(--sand); border: 1px solid rgba(196,96,58,0.4); padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.78rem; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s; }
+.carousel-view-btn:hover { background: var(--terra); border-color: var(--terra); }
+.carousel-nav { display: flex; gap: 0.5rem; }
+.carousel-nav-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1.5px solid rgba(247,240,230,0.15); color: var(--sand); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.carousel-nav-btn:hover { background: rgba(255,255,255,0.15); border-color: rgba(247,240,230,0.3); }
+.carousel-single { max-width: 500px; }
+
+
+.carousel-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+.carousel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.75rem; }
+.carousel-title { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--sand); letter-spacing: -0.02em; }
+.carousel-title span { color: var(--gold); }
+.carousel-dots { display: flex; gap: 0.5rem; align-items: center; }
+.carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(247,240,230,0.2); border: none; cursor: pointer; transition: all 0.2s; padding: 0; }
+.carousel-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
+.carousel-track { display: flex; gap: 1.25rem; transition: none; flex-wrap: nowrap; }
+.carousel-card { background: rgba(255,255,255,0.05); border: 1.5px solid rgba(247,240,230,0.1); border-radius: 14px; padding: 1.75rem; flex: 1; min-width: 0; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+.carousel-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(196,96,58,0.08) 0%, transparent 60%); pointer-events: none; }
+.carousel-card:hover { border-color: rgba(232,160,48,0.4); background: rgba(255,255,255,0.08); transform: translateY(-3px); }
+.carousel-card-top { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; position: relative; z-index: 1; }
+.carousel-avatar { width: 56px; height: 56px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: white; flex-shrink: 0; }
+.carousel-biz-name { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--sand); margin-bottom: 0.25rem; line-height: 1.2; }
+.carousel-biz-meta { font-size: 0.78rem; color: rgba(247,240,230,0.5); margin-bottom: 0.25rem; }
+.carousel-spotlight-badge { display: inline-flex; align-items: center; gap: 0.3rem; background: rgba(232,160,48,0.2); border: 1px solid rgba(232,160,48,0.4); color: var(--gold); font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 2rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.carousel-desc { font-size: 0.85rem; color: rgba(247,240,230,0.65); line-height: 1.6; margin-bottom: 1.25rem; position: relative; z-index: 1; }
+.carousel-footer { display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1; }
+.carousel-phone { font-size: 0.875rem; font-weight: 600; color: var(--gold); text-decoration: none; }
+.carousel-phone:hover { text-decoration: underline; }
+.carousel-view-btn { background: rgba(196,96,58,0.3); color: var(--sand); border: 1px solid rgba(196,96,58,0.4); padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.78rem; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s; }
+.carousel-view-btn:hover { background: var(--terra); border-color: var(--terra); }
+.carousel-nav { display: flex; gap: 0.5rem; }
+.carousel-nav-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1.5px solid rgba(247,240,230,0.15); color: var(--sand); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.carousel-nav-btn:hover { background: rgba(255,255,255,0.15); border-color: rgba(247,240,230,0.3); }
+.carousel-single { max-width: 500px; }
 
 .verified-badge { display: inline-flex; align-items: center; gap: 0.3rem; background: rgba(107,143,113,0.15); border: 1px solid rgba(107,143,113,0.4); color: #4A7A52; font-size: 0.68rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 2rem; letter-spacing: 0.04em; text-transform: uppercase; }
 .unverified-badge { display: inline-flex; align-items: center; gap: 0.3rem; background: rgba(154,142,130,0.1); border: 1px solid rgba(154,142,130,0.3); color: var(--muted); font-size: 0.68rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 2rem; letter-spacing: 0.04em; text-transform: uppercase; }
@@ -577,6 +636,17 @@ export default function HighDesertHub() {
   const [showListForm, setShowListForm] = useState(false);
   const [showPricing, setShowPricing] = useState(false);
   const [thumbsUp, setThumbsUp] = useState({});
+  const [carouselIndex, setCarouselIndex] = useState(0);
+
+  const carouselItems = BUSINESSES.filter(b => b.carousel);
+
+  useEffect(() => {
+    if (carouselItems.length <= 1) return;
+    const timer = setInterval(() => {
+      setCarouselIndex(prev => (prev + 1) % carouselItems.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [carouselItems.length]);
   const [thumbed, setThumbed] = useState({});
   const [showReport, setShowReport] = useState(false);
   const [reportBiz, setReportBiz] = useState(null);
@@ -806,8 +876,56 @@ export default function HighDesertHub() {
         </div>
       </section>
 
+      {/* FEATURED CAROUSEL */}
+      {carouselItems.length > 0 && (
+        <section className="carousel-section">
+          <div className="carousel-inner">
+            <div className="carousel-header">
+              <div className="carousel-title">⭐ <span>Spotlight</span> Businesses</div>
+              <div style={{display:'flex', alignItems:'center', gap:'1rem'}}>
+                {carouselItems.length > 1 && (
+                  <div className="carousel-dots">
+                    {carouselItems.map((_, i) => (
+                      <button key={i} className={`carousel-dot ${i === carouselIndex ? 'active' : ''}`} onClick={() => setCarouselIndex(i)} />
+                    ))}
+                  </div>
+                )}
+                {carouselItems.length > 1 && (
+                  <div className="carousel-nav">
+                    <button className="carousel-nav-btn" onClick={() => setCarouselIndex(prev => (prev - 1 + carouselItems.length) % carouselItems.length)}>‹</button>
+                    <button className="carousel-nav-btn" onClick={() => setCarouselIndex(prev => (prev + 1) % carouselItems.length)}>›</button>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="carousel-track">
+              {carouselItems.map((biz, i) => (
+                <div key={biz.id} className="carousel-card"
+                  style={{ opacity: carouselItems.length === 1 ? 1 : (i === carouselIndex ? 1 : 0.4), transform: carouselItems.length === 1 ? 'none' : (i === carouselIndex ? 'scale(1.02)' : 'scale(0.98)'), transition: 'all 0.4s ease' }}
+                  onClick={() => { setSelectedBiz(biz); logView(biz); }}>
+                  <div className="carousel-card-top">
+                    <div className="carousel-avatar" style={{background: biz.color}}>{biz.initials}</div>
+                    <div>
+                      <div className="carousel-biz-name">{biz.name}</div>
+                      <div className="carousel-biz-meta">📍 {biz.city} · {CATEGORIES.find(c => c.id === biz.category)?.label}</div>
+                      <div className="carousel-spotlight-badge">✦ Spotlight</div>
+                    </div>
+                  </div>
+                  <div className="carousel-desc">{biz.description}</div>
+                  <div className="carousel-footer">
+                    <a className="carousel-phone" href={`tel:${biz.phone}`} onClick={e => e.stopPropagation()}>{biz.phone}</a>
+                    <button className="carousel-view-btn">View Details →</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="section">
         <div className="section-header">
+
           <h2 className="section-title">Browse by Category</h2>
           <span className="section-link" onClick={() => setActiveCategory(null)}>View all →</span>
         </div>
