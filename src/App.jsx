@@ -1313,20 +1313,20 @@ export default function HighDesertHub() {
     const hasSocial = !!(b.instagram || b.facebook);
     const socialMatch = !socialOnly || hasSocial;
     const wordMatch = (text, term) => {
-      const t = text.toLowerCase();
-      const idx = t.indexOf(term);
-      if (idx === -1) return false;
-      const before = idx === 0 || /\W/.test(t[idx - 1]);
-      const after = idx + term.length === t.length || /\W/.test(t[idx + term.length]);
-      return before && after;
+      if (!text || !term) return false;
+      try {
+        const regex = new RegExp('\b' + term.replace(/[.*+?^${}()|[\]\]/g, '\$&') + '\b', 'i');
+        return regex.test(text);
+      } catch(e) {
+        return text.toLowerCase().includes(term.toLowerCase());
+      }
     };
     const searchMatch =
       expandedTerms.some(term =>
         wordMatch(b.name, term) ||
         b.services.some((s) => wordMatch(s, term)) ||
         wordMatch(b.city, query) ||
-        wordMatch(b.contact, query) ||
-        wordMatch(b.category, query)
+        (b.contact && wordMatch(b.contact, query))
       );
     const emailMatch = !emailOnly || !!b.email;
     return catMatch && cityMatch && searchMatch && socialMatch && emailMatch;
