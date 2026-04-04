@@ -1312,13 +1312,21 @@ export default function HighDesertHub() {
     const expandedTerms = synonyms[query] || [query];
     const hasSocial = !!(b.instagram || b.facebook);
     const socialMatch = !socialOnly || hasSocial;
+    const wordMatch = (text, term) => {
+      const t = text.toLowerCase();
+      const idx = t.indexOf(term);
+      if (idx === -1) return false;
+      const before = idx === 0 || /\W/.test(t[idx - 1]);
+      const after = idx + term.length === t.length || /\W/.test(t[idx + term.length]);
+      return before && after;
+    };
     const searchMatch =
       expandedTerms.some(term =>
-        b.name.toLowerCase().includes(term) ||
-        b.services.some((s) => s.toLowerCase().includes(term)) ||
-        b.description.toLowerCase().includes(term) ||
-        b.city.toLowerCase().includes(query) ||
-        (b.contact && b.contact.toLowerCase().includes(query))
+        wordMatch(b.name, term) ||
+        b.services.some((s) => wordMatch(s, term)) ||
+        wordMatch(b.city, query) ||
+        wordMatch(b.contact, query) ||
+        wordMatch(b.category, query)
       );
     const emailMatch = !emailOnly || !!b.email;
     return catMatch && cityMatch && searchMatch && socialMatch && emailMatch;
@@ -1376,7 +1384,7 @@ export default function HighDesertHub() {
     description: "Professional cleaning and organizing services for the High Desert. Residential, offices, and organizing. Call for a free quote.",
     initials: "BS",
     color: "#4A7A8F",
-    verified: false,
+    verified: true,
     dateAdded: "April 2026",
     lastVerified: "April 2026",
     expiresOn: "July 2026",
@@ -1404,7 +1412,7 @@ export default function HighDesertHub() {
     description: "Collision Auto Repair Specialists serving Hesperia. Insurance claim experts with lifetime paint warranty. Free towing and rental. Discounts for military, police, firefighters, and educators.",
     initials: "CA",
     color: "#8B3A1A",
-    verified: false,
+    verified: true,
     dateAdded: "April 2026",
     lastVerified: "April 2026",
     expiresOn: "July 2026",
@@ -1432,7 +1440,7 @@ export default function HighDesertHub() {
     description: "Full-service landscaping for the High Desert. Residential and commercial. Free estimates available. Call or text for a quote.",
     initials: "CL",
     color: "#4A6B3C",
-    verified: false,
+    verified: true,
     dateAdded: "April 2026",
     lastVerified: "April 2026",
     expiresOn: "July 2026",
@@ -1460,7 +1468,7 @@ export default function HighDesertHub() {
     description: "Professional cleaning services for the High Desert. Houses, offices, deep cleaning, and move-in/move-out. Reasonable prices, professional and prompt.",
     initials: "CC",
     color: "#B85C8A",
-    verified: false,
+    verified: true,
     dateAdded: "April 2026",
     lastVerified: "April 2026",
     expiresOn: "July 2026",
@@ -1489,7 +1497,7 @@ export default function HighDesertHub() {
     description: "A Christian family church serving the High Desert community in Hesperia. Services in Spanish. All are welcome.",
     initials: "EC",
     color: "#5C6B4A",
-    verified: false,
+    verified: true,
     dateAdded: "April 2026",
     lastVerified: "April 2026",
     expiresOn: "July 2026",
@@ -1517,7 +1525,7 @@ export default function HighDesertHub() {
     description: "Licensed mobile mechanic serving the High Desert since 2021. We come to you — repairs done right. Call for an appointment.",
     initials: "DA",
     color: "#3C3C3C",
-    verified: false,
+    verified: true,
     dateAdded: "April 2026",
     lastVerified: "April 2026",
     expiresOn: "July 2026",
@@ -1545,7 +1553,7 @@ export default function HighDesertHub() {
     description: "Licensed and insured full property cleanup for the High Desert. One service for complete cleanup — residential cleaning, junk hauling, and yard cleanup.",
     initials: "FP",
     color: "#7A4A6B",
-    verified: false,
+    verified: true,
     dateAdded: "April 2026",
     lastVerified: "April 2026",
     expiresOn: "July 2026",
@@ -1573,7 +1581,7 @@ export default function HighDesertHub() {
     description: "Full-service landscaping and property services for the High Desert. Making visions come to life. Senior citizen discounts available. Free estimates — call Joey.",
     initials: "JC",
     color: "#4A6B3C",
-    verified: false,
+    verified: true,
     dateAdded: "April 2026",
     lastVerified: "April 2026",
     expiresOn: "July 2026",
@@ -1601,7 +1609,7 @@ export default function HighDesertHub() {
     description: "Family owned and operated HVAC company with 20 years of experience serving the High Desert. Air conditioning, heating, swamp coolers, and emergency services available 24/7.",
     initials: "LA",
     color: "#1B3A5C",
-    verified: false,
+    verified: true,
     dateAdded: "April 2026",
     lastVerified: "April 2026",
     expiresOn: "July 2026",
@@ -1629,7 +1637,7 @@ export default function HighDesertHub() {
     description: "Mobile and non-toxic lice removal serving the Inland Empire and High Desert. Flat rate $150 full treatment. Free head checks for up to 3 family members. Same day appointments available.",
     initials: "RL",
     color: "#6B8F71",
-    verified: false,
+    verified: true,
     dateAdded: "April 2026",
     lastVerified: "April 2026",
     expiresOn: "July 2026",
@@ -1657,7 +1665,7 @@ export default function HighDesertHub() {
     description: "Reliable junk removal and hauling services for the High Desert. Dumpster rental, tractor work, junk hauling, and rock delivery available.",
     initials: "RJ",
     color: "#C4603A",
-    verified: false,
+    verified: true,
     dateAdded: "April 2026",
     lastVerified: "April 2026",
     expiresOn: "July 2026",
@@ -1685,7 +1693,7 @@ export default function HighDesertHub() {
     description: "Apple Valley's indoor playground for children and families. Open daily for play, birthday parties, and special events. Creating treasured memories for the High Desert community.",
     initials: "RT",
     color: "#D4824A",
-    verified: false,
+    verified: true,
     dateAdded: "April 2026",
     lastVerified: "April 2026",
     expiresOn: "July 2026",
