@@ -1322,7 +1322,35 @@ export default function HighDesertHub() {
     ...filtered.filter((b) => b.carousel),
     ...filtered.filter((b) => !b.carousel && b.tier === "featured"),
     ...filtered.filter((b) => !b.carousel && b.tier !== "featured"),
-  ];
+    {
+    id: 27,
+    name: "Druckenmiller Roofing Co., Inc.",
+    category: "contractors",
+    city: "Victorville",
+    phone: "(760) 241-7866",
+    contact: "",
+    address: "13782 Bear Valley Road, Suite D3-109, Victorville, CA 92392",
+    email: "druckroofing@aol.com",
+    website: "",
+    instagram: "",
+    license: "",
+    services: ["Roofing Repairs", "Re-Roof (Shingles)", "Re-Roof (Rolled Roofing)", "Re-Felt (Tile)"],
+    hours: "Call for hours",
+    featured: false,
+    tier: "free",
+    description: "Family-owned and operated roofing company serving the High Desert since 1991. Specializing in repairs, re-roofing, and re-felt tile. References available.",
+    initials: "DR",
+    color: "#C4603A",
+    verified: false,
+    dateAdded: "April 2026",
+    lastVerified: "April 2026",
+    expiresOn: "July 2026",
+    baseThumbsUp: 0,
+    carousel: false,
+    cardFront: null,
+    cardBack: null,
+  },
+];
 
   return (
     <div className="app">
