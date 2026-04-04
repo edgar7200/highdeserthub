@@ -1341,7 +1341,7 @@ export default function HighDesertHub() {
     description: "Family-owned and operated roofing company serving the High Desert since 1991. Specializing in repairs, re-roofing, and re-felt tile. References available.",
     initials: "DR",
     color: "#C4603A",
-    verified: false,
+    verified: true,
     dateAdded: "April 2026",
     lastVerified: "April 2026",
     expiresOn: "July 2026",
