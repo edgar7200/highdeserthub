@@ -1627,7 +1627,7 @@ export default function HighDesertHub() {
   const filtered = BUSINESSES.filter((b) => {
     const catMatch = !activeCategory || b.category === activeCategory;
     const cityMatch = activeCity === "All Cities" || b.city === activeCity;
-    const query = searchQuery.toLowerCase();
+    const query = searchInput.toLowerCase();
     const synonyms = {
       'weed': ['weed abatement', 'landscaping', 'lawn'],
       'weed remover': ['weed abatement', 'landscaping'],
