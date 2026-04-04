@@ -1872,6 +1872,8 @@ const parseCSV = (text) => {
       cardBack: obj.cardBack ? "/cards/" + obj.cardBack : null,
       carousel: obj.carousel === "TRUE",
       featured: obj.tier === "featured" || obj.tier === "premium",
+      initials: obj.name ? obj.name.split(" ").slice(0,2).map(w => w[0]).join("").toUpperCase() : "??" ,
+      color: ["#C4603A","#1B3A5C","#4A7A52","#8B3A1A","#4A6B3C","#6B4A7A","#3C6B7A","#7A4A3C"][obj.id % 8] || "#C4603A",
     };
   });
 };
