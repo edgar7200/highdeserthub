@@ -1347,7 +1347,7 @@ export default function HighDesertHub() {
     expiresOn: "July 2026",
     baseThumbsUp: 0,
     carousel: false,
-    cardFront: null,
+    cardFront: "/cards/druckenmiller_front.png",
     cardBack: null,
   },
 ];
