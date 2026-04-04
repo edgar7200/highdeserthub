@@ -1371,11 +1371,11 @@ export default function HighDesertHub() {
       </nav>
 
       {showBanner && (
-        <div className=announcement-banner>
-          <span className=announcement-banner-text>
+        <div className="announcement-banner">
+          <span className="announcement-banner-text">
             <strong>Notice:</strong> We are actively expanding our platform. Some features are being upgraded — thank you for your patience as we improve your experience.
           </span>
-          <button className=announcement-banner-dismiss onClick={() => setShowBanner(false)}>✕</button>
+          <button className="announcement-banner-dismiss" onClick={() => setShowBanner(false)}>✕</button>
         </div>
       )}
 
