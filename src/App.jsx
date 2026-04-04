@@ -1824,10 +1824,75 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .hero-inner > *:nth-child(5) { animation-delay: 0.45s; }
 `;
 
+
+const SHEETS_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTz1vfiK4PWmVtuT-m6SYqs7pwJu-Ksel6ZqpAbj5rJlNXuFhvXUYP5oneFAWvIIs7lAsT30iKMTnUd/pub?gid=0&single=true&output=csv";
+
+const parseCSV = (text) => {
+  const lines = text.trim().split("\n");
+  const parseRow = (line) => {
+    const result = [];
+    let cur = "";
+    let inQuotes = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (ch === '"') { inQuotes = !inQuotes; }
+      else if (ch === "," && !inQuotes) { result.push(cur.trim()); cur = ""; }
+      else { cur += ch; }
+    }
+    result.push(cur.trim());
+    return result;
+  };
+  const headers = parseRow(lines[0]);
+  return lines.slice(1).map(line => {
+    const vals = parseRow(line);
+    const obj = {};
+    headers.forEach((h, i) => { obj[h.trim()] = (vals[i] || "").trim(); });
+    return {
+      id: parseInt(obj.id) || 0,
+      name: obj.name || "",
+      category: obj.category || "",
+      city: obj.city || "",
+      phone: obj.phone || "",
+      email: obj.email || "",
+      website: obj.website || "",
+      address: obj.address || "",
+      services: obj.services ? obj.services.split(",").map(s => s.trim()) : [],
+      hours: obj.hours || "",
+      description: obj.description || "",
+      verified: obj.verified === "TRUE",
+      tier: obj.tier || "free",
+      dateAdded: obj.dateAdded || "",
+      lastVerified: obj.lastVerified || "",
+      expiresOn: obj.expiresOn || "",
+      baseThumbsUp: parseInt(obj.baseThumbsUp) || 0,
+      instagram: obj.instagram || "",
+      license: obj.license || "",
+      contact: obj.contact || "",
+      cardFront: obj.cardFront ? "/cards/" + obj.cardFront : null,
+      cardBack: obj.cardBack ? "/cards/" + obj.cardBack : null,
+      carousel: false,
+      featured: false,
+    };
+  });
+};
+
 export default function HighDesertHub() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeCity, setActiveCity] = useState("All Cities");
   const [searchQuery, setSearchQuery] = useState("");
+  const [sheetsData, setSheetsData] = useState(null);
+
+  useEffect(() => {
+    fetch(SHEETS_URL)
+      .then(r => r.text())
+      .then(text => {
+        const parsed = parseCSV(text);
+        if (parsed && parsed.length > 0) setSheetsData(parsed);
+      })
+      .catch(() => {});
+  }, []);
+
+  const ACTIVE_BUSINESSES = sheetsData || BUSINESSES;
   const [socialOnly, setSocialOnly] = useState(false);
 
   const getExpirationStatus = (biz) => {
@@ -2017,7 +2082,7 @@ export default function HighDesertHub() {
     return () => document.head.removeChild(style);
   }, []);
 
-  const filtered = BUSINESSES.filter((b) => {
+  const filtered = ACTIVE_BUSINESSES.filter((b) => {
     const catMatch = !activeCategory || b.category === activeCategory;
     const cityMatch = activeCity === "All Cities" || b.city === activeCity;
     const query = searchInput.toLowerCase();
@@ -2663,6 +2728,7 @@ export default function HighDesertHub() {
                 <div className="pricing-sub-tag">Be the first business customers see in your category.</div>
                 <div className="pricing-features">
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Everything in Standard</div>
+                  <div className="pricing-feature"><span className="pricing-check">✓</span> Business logo & icon displayed</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Top of category placement</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Spotlight badge and highlighted listing</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Homepage carousel feature</div>
