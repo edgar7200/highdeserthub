@@ -1345,7 +1345,7 @@ export default function HighDesertHub() {
     dateAdded: "April 2026",
     lastVerified: "April 2026",
     expiresOn: "July 2026",
-    baseThumbsUp: 0,
+    baseThumbsUp: 2,
     carousel: false,
     cardFront: "/cards/druckenmiller_front.png",
     cardBack: null,
