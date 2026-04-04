@@ -953,6 +953,11 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .pricing-tier:last-child { border-right: none; }
 .pricing-tier.popular { background: var(--navy); position: relative; }
 .pricing-popular-badge { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 0 0 6px 6px; }
+.announcement-banner { background: var(--navy); border-bottom: 2px solid var(--gold); padding: 0.6rem 2rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; text-align: center; }
+.announcement-banner-text { color: rgba(247,240,230,0.85); font-size: 0.8rem; font-weight: 500; line-height: 1.5; }
+.announcement-banner-text strong { color: var(--gold); font-weight: 700; }
+.announcement-banner-dismiss { background: transparent; border: none; color: rgba(247,240,230,0.4); cursor: pointer; font-size: 1rem; padding: 0 0.25rem; line-height: 1; flex-shrink: 0; }
+.announcement-banner-dismiss:hover { color: var(--sand); }
 .biz-owner-strip { background: var(--terra); padding: 0.85rem 2rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
 .biz-owner-strip-text { color: white; font-size: 0.875rem; font-weight: 500; }
 .biz-owner-strip-text strong { font-weight: 700; }
@@ -1094,6 +1099,7 @@ export default function HighDesertHub() {
   };
 
   const [emailCopied, setEmailCopied] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
 
   const scrollToCTA = () => {
     document.querySelector('.cta-banner').scrollIntoView({ behavior: 'smooth' });
@@ -1363,6 +1369,15 @@ export default function HighDesertHub() {
           <li><a href="#" className="nav-cta" onClick={(e) => { e.preventDefault(); setShowListForm(true); setFormSubmitted(false); }}>List Your Business</a></li>
         </ul>
       </nav>
+
+      {showBanner && (
+        <div className=announcement-banner>
+          <span className=announcement-banner-text>
+            <strong>Notice:</strong> We are actively expanding our platform. Some features are being upgraded — thank you for your patience as we improve your experience.
+          </span>
+          <button className=announcement-banner-dismiss onClick={() => setShowBanner(false)}>✕</button>
+        </div>
+      )}
 
       <section className="hero">
         <div className="hero-inner">
