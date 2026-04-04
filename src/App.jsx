@@ -1419,7 +1419,7 @@ export default function HighDesertHub() {
     baseThumbsUp: 3,
     carousel: false,
     cardFront: "/cards/carsautorepair_front.png",
-    cardBack: null,
+    cardBack: "/cards/carsautorepair_back.png",
   },
   {
     id: 31,
