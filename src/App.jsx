@@ -2410,12 +2410,15 @@ export default function HighDesertHub() {
       {selectedBiz && (
         <div className="modal-overlay" onClick={() => setSelectedBiz(null)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-header">
+            <div className="modal-header" style={{position:'relative'}}>
               <div className="modal-avatar" style={{ background: selectedBiz.color }}>{selectedBiz.initials}</div>
               <div>
                 <div className="modal-name">{selectedBiz.name}</div>
                 <div className="modal-city">📍 {selectedBiz.city} · {CATEGORIES.find(c => c.id === selectedBiz.category)?.label}</div>
               </div>
+              {selectedBiz.carousel && (
+                <div className="spotlight-card-badge" style={{position:'absolute',top:'1rem',right:'1rem'}}>⭐ Spotlight</div>
+              )}
             </div>
             <div className="modal-body">
               {selectedBiz.contact && <div className="modal-row"><span className="modal-row-label">Contact</span><span className="modal-row-val">{selectedBiz.contact}</span></div>}
