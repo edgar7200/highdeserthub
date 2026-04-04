@@ -1949,7 +1949,7 @@ export default function HighDesertHub() {
   const [thumbsUp, setThumbsUp] = useState({});
   const [carouselIndex, setCarouselIndex] = useState(0);
 
-  const carouselItems = BUSINESSES.filter(b => b.carousel);
+  const carouselItems = ACTIVE_BUSINESSES.filter(b => b.carousel);
 
   useEffect(() => {
     if (carouselItems.length <= 1) return;
