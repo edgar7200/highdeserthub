@@ -2509,7 +2509,7 @@ export default function HighDesertHub() {
                   <div className="admin-stat-label">Calls Clicked</div>
                 </div>
                 <div className="admin-stat-box">
-                  <div className="admin-stat-num">{BUSINESSES.length}</div>
+                  <div className="admin-stat-num">{ACTIVE_BUSINESSES.length}</div>
                   <div className="admin-stat-label">Total Listings</div>
                 </div>
               </div>
