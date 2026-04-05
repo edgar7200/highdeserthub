@@ -1994,7 +1994,7 @@ export default function HighDesertHub() {
       .then(() => { setReportLoading(false); setReportSubmitted(true); })
       .catch(() => { setReportLoading(false); setReportSubmitted(true); });
   };
-  const [formData, setFormData] = useState({ name:'', phone:'', email:'', address:'', city:'', category:'', services:'', hours:'', website:'', description:'' });
+  const [formData, setFormData] = useState({ name:'', phone:'', email:'', address:'', city:'', category:'', services:'', hours:'', website:'', description:'', socialPlatform:'', socialHandle:'' });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
   const [formError, setFormError] = useState(false);
@@ -2014,6 +2014,7 @@ export default function HighDesertHub() {
       city: formData.city,
       category: CATEGORIES.find(c => c.id === formData.category)?.label || formData.category,
       website: formData.website || 'Not provided',
+      social: formData.socialPlatform && formData.socialHandle ? `${formData.socialPlatform}: ${formData.socialHandle}` : 'Not provided',
       address: formData.address || 'Not provided',
       services: formData.services || 'Not provided',
       hours: formData.hours || 'Not provided',
@@ -2674,6 +2675,34 @@ export default function HighDesertHub() {
                     <div className="form-field">
                       <label className="form-label">Website</label>
                       <input className="form-input" name="website" placeholder="www.yourbusiness.com" value={formData.website} onChange={handleFormChange} />
+                    </div>
+                  </div>
+                  <div className="form-field">
+                    <label className="form-label">Social Media</label>
+                    <div style={{display:"flex",gap:"0.5rem"}}>
+                      <select className="form-select" name="socialPlatform" value={formData.socialPlatform} onChange={handleFormChange} style={{maxWidth:"160px",flexShrink:0}}>
+                        <option value="">Platform</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="TikTok">TikTok</option>
+                        <option value="YouTube">YouTube</option>
+                        <option value="X">X (Twitter)</option>
+                      </select>
+                      <input className="form-input" name="socialHandle" placeholder="@yourhandle" value={formData.socialHandle} onChange={handleFormChange} />
+                    </div>
+                  </div>
+                  <div className="form-field">
+                    <label className="form-label">Social Media</label>
+                    <div style={{display:"flex",gap:"0.5rem"}}>
+                      <select className="form-select" name="socialPlatform" value={formData.socialPlatform} onChange={handleFormChange} style={{maxWidth:"160px",flexShrink:0}}>
+                        <option value="">Platform</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="TikTok">TikTok</option>
+                        <option value="YouTube">YouTube</option>
+                        <option value="X">X (Twitter)</option>
+                      </select>
+                      <input className="form-input" name="socialHandle" placeholder="@yourhandle" value={formData.socialHandle} onChange={handleFormChange} />
                     </div>
                   </div>
                   <div className="form-field">
