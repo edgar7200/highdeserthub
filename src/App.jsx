@@ -1604,7 +1604,7 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(247,240,230,0.2); border: none; cursor: pointer; transition: all 0.2s; padding: 0; }
 .carousel-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
 .carousel-track { display: flex; gap: 1.25rem; transition: none; flex-wrap: wrap; }
-.carousel-card { background: rgba(255,255,255,0.05); border: 1.5px solid rgba(247,240,230,0.1); border-radius: 14px; padding: 1.75rem; flex: 1; min-width: 280px; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+.carousel-card { background: rgba(255,255,255,0.08); border: 1.5px solid rgba(247,240,230,0.2); border-radius: 14px; padding: 1.75rem; flex: 1; min-width: 280px; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
 .carousel-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(196,96,58,0.08) 0%, transparent 60%); pointer-events: none; }
 .carousel-card:hover { border-color: rgba(232,160,48,0.4); background: rgba(255,255,255,0.08); transform: translateY(-3px); }
 .carousel-card-top { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; position: relative; z-index: 1; }
@@ -1632,7 +1632,7 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(247,240,230,0.2); border: none; cursor: pointer; transition: all 0.2s; padding: 0; }
 .carousel-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
 .carousel-track { display: flex; gap: 1.25rem; transition: none; flex-wrap: wrap; }
-.carousel-card { background: rgba(255,255,255,0.05); border: 1.5px solid rgba(247,240,230,0.1); border-radius: 14px; padding: 1.75rem; flex: 1; min-width: 280px; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+.carousel-card { background: rgba(255,255,255,0.08); border: 1.5px solid rgba(247,240,230,0.2); border-radius: 14px; padding: 1.75rem; flex: 1; min-width: 280px; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
 .carousel-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(196,96,58,0.08) 0%, transparent 60%); pointer-events: none; }
 .carousel-card:hover { border-color: rgba(232,160,48,0.4); background: rgba(255,255,255,0.08); transform: translateY(-3px); }
 .carousel-card-top { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; position: relative; z-index: 1; }
@@ -2245,7 +2245,10 @@ export default function HighDesertHub() {
                     <div>
                       <div className="carousel-biz-name">{biz.name}</div>
                       <div className="carousel-biz-meta">📍 {biz.city} · {CATEGORIES.find(c => c.id === biz.category)?.label}</div>
-                      <div className="carousel-spotlight-badge">✦ Spotlight</div>
+                      <div style={{display:"flex",alignItems:"center",gap:"0.5rem"}}>
+                        <div className="carousel-spotlight-badge">✦ Spotlight</div>
+                        <button className="carousel-view-btn" onClick={e => { e.stopPropagation(); setSelectedBiz(biz); }}>View Details →</button>
+                      </div>
                     </div>
                   </div>
                   <div className="carousel-desc">{biz.description}</div>
@@ -2264,7 +2267,6 @@ export default function HighDesertHub() {
                         )}
                       </div>
                     </div>
-                    <button className="carousel-view-btn">View Details →</button>
                   </div>
                 </div>
               ))}
