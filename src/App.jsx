@@ -2848,7 +2848,7 @@ export default function HighDesertHub() {
           <div className="card-viewer-inner" onClick={(e) => e.stopPropagation()}>
             <div style={{display:"flex", alignItems:"center", justifyContent:"space-between", width:"100%"}}>
               <div className="card-viewer-title">🪪 {cardViewer.name} — Business Card</div>
-              <button onClick={() => setCardViewer(null)} style={{position:"fixed", top:"1rem", right:"1rem", zIndex:999, background:"rgba(255,255,255,0.15)", border:"1.5px solid rgba(255,255,255,0.3)", color:"white", borderRadius:"8px", padding:"0.5rem 1.25rem", fontSize:"1rem", fontWeight:"600", cursor:"pointer"}}>✕ Close</button>
+              <button onClick={() => setCardViewer(null)} style={{position:"fixed", top:"1rem", right:"1rem", zIndex:999, background:"rgba(0,0,0,0.75)", border:"1.5px solid white", color:"white", borderRadius:"8px", padding:"0.5rem 1.25rem", fontSize:"1rem", fontWeight:"600", cursor:"pointer"}}>✕ Close</button>
             </div>
             <div className="card-promo-banner">🏷️ Mention <strong>HighDesertHub</strong> and ask if you qualify for a <strong>5% discount!</strong></div>
             <div className="card-viewer-images">
