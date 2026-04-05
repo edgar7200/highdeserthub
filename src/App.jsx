@@ -2373,7 +2373,7 @@ export default function HighDesertHub() {
                   {biz.services.length > 3 && <span className="service-tag">+{biz.services.length - 3}</span>}
                 </div>
                 <div className="biz-meta">
-                  <div style={{display:"inline-flex",alignItems:"center",gap:"0.25rem"}}>
+                  <div style={{display:"inline-flex",alignItems:"center",gap:"0.4rem"}}>
                     {biz.verified
                       ? <span className="verified-badge">✓ Verified</span>
                       : <span className="unverified-badge">Unverified</span>
