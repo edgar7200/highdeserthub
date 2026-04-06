@@ -2867,6 +2867,18 @@ export default function HighDesertHub() {
               <button className="btn-secondary" onClick={copyEmail}>
                 {emailCopied ? '✅ Copied!' : '📋 Copy Email Address'}
               </button>
+              {contactTier === "Social Media Graphics" && (
+                
+                  className="btn-secondary"
+                  href="https://www.instagram.com/highdeserthub"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{textDecoration:'none',textAlign:'center',display:'flex',alignItems:'center',justifyContent:'center',gap:'8px'}}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                  View Samples and Designs
+                </a>
+              )}
               <button className="btn-secondary" onClick={() => setShowContactPopup(false)}>
                 Close
               </button>
