@@ -2835,6 +2835,7 @@ export default function HighDesertHub() {
                 <div style={{background:'var(--card)',borderRadius:'10px',padding:'12px 20px',fontSize:'0.9rem'}}>✓ Ready to post on Instagram and Facebook</div>
               </div>
               
+              <a
                 className="pricing-btn main"
                 href="mailto:admin@highdeserthub.com?subject=Interested in Social Media Graphics&body=Hi, I am interested in getting social media graphics for my business. Please contact me with more details."
                 style={{textDecoration:'none',textAlign:'center',display:'inline-block',padding:'12px 32px',borderRadius:'8px',fontWeight:700,fontSize:'1rem'}}
