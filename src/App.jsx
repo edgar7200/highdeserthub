@@ -2825,25 +2825,6 @@ export default function HighDesertHub() {
               <span className="pricing-footer-note">📞 Questions? Email us at hello@highdeserthub.com</span>
               <button className="btn-secondary" onClick={() => setShowPricing(false)}>Close</button>
             </div>
-            <div style={{background:'var(--bg)',borderRadius:'16px',padding:'32px',marginTop:'32px',textAlign:'center'}}>
-              <div style={{fontSize:'2rem',marginBottom:'8px'}}>🎨</div>
-              <div style={{fontSize:'1.3rem',fontWeight:700,color:'var(--gold)',marginBottom:'8px'}}>Social Media Graphics for Your Business</div>
-              <div style={{color:'var(--text-secondary)',marginBottom:'16px',lineHeight:1.6}}>Want eye-catching posts, promos, and service menus designed for your business? We create custom social media graphics tailored to your brand so you can focus on running your business.</div>
-              <div style={{display:'flex',gap:'12px',justifyContent:'center',flexWrap:'wrap',marginBottom:'20px'}}>
-                <div style={{background:'var(--card)',borderRadius:'10px',padding:'12px 20px',fontSize:'0.9rem'}}>✓ Services menu graphics</div>
-                <div style={{background:'var(--card)',borderRadius:'10px',padding:'12px 20px',fontSize:'0.9rem'}}>✓ Promo and deal posts</div>
-                <div style={{background:'var(--card)',borderRadius:'10px',padding:'12px 20px',fontSize:'0.9rem'}}>✓ Brand-matched design</div>
-                <div style={{background:'var(--card)',borderRadius:'10px',padding:'12px 20px',fontSize:'0.9rem'}}>✓ Ready to post on Instagram and Facebook</div>
-              </div>
-              
-              <a
-                className="pricing-btn main"
-                href="mailto:admin@highdeserthub.com?subject=Interested in Social Media Graphics&body=Hi, I am interested in getting social media graphics for my business. Please contact me with more details."
-                style={{textDecoration:'none',textAlign:'center',display:'inline-block',padding:'12px 32px',borderRadius:'8px',fontWeight:700,fontSize:'1rem'}}
-              >
-                Get Your Graphics
-              </a>
-            </div>
           </div>
         </div>
       )}
