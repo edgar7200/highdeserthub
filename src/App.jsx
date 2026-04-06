@@ -2836,6 +2836,18 @@ export default function HighDesertHub() {
             <p className="contact-popup-sub">
               You selected <strong>{contactTier}</strong>. Reach out and we'll get you set up right away.
             </p>
+            {contactTier === "Social Media Graphics" && (
+              <div style={{textAlign:'center',marginBottom:'12px'}}>
+                <div style={{fontSize:'1.1rem',fontWeight:700,color:'var(--gold)',marginBottom:'6px'}}>Social Media Graphics for Your Business</div>
+                <div style={{color:'var(--text-secondary)',fontSize:'0.9rem',marginBottom:'10px',lineHeight:1.5}}>Want eye-catching posts, promos, and service menus designed for your business? We create custom social media graphics tailored to your brand so you can focus on running your business.</div>
+                <div style={{display:'flex',flexWrap:'wrap',gap:'6px',justifyContent:'center',marginBottom:'8px'}}>
+                  <span style={{background:'var(--bg)',borderRadius:'8px',padding:'6px 12px',fontSize:'0.8rem'}}>✓ Services menu graphics</span>
+                  <span style={{background:'var(--bg)',borderRadius:'8px',padding:'6px 12px',fontSize:'0.8rem'}}>✓ Promo and deal posts</span>
+                  <span style={{background:'var(--bg)',borderRadius:'8px',padding:'6px 12px',fontSize:'0.8rem'}}>✓ Brand-matched design</span>
+                  <span style={{background:'var(--bg)',borderRadius:'8px',padding:'6px 12px',fontSize:'0.8rem'}}>✓ Ready to post on Instagram and Facebook</span>
+                </div>
+              </div>
+            )}
             <div className="contact-popup-email">admin@highdeserthub.com</div>
             <div className="contact-popup-btns">
               <a
