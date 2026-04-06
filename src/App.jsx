@@ -2868,7 +2868,7 @@ export default function HighDesertHub() {
                 {emailCopied ? '✅ Copied!' : '📋 Copy Email Address'}
               </button>
               {contactTier === "Social Media Graphics" && (
-                
+                <a
                   className="btn-secondary"
                   href="https://www.instagram.com/highdeserthub"
                   target="_blank"
