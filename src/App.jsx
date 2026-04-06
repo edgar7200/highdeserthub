@@ -2422,6 +2422,7 @@ export default function HighDesertHub() {
           <div className="cta-btns">
             <button className="cta-btn-main" onClick={() => { setShowListForm(true); setFormSubmitted(false); }}>List My Business — Free</button>
             <button className="cta-btn-ghost" onClick={() => setShowPricing(true)}>View Pricing Plans</button>
+            <button className="cta-btn-ghost" onClick={() => { handlePricingContact("Social Media Graphics"); }}>🎨 Get Social Media Graphics</button>
           </div>
         </div>
       </section>
