@@ -2033,7 +2033,7 @@ export default function HighDesertHub() {
   const [adminMode, setAdminMode] = useState(false);
   const [adminInput, setAdminInput] = useState('');
   const handleGraphicsSubmit = () => {
-    if (!graphicsForm.bizName || !graphicsForm.phone) return;
+    if (!graphicsForm.bizName || !graphicsForm.contact) return;
     setGraphicsLoading(true);
     window.emailjs.send('service_19u4v9n', 'template_x2d6dlk', {
       business_name: 'GRAPHICS REQUEST — ' + graphicsForm.bizName,
