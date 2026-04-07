@@ -2908,6 +2908,7 @@ export default function HighDesertHub() {
                 {emailCopied ? '✅ Copied!' : '📋 Copy Email Address'}
               </button>
               <button className="btn-secondary" onClick={() => setShowContactPopup(false)}>Close</button>
+            </div>
               </>
             )}
           </div>
