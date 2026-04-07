@@ -2027,8 +2027,25 @@ export default function HighDesertHub() {
   };
 
   // ── ADMIN ANALYTICS ──────────────────────────────────────────
+  const [graphicsForm, setGraphicsForm] = useState({ bizName:'', phone:'', need:'' });
+  const [graphicsSubmitted, setGraphicsSubmitted] = useState(false);
+  const [graphicsLoading, setGraphicsLoading] = useState(false);
   const [adminMode, setAdminMode] = useState(false);
   const [adminInput, setAdminInput] = useState('');
+  const handleGraphicsSubmit = () => {
+    if (!graphicsForm.bizName || !graphicsForm.phone) return;
+    setGraphicsLoading(true);
+    window.emailjs.send('service_19u4v9n', 'template_graphics', {
+      biz_name: graphicsForm.bizName,
+      phone: graphicsForm.phone,
+      need: graphicsForm.need || 'Not specified',
+    }).then(() => {
+      setGraphicsSubmitted(true);
+      setGraphicsLoading(false);
+    }).catch(() => {
+      setGraphicsLoading(false);
+    });
+  };
   const [adminError, setAdminError] = useState(false);
   const [searchLog, setSearchLog] = useState([]);
   const [viewLog, setViewLog] = useState({});
@@ -2836,19 +2853,40 @@ export default function HighDesertHub() {
             <p className="contact-popup-sub">
               You selected <strong>{contactTier}</strong>. Reach out and we'll get you set up right away.
             </p>
-            {contactTier === "Social Media Graphics" && (
-              <div style={{textAlign:'center',marginBottom:'12px'}}>
-                <div style={{fontSize:'1.1rem',fontWeight:700,color:'var(--gold)',marginBottom:'6px'}}>Social Media Graphics for Your Business</div>
-                <div style={{color:'var(--text-secondary)',fontSize:'0.9rem',marginBottom:'10px',lineHeight:1.5}}>Want eye-catching posts, promos, and service menus designed for your business? We create custom social media graphics tailored to your brand so you can focus on running your business.</div>
-                <div style={{display:'flex',flexWrap:'wrap',gap:'6px',justifyContent:'center',marginBottom:'8px'}}>
-                  <span style={{background:'var(--bg)',borderRadius:'8px',padding:'6px 12px',fontSize:'0.8rem'}}>✓ Services menu graphics</span>
-                  <span style={{background:'var(--bg)',borderRadius:'8px',padding:'6px 12px',fontSize:'0.8rem'}}>✓ Promo and deal posts</span>
-                  <span style={{background:'var(--bg)',borderRadius:'8px',padding:'6px 12px',fontSize:'0.8rem'}}>✓ Brand-matched design</span>
-                  <span style={{background:'var(--bg)',borderRadius:'8px',padding:'6px 12px',fontSize:'0.8rem'}}>✓ Ready to post on Instagram and Facebook</span>
+            {contactTier === "Social Media Graphics" ? (
+              <div style={{width:"100%"}}>
+                <div style={{fontSize:"1.1rem",fontWeight:700,color:"var(--gold)",marginBottom:"6px",textAlign:"center"}}>Social Media Graphics for Your Business</div>
+                <div style={{display:"flex",flexWrap:"wrap",gap:"6px",justifyContent:"center",marginBottom:"12px"}}>
+                  <span style={{background:"var(--bg)",borderRadius:"8px",padding:"6px 12px",fontSize:"0.8rem"}}>✓ Services menu graphics</span>
+                  <span style={{background:"var(--bg)",borderRadius:"8px",padding:"6px 12px",fontSize:"0.8rem"}}>✓ Promo and deal posts</span>
+                  <span style={{background:"var(--bg)",borderRadius:"8px",padding:"6px 12px",fontSize:"0.8rem"}}>✓ Brand-matched design</span>
+                  <span style={{background:"var(--bg)",borderRadius:"8px",padding:"6px 12px",fontSize:"0.8rem"}}>✓ Ready to post on Instagram and Facebook</span>
                 </div>
+                {!graphicsSubmitted ? (
+                  <div style={{display:"flex",flexDirection:"column",gap:"10px"}}>
+                    <input className="form-input" placeholder="Business Name" value={graphicsForm.bizName} onChange={e => setGraphicsForm(p => ({...p, bizName: e.target.value}))} />
+                    <input className="form-input" placeholder="Your Phone Number" value={graphicsForm.phone} onChange={e => setGraphicsForm(p => ({...p, phone: e.target.value}))} />
+                    <select className="form-select" value={graphicsForm.need} onChange={e => setGraphicsForm(p => ({...p, need: e.target.value}))}>
+                      <option value="">What do you need?</option>
+                      <option value="Services Menu Graphic">Services Menu Graphic</option>
+                      <option value="Promo or Deal Post">Promo or Deal Post</option>
+                      <option value="Both">Both</option>
+                      <option value="Not Sure Yet">Not Sure Yet</option>
+                    </select>
+                    <button className="btn-primary" onClick={handleGraphicsSubmit} disabled={graphicsLoading}>
+                      {graphicsLoading ? "Sending..." : "🎨 Request My Graphics"}
+                    </button>
+                    <a href="https://www.instagram.com/highdeserthub" target="_blank" rel="noopener noreferrer" style={{textDecoration:"none",textAlign:"center",display:"flex",alignItems:"center",justifyContent:"center",gap:"8px"}} className="btn-secondary">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                      View Samples and Designs
+                    </a>
+                  </div>
+                ) : (
+                  <div style={{textAlign:"center",padding:"16px",color:"var(--gold)",fontWeight:700}}>✅ Request received! We will reach out to you shortly.</div>
+                )}
               </div>
-            )}
-            <div className="contact-popup-email">admin@highdeserthub.com</div>
+            ) : (
+              <>
             <div className="contact-popup-btns">
               <a
                 className="btn-primary"
@@ -2860,27 +2898,12 @@ export default function HighDesertHub() {
               <button className="btn-secondary" onClick={copyEmail}>
                 {emailCopied ? '✅ Copied!' : '📋 Copy Email Address'}
               </button>
-              {contactTier === "Social Media Graphics" && (
-                <a
-                  className="btn-secondary"
-                  href="https://www.instagram.com/highdeserthub"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{textDecoration:'none',textAlign:'center',display:'flex',alignItems:'center',justifyContent:'center',gap:'8px'}}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-                  View Samples and Designs
-                </a>
-              )}
-              <button className="btn-secondary" onClick={() => setShowContactPopup(false)}>
-                Close
-              </button>
-            </div>
+              <button className="btn-secondary" onClick={() => setShowContactPopup(false)}>Close</button>
+              </>
+            )}
           </div>
         </div>
       )}
-
-      {/* REPORT MODAL */}
       {showReport && (
         <div className="form-modal-overlay" onClick={() => setShowReport(false)}>
           <div className="report-modal" onClick={(e) => e.stopPropagation()}>
