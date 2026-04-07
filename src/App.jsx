@@ -2027,7 +2027,7 @@ export default function HighDesertHub() {
   };
 
   // ── ADMIN ANALYTICS ──────────────────────────────────────────
-  const [graphicsForm, setGraphicsForm] = useState({ bizName:'', phone:'', need:'' });
+  const [graphicsForm, setGraphicsForm] = useState({ bizName:'', contact:'', bizType:'', need:'', description:'', timeline:'', budget:'', social:'' });
   const [graphicsSubmitted, setGraphicsSubmitted] = useState(false);
   const [graphicsLoading, setGraphicsLoading] = useState(false);
   const [adminMode, setAdminMode] = useState(false);
@@ -2037,13 +2037,13 @@ export default function HighDesertHub() {
     setGraphicsLoading(true);
     window.emailjs.send('service_19u4v9n', 'template_x2d6dlk', {
       business_name: 'GRAPHICS REQUEST — ' + graphicsForm.bizName,
-      phone: graphicsForm.phone,
+      phone: graphicsForm.contact,
       services: graphicsForm.need || 'Not specified',
-      email: 'N/A',
-      city: 'N/A',
-      category: 'N/A',
-      website: 'N/A',
-      address: 'N/A',
+      email: graphicsForm.bizType || 'N/A',
+      city: graphicsForm.timeline || 'N/A',
+      category: graphicsForm.budget || 'N/A',
+      website: graphicsForm.social || 'N/A',
+      address: graphicsForm.description || 'N/A',
       hours: 'N/A',
       description: 'N/A',
       social: 'N/A',
@@ -2873,15 +2873,38 @@ export default function HighDesertHub() {
                 </div>
                 {!graphicsSubmitted ? (
                   <div style={{display:"flex",flexDirection:"column",gap:"10px"}}>
-                    <input className="form-input" placeholder="Business Name" value={graphicsForm.bizName} onChange={e => setGraphicsForm(p => ({...p, bizName: e.target.value}))} />
-                    <input className="form-input" placeholder="Your Phone Number" value={graphicsForm.phone} onChange={e => setGraphicsForm(p => ({...p, phone: e.target.value}))} />
+                    <div style={{fontSize:"1rem",fontWeight:700,color:"var(--text)",marginBottom:"2px"}}>Get clean, professional graphics for your business</div>
+                    <div style={{color:"var(--text-secondary)",fontSize:"0.85rem",marginBottom:"6px"}}>Designed to help you attract more customers and stand out locally.</div>
+                    <input className="form-input" placeholder="Business Name *" value={graphicsForm.bizName} onChange={e => setGraphicsForm(p => ({...p, bizName: e.target.value}))} />
+                    <input className="form-input" placeholder="Email or Phone *" value={graphicsForm.contact} onChange={e => setGraphicsForm(p => ({...p, contact: e.target.value}))} />
+                    <select className="form-select" value={graphicsForm.bizType} onChange={e => setGraphicsForm(p => ({...p, bizType: e.target.value}))}>
+                      <option value="">Business Type *</option>
+                      <option value="Food and Restaurant">Food and Restaurant</option>
+                      <option value="Automotive">Automotive</option>
+                      <option value="Beauty and Wellness">Beauty and Wellness</option>
+                      <option value="Home Services">Home Services</option>
+                      <option value="Other">Other</option>
+                    </select>
                     <select className="form-select" value={graphicsForm.need} onChange={e => setGraphicsForm(p => ({...p, need: e.target.value}))}>
-                      <option value="">What do you need?</option>
+                      <option value="">What do you need? *</option>
                       <option value="Services Menu Graphic">Services Menu Graphic</option>
                       <option value="Promo or Deal Post">Promo or Deal Post</option>
                       <option value="Both">Both</option>
-                      <option value="Not Sure Yet">Not Sure Yet</option>
                     </select>
+                    <textarea className="form-textarea" placeholder="Tell me what you're looking for — describe your business, style, colors, and what you want the graphic to promote" value={graphicsForm.description} onChange={e => setGraphicsForm(p => ({...p, description: e.target.value}))} rows={3} />
+                    <select className="form-select" value={graphicsForm.timeline} onChange={e => setGraphicsForm(p => ({...p, timeline: e.target.value}))}>
+                      <option value="">When do you need this? *</option>
+                      <option value="ASAP (1-3 days)">ASAP (1-3 days)</option>
+                      <option value="This week">This week</option>
+                      <option value="Just exploring">Just exploring</option>
+                    </select>
+                    <select className="form-select" value={graphicsForm.budget} onChange={e => setGraphicsForm(p => ({...p, budget: e.target.value}))}>
+                      <option value="">Budget range (optional)</option>
+                      <option value="Under $50">Under $50</option>
+                      <option value="$50-$100">$50-$100</option>
+                      <option value="$100+">$100+</option>
+                    </select>
+                    <input className="form-input" placeholder="Instagram or Facebook handle (optional)" value={graphicsForm.social} onChange={e => setGraphicsForm(p => ({...p, social: e.target.value}))} />
                     <button className="btn-primary" onClick={handleGraphicsSubmit} disabled={graphicsLoading}>
                       {graphicsLoading ? "Sending..." : "🎨 Request My Graphics"}
                     </button>
