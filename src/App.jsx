@@ -2035,10 +2035,19 @@ export default function HighDesertHub() {
   const handleGraphicsSubmit = () => {
     if (!graphicsForm.bizName || !graphicsForm.phone) return;
     setGraphicsLoading(true);
-    window.emailjs.send('service_19u4v9n', 'template_graphics', {
-      biz_name: graphicsForm.bizName,
+    window.emailjs.send('service_19u4v9n', 'template_x2d6dlk', {
+      business_name: 'GRAPHICS REQUEST — ' + graphicsForm.bizName,
       phone: graphicsForm.phone,
-      need: graphicsForm.need || 'Not specified',
+      services: graphicsForm.need || 'Not specified',
+      email: 'N/A',
+      city: 'N/A',
+      category: 'N/A',
+      website: 'N/A',
+      address: 'N/A',
+      hours: 'N/A',
+      description: 'N/A',
+      social: 'N/A',
+      social2: 'N/A',
     }).then(() => {
       setGraphicsSubmitted(true);
       setGraphicsLoading(false);
