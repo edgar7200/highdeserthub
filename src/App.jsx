@@ -1758,7 +1758,7 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .pricing-tier.popular .pricing-price { color: var(--sand); }
 .pricing-period { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.25rem; }
 .pricing-tier.popular .pricing-period { color: rgba(247,240,230,0.4); }
-.pricing-features { display: flex; flex-direction: column; gap: 0.6rem; flex: 1; margin-bottom: 1.5rem; }
+.pricing-features { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
 .pricing-feature { font-size: 0.8rem; color: #5C5248; display: flex; gap: 0.5rem; align-items: flex-start; line-height: 1.4; }
 .pricing-tier.popular .pricing-feature { color: rgba(247,240,230,0.7); }
 .pricing-check { color: var(--sage); font-weight: 700; flex-shrink: 0; }
@@ -2884,7 +2884,6 @@ export default function HighDesertHub() {
                 <div className="pricing-tier-name">Free</div>
                 <div className="pricing-price">$0</div>
                 <div className="pricing-period">forever</div>
-                <div className="pricing-sub-tag">Perfect for getting your business online in minutes.</div>
                 <div style={{minHeight:"3rem"}}></div>
                 <div className="pricing-features">
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Business name and phone listed</div>
@@ -2898,7 +2897,6 @@ export default function HighDesertHub() {
                 <div className="pricing-tier-name">Standard</div>
                 <div className="pricing-price">$25</div>
                 <div className="pricing-period">per month</div>
-                <div className="pricing-sub-tag">Turn views into real customer inquiries.</div>
                 <div style={{minHeight:"3rem"}}></div>
                 <div className="pricing-features">
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Everything in Free — no renewal ever</div>
@@ -2938,7 +2936,6 @@ export default function HighDesertHub() {
                 <div className="pricing-tier-name">Premium</div>
                 <div className="pricing-price">$120</div>
                 <div className="pricing-period">per month</div>
-                <div className="pricing-sub-tag">Everything in Featured, plus we work for you every month.</div>
                 <div style={{minHeight:"3rem"}}></div>
                 <div className="pricing-features">
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Everything in Featured</div>
