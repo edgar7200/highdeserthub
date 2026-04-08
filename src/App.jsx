@@ -2932,6 +2932,7 @@ export default function HighDesertHub() {
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Homepage carousel with social media icons</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Priority in search results</div>
                 </div>
+                <div style={{fontSize:"0.75rem",fontStyle:"italic",color:"var(--gold)",marginBottom:"0.75rem",lineHeight:"1.4"}}>Be the first business customers see in your category.</div>
                 <a className="pricing-btn main" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Featured — $60/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Featured</a>
               </div>
               <div className="pricing-tier">
