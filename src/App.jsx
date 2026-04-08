@@ -2485,7 +2485,15 @@ export default function HighDesertHub() {
               <div className="modal-row"><span className="modal-row-label">Phone</span><span className="modal-row-val link">{selectedBiz.phone}</span></div>
               {selectedBiz.textNumber && <div className="modal-row"><span className="modal-row-label">Text Only</span><span className="modal-row-val link">{selectedBiz.textNumber}</span></div>}
               {selectedBiz.email && <div className="modal-row"><span className="modal-row-label">Email</span><span className="modal-row-val link">{selectedBiz.email}</span></div>}
-              {selectedBiz.website && <div className="modal-row"><span className="modal-row-label">Website</span><span className="modal-row-val link">{selectedBiz.website}</span></div>}
+              {selectedBiz.website && (
+  <div className="modal-row">
+    <span className="modal-row-label">Website</span>
+    {['standard','featured','premium'].includes(selectedBiz.tier)
+      ? <a href={selectedBiz.website.startsWith('http') ? selectedBiz.website : `https://${selectedBiz.website}`} target="_blank" rel="noopener noreferrer" className="modal-row-val link">{selectedBiz.website}</a>
+      : <span className="modal-row-val">{selectedBiz.website}</span>
+    }
+  </div>
+)}
               {selectedBiz.instagram && (
   <div className="modal-row">
     <span className="modal-row-label">Instagram</span>
