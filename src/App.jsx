@@ -1707,7 +1707,7 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
 @media (max-width: 680px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 400px) { .pricing-grid { grid-template-columns: 1fr; } }
-.pricing-tier { padding: 1.75rem 1.25rem; border-right: 1.5px solid #E8DDD0; border-bottom: 1.5px solid #E8DDD0; display: flex; flex-direction: column; }
+.pricing-tier { padding: 1rem 1.25rem; border-right: 1.5px solid #E8DDD0; border-bottom: 1.5px solid #E8DDD0; display: flex; flex-direction: column; }
 .pricing-tier:last-child { border-right: none; }
 .pricing-tier.popular { background: var(--navy); position: relative; }
 .pricing-popular-badge { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 0 0 6px 6px; }
@@ -1756,7 +1756,7 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .pricing-tier.popular .pricing-tier-name { color: #FFFFFF; }
 .pricing-price { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 0.25rem; }
 .pricing-tier.popular .pricing-price { color: var(--sand); }
-.pricing-period { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.25rem; }
+.pricing-period { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.5rem; }
 .pricing-tier.popular .pricing-period { color: rgba(247,240,230,0.4); }
 .pricing-features { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
 .pricing-feature { font-size: 0.8rem; color: #5C5248; display: flex; gap: 0.5rem; align-items: flex-start; line-height: 1.4; }
