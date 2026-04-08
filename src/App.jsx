@@ -2875,7 +2875,9 @@ export default function HighDesertHub() {
           <div className="pricing-modal" onClick={(e) => e.stopPropagation()}>
             <div className="pricing-header">
               <div className="pricing-header-title">Simple, Honest Pricing</div>
+              <div className="pricing-header-sub">No contracts. Cancel anytime.</div>
               <div className="pricing-header-sub">Start free. Upgrade when you're ready to grow.</div>
+              <div style={{marginTop:"0.5rem",fontSize:"0.78rem",color:"rgba(247,240,230,0.4)"}}>Join 119+ local businesses already listed.</div>
             </div>
             <div className="pricing-grid">
               <div className="pricing-tier">
@@ -2889,7 +2891,7 @@ export default function HighDesertHub() {
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Basic search visibility</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> 3-month renewal required</div>
                 </div>
-                <button className="pricing-btn" onClick={() => { setShowPricing(false); setShowListForm(true); setFormSubmitted(false); }}>Get Listed Free</button>
+                <button className="pricing-btn main" onClick={() => { setShowPricing(false); setShowListForm(true); setFormSubmitted(false); }}>Get Listed Free</button>
               </div>
               <div className="pricing-tier">
                 <div className="pricing-tier-name">Standard</div>
@@ -2898,8 +2900,8 @@ export default function HighDesertHub() {
                 <div className="pricing-sub-tag">Turn views into real customer inquiries.</div>
                 <div className="pricing-features">
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Everything in Free — no renewal ever</div>
-                  <div className="pricing-feature"><span className="pricing-check">✓</span> Website and social media links</div>
-                  <div className="pricing-feature"><span className="pricing-check">✓</span> Email contact button and full hours</div>
+                  <div className="pricing-feature"><span className="pricing-check">✓</span> Clickable website, Instagram, and Facebook links</div>
+                  <div className="pricing-feature"><span className="pricing-check">✓</span> One-tap email copy for customers</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Priority over free listings</div>
                 </div>
                 <a className="pricing-btn" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Standard — $25/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Started</a>
@@ -2915,7 +2917,7 @@ export default function HighDesertHub() {
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Business logo & icon displayed</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Top of category placement</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Spotlight badge and highlighted listing</div>
-                  <div className="pricing-feature"><span className="pricing-check">✓</span> Homepage carousel feature</div>
+                  <div className="pricing-feature"><span className="pricing-check">✓</span> Homepage carousel with social media icons</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Priority in search results</div>
                 </div>
                 <a className="pricing-btn main" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Featured — $60/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Featured</a>
@@ -2924,7 +2926,7 @@ export default function HighDesertHub() {
                 <div className="pricing-tier-name">Premium</div>
                 <div className="pricing-price">$120</div>
                 <div className="pricing-period">per month</div>
-                <div className="pricing-sub-tag">Own your category. Be the only name they remember.</div>
+                <div className="pricing-sub-tag">Everything in Featured, plus we work for you every month.</div>
                 <div className="pricing-features">
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Everything in Featured</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Homepage carousel spot</div>
