@@ -2208,7 +2208,7 @@ export default function HighDesertHub() {
           <li><a href="#">Browse</a></li>
           <li><a href="#">Cities Served</a></li>
           <li><a href="#">Jobs</a></li>
-          <li><a href="#" className="nav-cta" onClick={(e) => { e.preventDefault(); setShowListForm(true); setFormSubmitted(false); }}>List Your Business</a></li>
+
         </ul>
       </nav>
 
