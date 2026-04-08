@@ -1710,7 +1710,7 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .pricing-tier { padding: 1rem 1.25rem; border-right: 1.5px solid #E8DDD0; border-bottom: 1.5px solid #E8DDD0; display: flex; flex-direction: column; }
 .pricing-tier:last-child { border-right: none; }
 .pricing-tier.popular { background: var(--navy); position: relative; }
-.pricing-popular-badge { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 0 0 6px 6px; }
+.pricing-popular-badge { position: absolute; top: -28px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 6px 6px 0 0; white-space: nowrap; }
 .announcement-banner { background: var(--navy); border-bottom: 2px solid var(--gold); padding: 0.6rem 2rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; text-align: center; }
 .announcement-banner-text { color: rgba(247,240,230,0.85); font-size: 0.8rem; font-weight: 500; line-height: 1.5; }
 .announcement-banner-text strong { color: var(--gold); font-weight: 700; }
