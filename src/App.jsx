@@ -2915,8 +2915,10 @@ export default function HighDesertHub() {
                 <a className="pricing-btn" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Standard — $25/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Started</a>
               </div>
               <div className="pricing-tier popular">
-                <div className="pricing-popular-badge">Most Popular</div>
-                <div className="pricing-tier-name">Featured</div>
+                <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:"0.25rem"}}>
+                  <div className="pricing-tier-name" style={{marginBottom:0}}>Featured</div>
+                  <span style={{background:"var(--gold)",color:"var(--navy)",fontSize:"0.6rem",fontWeight:700,letterSpacing:"0.08em",textTransform:"uppercase",padding:"0.2rem 0.6rem",borderRadius:"2rem",whiteSpace:"nowrap"}}>Most Popular</span>
+                </div>
                 <div className="pricing-price" style={{color:'var(--gold)'}}>$60</div>
                 <div className="pricing-period">per month</div>
                 <div className="pricing-features">
