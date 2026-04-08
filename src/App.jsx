@@ -2944,9 +2944,6 @@ export default function HighDesertHub() {
         <div className="contact-popup-overlay" onClick={() => setShowContactPopup(false)}>
           <div className="contact-popup" onClick={(e) => e.stopPropagation()} style={{position:"relative"}}>
             <button onClick={() => setShowContactPopup(false)} style={{position:"sticky",top:0,float:"right",background:"rgba(0,0,0,0.08)",border:"none",borderRadius:"50%",width:"28px",height:"28px",fontSize:"1rem",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,zIndex:10}}>✕</button>
-            <p className="contact-popup-sub">
-              You selected <strong>{contactTier}</strong>. Reach out and we'll get you set up right away.
-            </p>
             {contactTier === "Social Media Graphics" ? (
               <div style={{width:"100%"}}>
                 <div style={{fontSize:"1.1rem",fontWeight:700,color:"var(--gold)",marginBottom:"6px",textAlign:"center"}}>Social Media Graphics for Your Business</div>
