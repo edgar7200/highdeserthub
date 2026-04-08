@@ -1603,10 +1603,11 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .carousel-dots { display: flex; gap: 0.5rem; align-items: center; }
 .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(247,240,230,0.2); border: none; cursor: pointer; transition: all 0.2s; padding: 0; }
 .carousel-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
-.carousel-track { display: flex; gap: 1.25rem; transition: none; flex-wrap: wrap; }
-.carousel-card { background: rgba(255,255,255,0.18); border: 1.5px solid rgba(247,240,230,0.5); border-radius: 14px; padding: 1.75rem; flex: 1; min-width: 280px; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
-.carousel-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(196,96,58,0.08) 0%, transparent 60%); pointer-events: none; }
-.carousel-card:hover { border-color: rgba(232,160,48,0.4); background: rgba(255,255,255,0.08); transform: translateY(-3px); }
+.carousel-track-outer { overflow: hidden; width: 100%; }
+.carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+.carousel-card { background: #1a2e42; border: 1.5px solid rgba(247,240,230,0.15); border-radius: 14px; padding: 1.75rem; flex: 0 0 100%; width: 100%; cursor: pointer; transition: border-color 0.3s; position: relative; overflow: hidden; box-sizing: border-box; }
+.carousel-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(196,96,58,0.06) 0%, transparent 60%); pointer-events: none; }
+.carousel-card:hover { border-color: rgba(232,160,48,0.4); }
 .carousel-card-top { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; position: relative; z-index: 1; }
 .carousel-avatar { width: 56px; height: 56px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: white; flex-shrink: 0; }
 .carousel-biz-name { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--sand); margin-bottom: 0.25rem; line-height: 1.2; }
@@ -1631,10 +1632,6 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .carousel-dots { display: flex; gap: 0.5rem; align-items: center; }
 .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(247,240,230,0.2); border: none; cursor: pointer; transition: all 0.2s; padding: 0; }
 .carousel-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
-.carousel-track { display: flex; gap: 1.25rem; transition: none; flex-wrap: wrap; }
-.carousel-card { background: rgba(255,255,255,0.18); border: 1.5px solid rgba(247,240,230,0.5); border-radius: 14px; padding: 1.75rem; flex: 1; min-width: 280px; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
-.carousel-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(196,96,58,0.08) 0%, transparent 60%); pointer-events: none; }
-.carousel-card:hover { border-color: rgba(232,160,48,0.4); background: rgba(255,255,255,0.08); transform: translateY(-3px); }
 .carousel-card-top { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; position: relative; z-index: 1; }
 .carousel-avatar { width: 56px; height: 56px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: white; flex-shrink: 0; }
 .carousel-biz-name { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--sand); margin-bottom: 0.25rem; line-height: 1.2; }
@@ -1955,13 +1952,7 @@ export default function HighDesertHub() {
 
   const carouselItems = ACTIVE_BUSINESSES.filter(b => b.carousel);
 
-  useEffect(() => {
-    if (carouselItems.length <= 1) return;
-    const timer = setInterval(() => {
-      setCarouselIndex(prev => (prev + 1) % carouselItems.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [carouselItems.length]);
+
   const [thumbed, setThumbed] = useState({});
   const [showReport, setShowReport] = useState(false);
   const [reportBiz, setReportBiz] = useState(null);
@@ -2265,27 +2256,25 @@ export default function HighDesertHub() {
                 )}
               </div>
             </div>
-            <div className="carousel-track">
-              {carouselItems.map((biz, i) => (
-                <div key={biz.id} className="carousel-card"
-                  style={{ opacity: 1, transform: i === carouselIndex ? 'scale(1.02)' : 'scale(0.98)', transition: 'all 0.4s ease' }}
-                  onClick={() => { setSelectedBiz(biz); logView(biz); }}>
-                  <div className="carousel-card-top">
-                    <div className="carousel-avatar" style={{background: biz.color}}>{biz.initials}</div>
-                    <div>
-                      <div className="carousel-biz-name">{biz.name}</div>
-                      <div className="carousel-biz-meta">📍 {biz.city} · {CATEGORIES.find(c => c.id === biz.category)?.label}</div>
-                      <div style={{display:"flex",alignItems:"center",gap:"0.5rem"}}>
-                        <div className="carousel-spotlight-badge">✦ Spotlight</div>
-                        <button className="carousel-view-btn" onClick={e => { e.stopPropagation(); setSelectedBiz(biz); }}>View Details →</button>
+            <div className="carousel-track-outer">
+              <div className="carousel-track" style={{transform:`translateX(-${carouselIndex * 100}%)`}}>
+                {carouselItems.map((biz) => (
+                  <div key={biz.id} className="carousel-card" onClick={() => { setSelectedBiz(biz); logView(biz); }}>
+                    <div className="carousel-card-top">
+                      <div className="carousel-avatar" style={{background: biz.color}}>{biz.initials}</div>
+                      <div style={{flex:1}}>
+                        <div className="carousel-biz-name">{biz.name}</div>
+                        <div className="carousel-biz-meta">📍 {biz.city} · {CATEGORIES.find(c => c.id === biz.category)?.label}</div>
+                        <div style={{display:"flex",alignItems:"center",gap:"0.5rem",flexWrap:"wrap",marginTop:"0.25rem"}}>
+                          <div className="carousel-spotlight-badge">✦ Spotlight</div>
+                          <button className="carousel-view-btn" onClick={e => { e.stopPropagation(); setSelectedBiz(biz); }}>View Details →</button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="carousel-desc">{biz.description}</div>
-                  <div className="carousel-footer">
-                    <div style={{display:"flex",alignItems:"center",gap:"0.5rem"}}>
-                      <a className="carousel-phone" href={`tel:${biz.phone}`} onClick={e => e.stopPropagation()}>{biz.phone}</a>
-                      <div style={{display:"inline-flex",alignItems:"center",gap:"0.4rem"}}>
+                    <div className="carousel-desc">{biz.description}</div>
+                    <div className="carousel-footer">
+                      <div style={{display:"flex",alignItems:"center",gap:"0.5rem",flexWrap:"wrap"}}>
+                        <a className="carousel-phone" href={`tel:${biz.phone}`} onClick={e => e.stopPropagation()}>{biz.phone}</a>
                         {biz.verified
                           ? <span className="verified-badge">✓ Verified</span>
                           : <span className="unverified-badge">Unverified</span>
@@ -2303,8 +2292,8 @@ export default function HighDesertHub() {
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
