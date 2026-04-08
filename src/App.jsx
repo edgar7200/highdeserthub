@@ -2884,7 +2884,6 @@ export default function HighDesertHub() {
                 <div className="pricing-tier-name">Free</div>
                 <div className="pricing-price">$0</div>
                 <div className="pricing-period">forever</div>
-                <div style={{minHeight:"3rem"}}></div>
                 <div className="pricing-features">
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Business name and phone listed</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> City, category, and business card photo</div>
@@ -2897,7 +2896,6 @@ export default function HighDesertHub() {
                 <div className="pricing-tier-name">Standard</div>
                 <div className="pricing-price">$25</div>
                 <div className="pricing-period">per month</div>
-                <div style={{minHeight:"3rem"}}></div>
                 <div className="pricing-features">
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Everything in Free — no renewal ever</div>
                   <div className="pricing-feature" style={{flexDirection:"column",alignItems:"flex-start",gap:"0.5rem"}}>
@@ -2936,7 +2934,6 @@ export default function HighDesertHub() {
                 <div className="pricing-tier-name">Premium</div>
                 <div className="pricing-price">$120</div>
                 <div className="pricing-period">per month</div>
-                <div style={{minHeight:"3rem"}}></div>
                 <div className="pricing-features">
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Everything in Featured</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Homepage carousel spot</div>
