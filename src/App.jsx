@@ -2915,10 +2915,7 @@ export default function HighDesertHub() {
                 <a className="pricing-btn" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Standard — $25/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Started</a>
               </div>
               <div className="pricing-tier popular">
-                <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:"0.25rem"}}>
-                  <div className="pricing-tier-name" style={{marginBottom:0}}>Featured</div>
-                  <span style={{background:"var(--gold)",color:"var(--navy)",fontSize:"0.6rem",fontWeight:700,letterSpacing:"0.08em",textTransform:"uppercase",padding:"0.2rem 0.6rem",borderRadius:"2rem",whiteSpace:"nowrap"}}>Most Popular</span>
-                </div>
+                <div className="pricing-tier-name">Featured</div>
                 <div className="pricing-price" style={{color:'var(--gold)'}}>$60</div>
                 <div className="pricing-period">per month</div>
                 <div className="pricing-features">
@@ -2929,7 +2926,8 @@ export default function HighDesertHub() {
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Homepage carousel with social media icons</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Priority in search results</div>
                 </div>
-                <div style={{fontSize:"0.75rem",fontStyle:"italic",color:"var(--gold)",marginBottom:"0.75rem",lineHeight:"1.4"}}>Be the first business customers see in your category.</div>
+                <div style={{fontSize:"0.75rem",fontStyle:"italic",color:"var(--gold)",marginBottom:"0.5rem",lineHeight:"1.4"}}>Be the first business customers see in your category.</div>
+                <div style={{marginBottom:"0.75rem"}}><span style={{background:"var(--gold)",color:"var(--navy)",fontSize:"0.65rem",fontWeight:700,letterSpacing:"0.08em",textTransform:"uppercase",padding:"0.25rem 0.75rem",borderRadius:"2rem"}}>⭐ Most Popular</span></div>
                 <a className="pricing-btn main" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Featured — $60/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Featured</a>
               </div>
               <div className="pricing-tier">
