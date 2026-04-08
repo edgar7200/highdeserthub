@@ -2923,7 +2923,6 @@ export default function HighDesertHub() {
                 <div className="pricing-tier-name">Featured</div>
                 <div className="pricing-price" style={{color:'var(--gold)'}}>$60</div>
                 <div className="pricing-period">per month</div>
-                <div className="pricing-sub-tag">Be the first business customers see in your category.</div>
                 <div className="pricing-features">
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Everything in Standard</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Business logo & icon displayed</div>
