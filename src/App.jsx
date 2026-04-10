@@ -2576,7 +2576,14 @@ export default function HighDesertHub() {
     </div>
   );
 })()}
-              {selectedBiz.address && <div className="modal-row"><span className="modal-row-label">Address</span><span className="modal-row-val">{selectedBiz.address}</span></div>}
+              {selectedBiz.address && (
+  <div className="modal-row">
+    <span className="modal-row-label">Address</span>
+    <a href={`https://maps.google.com/?q=${encodeURIComponent(selectedBiz.address)}`} target="_blank" rel="noopener noreferrer" className="modal-row-val link" style={{textDecoration:"underline",cursor:"pointer"}}>
+      📍 {selectedBiz.address}
+    </a>
+  </div>
+)}
               {selectedBiz.license && <div className="modal-row"><span className="modal-row-label">License #</span><span className="modal-row-val">{selectedBiz.license}</span></div>}
               <div className="modal-row"><span className="modal-row-label">Hours</span><span className="modal-row-val">{selectedBiz.hours}</span></div>
               <div className="modal-row">
