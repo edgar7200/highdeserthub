@@ -1497,6 +1497,10 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .nav-links a { color: rgba(247,240,230,0.7); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
 .nav-links a:hover { color: var(--gold); }
 .nav-cta { background: var(--terra); color: white !important; padding: 0.5rem 1.25rem; border-radius: 4px; font-weight: 600 !important; }
+.nav-btn-gold { background: var(--gold) !important; color: var(--navy) !important; padding: 0.4rem 1rem !important; border-radius: 4px !important; font-weight: 700 !important; }
+.nav-btn-gold:hover { background: #d4911f !important; color: var(--navy) !important; }
+.nav-btn-terra { background: var(--terra) !important; color: white !important; padding: 0.4rem 1rem !important; border-radius: 4px !important; font-weight: 700 !important; }
+.nav-btn-terra:hover { background: var(--rust) !important; color: white !important; }
 .nav-cta:hover { background: var(--rust) !important; }
 .hero { background: var(--navy); padding: 5rem 2rem 2rem; position: relative; overflow: hidden; }
 .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(196,96,58,0.15) 0%, transparent 70%); pointer-events: none; }
@@ -2205,8 +2209,8 @@ export default function HighDesertHub() {
       <nav className="nav">
         <div className="nav-logo">High<span>Desert</span>Hub</div>
         <ul className="nav-links">
-          <li><a href="#" style={{background:"var(--gold)",color:"var(--navy)",padding:"0.4rem 1rem",borderRadius:"4px",fontWeight:700}}}>Local Events</a></li>
-          <li><a href="#" style={{background:"var(--terra)",color:"white",padding:"0.4rem 1rem",borderRadius:"4px",fontWeight:700}}}>Jobs</a></li>
+          <li><a href="#" className="nav-btn-gold">Local Events</a></li>
+          <li><a href="#" className="nav-btn-terra">Jobs</a></li>
 
         </ul>
       </nav>
