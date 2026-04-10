@@ -2205,8 +2205,7 @@ export default function HighDesertHub() {
       <nav className="nav">
         <div className="nav-logo">High<span>Desert</span>Hub</div>
         <ul className="nav-links">
-          <li><a href="#">Browse</a></li>
-          <li><a href="#">Cities Served</a></li>
+          <li><a href="#">Local Events</a></li>
           <li><a href="#">Jobs</a></li>
 
         </ul>
