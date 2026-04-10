@@ -1,7 +1,14 @@
 with open("/home/ed/highdeserthub/src/App.jsx", "r") as f:
     src = f.read()
 
-old = '''              {selectedBiz.address && <div className="modal-row"><span className="modal-row-label">Address</span><span className="modal-row-val">{selectedBiz.address}</span></div>}'''
+old = '''              {selectedBiz.address && (
+  <div className="modal-row">
+    <span className="modal-row-label">Address</span>
+    <a href={`https://maps.google.com/?q=${encodeURIComponent(selectedBiz.address)}`} target="_blank" rel="noopener noreferrer" className="modal-row-val link" style={{textDecoration:"underline",cursor:"pointer"}}>
+      📍 {selectedBiz.address}
+    </a>
+  </div>
+)}'''
 new = '''              {selectedBiz.address && (
   <div className="modal-row">
     <span className="modal-row-label">Address</span>
