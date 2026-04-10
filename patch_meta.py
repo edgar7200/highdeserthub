@@ -1,18 +1,8 @@
-<!doctype html>
-<html lang="en">
-  <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Z3VKPNJP6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0Z3VKPNJP6');
-  </script>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>High Desert Hub | Local Business Directory — Victorville, Hesperia, Apple Valley, Adelanto</title>
+with open("/home/ed/highdeserthub/index.html", "r") as f:
+    src = f.read()
+
+old = '    <title>High Desert Hub | Find Local Businesses</title>'
+new = '''    <title>High Desert Hub | Local Business Directory — Victorville, Hesperia, Apple Valley, Adelanto</title>
     <meta name="description" content="Find trusted local businesses in Victorville, Hesperia, Apple Valley, and Adelanto. High Desert Hub is the High Desert's #1 local business directory." />
     <meta name="keywords" content="Victorville businesses, Hesperia businesses, Apple Valley businesses, Adelanto businesses, High Desert directory, local contractors, landscaping, restaurants, auto services, High Desert Hub" />
     <meta name="author" content="High Desert Hub" />
@@ -30,12 +20,11 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="High Desert Hub | Local Business Directory" />
     <meta name="twitter:description" content="Find trusted local businesses in Victorville, Hesperia, Apple Valley, and Adelanto." />
-    <meta name="twitter:image" content="https://highdeserthub.com/favicon.png" />
-      <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>emailjs.init("OhMK9kF8OKc0gF3CL");</script>
-</head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+    <meta name="twitter:image" content="https://highdeserthub.com/favicon.png" />'''
+assert src.count(old) == 1, f"anchor not found (count={src.count(old)})"
+src = src.replace(old, new)
+
+with open("/home/ed/highdeserthub/index.html", "w") as f:
+    f.write(src)
+
+print("Done.")
