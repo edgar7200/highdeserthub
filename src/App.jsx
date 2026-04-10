@@ -2762,7 +2762,7 @@ export default function HighDesertHub() {
                   </div>
                   <div className="form-row">
                     <div className="form-field">
-                      <label className="form-label">Email Address <span>*</span></label>
+                      <label className="form-label">Business Email <span>*</span></label>
                       <input className="form-input" name="email" type="email" placeholder="you@email.com" value={formData.email} onChange={handleFormChange} />
                     </div>
                     <div className="form-field">
