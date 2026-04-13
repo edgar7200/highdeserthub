@@ -2432,7 +2432,7 @@ export default function HighDesertHub() {
               <div
                 key={biz.id}
                 className={`biz-card ${biz.tier === "featured" ? "featured-card" : ""}`}
-                onClick={() => { setSelectedBiz(biz); logView(biz); }}
+                onClick={() => { setSelectedBiz(biz); logView(biz); if(window.gtag) window.gtag('event', 'listing_view', { business_name: biz.name, business_city: biz.city, business_category: biz.category, business_tier: biz.tier }); }}
               >
                 {biz.carousel && (
                   <div className="spotlight-card-badge">⭐ Spotlight</div>
