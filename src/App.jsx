@@ -2650,7 +2650,7 @@ export default function HighDesertHub() {
             </div>
             <div className="modal-footer">
               <a className="btn-primary" href={`tel:${selectedBiz.phone}`} style={{textDecoration:"none",textAlign:"center"}}>📞 Call Now</a>
-              <button className="btn-card" onClick={() => setCardViewer(selectedBiz)}>🪪 View Card</button>
+              <button className="btn-card" onClick={() => { setCardViewer(selectedBiz); if(window.gtag) window.gtag('event', 'card_view', { business_name: selectedBiz.name, business_city: selectedBiz.city, business_category: selectedBiz.category, business_tier: selectedBiz.tier }); }}>🪪 View Card</button>
               <button className="btn-secondary" onClick={() => setSelectedBiz(null)}>Close</button>
             </div>
             <div style={{padding:'0.75rem 2rem', borderTop:'1px solid #EDE5D8', textAlign:'right'}}>
