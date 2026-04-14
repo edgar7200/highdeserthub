@@ -3005,7 +3005,7 @@ export default function HighDesertHub() {
                       <input className="form-input" name="name" placeholder="Your business name" value={formData.name} onChange={handleFormChange} />
                     </div>
                     <div className="form-field">
-                      <label className="form-label">Phone Number <span>*</span></label>
+                      <label className="form-label">Business Phone <span>*</span></label>
                       <input className="form-input" name="phone" placeholder="(760) 555-0000" value={formData.phone} onChange={handleFormChange} />
                     </div>
                   </div>
