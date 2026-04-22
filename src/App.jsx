@@ -1864,6 +1864,9 @@ body { font-family: 'Outfit', sans-serif; background: #080808; color: #F5F0E8; m
 .hero-inner > *:nth-child(5) { animation-delay: 0.45s; }
 .contact-popup input, .contact-popup select, .contact-popup textarea { background: #1A1A1A !important; color: var(--sand) !important; border: 1px solid rgba(201,168,76,0.2) !important; border-radius: 2px !important; }
 .contact-popup input::placeholder, .contact-popup textarea::placeholder { color: rgba(245,240,232,0.25) !important; }
+.contact-popup .form-input, .contact-popup .form-select, .contact-popup .form-textarea { background: #1A1A1A !important; color: #F5F0E8 !important; border: 1px solid rgba(201,168,76,0.2) !important; border-radius: 2px !important; -webkit-appearance: none; }
+.contact-popup .form-input::placeholder, .contact-popup .form-textarea::placeholder { color: rgba(245,240,232,0.3) !important; }
+.contact-popup select option { background: #1A1A1A; color: #F5F0E8; }
 /* END OF CSS */
 `;
 
