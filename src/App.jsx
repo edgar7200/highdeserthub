@@ -2247,7 +2247,7 @@ export default function HighDesertHub() {
   return (
     <div className="app">
       <nav className="nav">
-        <div className="nav-logo">High<span>Desert</span>Hub</div>
+        <div className="nav-logo" style={{cursor:"pointer"}} onClick={() => { setActiveCategory(null); setActiveCity("All Cities"); setSearchInput(""); setShowLiving(false); window.scrollTo({top:0,behavior:"smooth"}); }}>High<span>Desert</span>Hub</div>
         <ul className="nav-links">
           <li><a href="#" className="nav-btn-gold">Local Events</a></li>
           <li><a href="#" className="nav-btn-gold" onClick={(e) => { e.preventDefault(); setShowLiving(true); }}>High Desert Living</a></li>
