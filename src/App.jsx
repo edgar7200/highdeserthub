@@ -1693,8 +1693,8 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .form-input:focus { border-color: rgba(201,168,76,0.5); }
 .form-select { border: 1px solid rgba(201,168,76,0.15); border-radius: 1px; padding: 0.75rem 1rem; font-size: 0.9rem; font-family: 'Outfit', sans-serif; color: var(--sand); background: #1A1A1A; outline: none; width: 100%; cursor: pointer; }
 .form-textarea { border: 1px solid rgba(201,168,76,0.15); border-radius: 1px; padding: 0.75rem 1rem; font-size: 0.9rem; font-family: 'Outfit', sans-serif; color: var(--sand); background: #1A1A1A; outline: none; resize: vertical; min-height: 80px; width: 100%; }
-.form-footer { padding: 1.25rem 2rem; border-top: 1.5px solid #E8DDD0; display: flex; gap: 0.75rem; }
-.form-note { padding: 0 2rem 1.25rem; font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+.form-footer { padding: 1.25rem 2rem; border-top: 1px solid rgba(201,168,76,0.12); display: flex; gap: 0.75rem; }
+.form-note { padding: 0 2rem 1.25rem; font-size: 0.78rem; color: rgba(245,240,232,0.4); line-height: 1.6; }
 .success-box { padding: 3rem 2rem; text-align: center; }
 .success-icon { font-size: 3rem; margin-bottom: 1rem; }
 .success-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--ink); margin-bottom: 0.75rem; }
