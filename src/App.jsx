@@ -3220,9 +3220,9 @@ export default function HighDesertHub() {
                   <div style={{display:"flex",flexDirection:"column",gap:"10px"}}>
                     <div style={{fontSize:"1rem",fontWeight:700,color:"var(--text)",marginBottom:"2px"}}>Get clean, professional graphics for your business</div>
                     <div style={{color:"var(--text-secondary)",fontSize:"0.85rem",marginBottom:"6px"}}>Designed to help you attract more customers and stand out locally.</div>
-                    <input className="form-input" placeholder="Business Name *" value={graphicsForm.bizName} onChange={e => setGraphicsForm(p => ({...p, bizName: e.target.value}))} />
-                    <input className="form-input" placeholder="Email or Phone *" value={graphicsForm.contact} onChange={e => setGraphicsForm(p => ({...p, contact: e.target.value}))} />
-                    <select className="form-select" value={graphicsForm.bizType} onChange={e => setGraphicsForm(p => ({...p, bizType: e.target.value}))}>
+                    <input className="form-input" style={{background:"#1A1A1A",color:"var(--sand)",border:"1px solid rgba(201,168,76,0.2)"}} placeholder="Business Name *" value={graphicsForm.bizName} onChange={e => setGraphicsForm(p => ({...p, bizName: e.target.value}))} />
+                    <input className="form-input" style={{background:"#1A1A1A",color:"var(--sand)",border:"1px solid rgba(201,168,76,0.2)"}} placeholder="Email or Phone *" value={graphicsForm.contact} onChange={e => setGraphicsForm(p => ({...p, contact: e.target.value}))} />
+                    <select className="form-select" style={{background:"#1A1A1A",color:"var(--sand)",border:"1px solid rgba(201,168,76,0.2)"}} value={graphicsForm.bizType} onChange={e => setGraphicsForm(p => ({...p, bizType: e.target.value}))}>
                       <option value="">Business Type *</option>
                       <option value="Food and Restaurant">Food and Restaurant</option>
                       <option value="Automotive">Automotive</option>
