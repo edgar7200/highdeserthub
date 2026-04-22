@@ -1713,7 +1713,7 @@ body { font-family: 'DM Sans', sans-serif; background: #F7F0E6; color: #1A1208; 
 .pricing-tier.popular { background: var(--navy); position: relative; }
 .pricing-popular-badge { position: absolute; top: -28px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 6px 6px 0 0; white-space: nowrap; }
 .announcement-banner { background: rgba(201,168,76,0.06); border-bottom: 1px solid rgba(201,168,76,0.2); padding: 0.6rem 2rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; text-align: center; }
-.announcement-banner-text { color: rgba(247,240,230,0.85); font-size: 0.8rem; font-weight: 500; line-height: 1.5; }
+.announcement-banner-text { color: rgba(245,240,232,0.9); font-size: 0.8rem; font-weight: 500; line-height: 1.5; }
 .announcement-banner-text strong { color: var(--gold); font-weight: 700; }
 .announcement-banner-dismiss { background: transparent; border: none; color: rgba(247,240,230,0.4); cursor: pointer; font-size: 1rem; padding: 0 0.25rem; line-height: 1; flex-shrink: 0; }
 .announcement-banner-dismiss:hover { color: var(--sand); }
