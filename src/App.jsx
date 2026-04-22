@@ -2270,6 +2270,10 @@ export default function HighDesertHub() {
           <div className="hero-eyebrow">📍 Victorville · Hesperia · Apple Valley · Adelanto</div>
           <h1 className="hero-title">Your High Desert<br />Business Directory</h1>
           <p className="hero-sub">Helping local businesses get found. Connect with local services across Victorville, Hesperia, Apple Valley, and Adelanto.</p>
+          <div style={{display:"flex",gap:"0.75rem",margin:"1.5rem 0",flexWrap:"wrap"}}>
+            <button className="cta-btn-main" onClick={() => { setShowListForm(true); setFormSubmitted(false); }}>List My Business — Free</button>
+            <button className="cta-btn-ghost" onClick={() => setShowPricing(true)}>Get More Visibility →</button>
+          </div>
           <div className="hero-stats">
             <div className="stat-pill">Find Local. Fast.</div>
             <div className="stat-pill">Helping Local Businesses Get Found.</div>
