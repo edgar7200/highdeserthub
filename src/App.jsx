@@ -1862,6 +1862,9 @@ body { font-family: 'Outfit', sans-serif; background: #080808; color: #F5F0E8; m
 .hero-inner > *:nth-child(3) { animation-delay: 0.25s; }
 .hero-inner > *:nth-child(4) { animation-delay: 0.35s; }
 .hero-inner > *:nth-child(5) { animation-delay: 0.45s; }
+.contact-popup input, .contact-popup select, .contact-popup textarea { background: #1A1A1A !important; color: var(--sand) !important; border: 1px solid rgba(201,168,76,0.2) !important; border-radius: 2px !important; }
+.contact-popup input::placeholder, .contact-popup textarea::placeholder { color: rgba(245,240,232,0.25) !important; }
+/* END OF CSS */
 `;
 
 
@@ -2272,7 +2275,7 @@ export default function HighDesertHub() {
           <p className="hero-sub">Helping local businesses get found. Connect with local services across Victorville, Hesperia, Apple Valley, and Adelanto.</p>
           <div style={{display:"flex",gap:"0.75rem",margin:"1.5rem 0",flexWrap:"wrap"}}>
             <button className="cta-btn-main" onClick={() => { setShowListForm(true); setFormSubmitted(false); }}>List My Business — Free</button>
-            <button className="cta-btn-ghost" onClick={() => setShowPricing(true)}>Get More Visibility →</button>
+            <button className="cta-btn-ghost" onClick={() => setShowPricing(true)} style={{borderColor:"var(--gold)",color:"var(--gold)"}}>Get More Visibility →</button>
           </div>
           <div className="hero-stats">
             <div className="stat-pill">Find Local. Fast.</div>
