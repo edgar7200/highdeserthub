@@ -1970,6 +1970,25 @@ body { font-family: 'Outfit', sans-serif; background: #080808; color: #F5F0E8; m
 .hd-more .hd-card .hd-card-desc { min-height:auto; }
 .hd-more .hd-card .hd-btn-out { margin-top:auto; }
 @media (max-width: 560px) { .hd-more { grid-template-columns:1fr; } }
+.hd-social { display:flex; gap:10px; margin-top:4px; }
+.hd-foot-col .hd-social a { display:flex; align-items:center; justify-content:center; width:36px; height:36px; padding:0; border-radius:8px; background:rgba(245,234,212,0.08); color:#c4b9a4; }
+.hd-foot-col .hd-social a:hover { background:#edb036; color:#101d2c; }
+.hd-social a svg { width:18px; height:18px; display:block; }
+.hd-or { text-align:center; font-size:0.74rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#8a5512; margin:30px 0 16px; }
+.hd-month { background:#16273a; border-radius:14px; padding:26px 30px; display:flex; gap:26px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+.hd-month-l { flex:1; min-width:240px; }
+.hd-month-label { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#edb036; margin-bottom:6px; }
+.hd-month-name { font-weight:900; font-size:1.5rem; text-transform:uppercase; color:#f5ead4; letter-spacing:0.01em; margin-bottom:12px; }
+.hd-month-feat { list-style:none; padding:0; margin:0; }
+.hd-month-feat li { font-size:0.84rem; font-weight:500; color:#e5dcc9; padding:4px 0; display:flex; gap:9px; align-items:flex-start; }
+.hd-month-feat li::before { content:'✓'; color:#edb036; font-weight:800; flex-shrink:0; }
+.hd-month-r { text-align:center; display:flex; flex-direction:column; align-items:center; min-width:170px; }
+.hd-month-price { font-weight:900; font-size:2.8rem; color:#edb036; line-height:1; }
+.hd-month-price span { font-size:1rem; font-weight:600; color:#c4b9a4; }
+.hd-month-note { font-size:0.72rem; font-weight:500; color:#c4b9a4; margin:8px 0 16px; max-width:180px; }
+.hd-month-r .hd-btn { background:#edb036; color:#16273a; }
+.hd-month-r .hd-btn:hover { background:#fff; }
+@media (max-width: 560px) { .hd-month { flex-direction:column; align-items:stretch; text-align:center; } .hd-month-feat li { justify-content:center; } .hd-month-r { width:100%; } }
 /* END OF CSS */
 `;
 
@@ -2414,48 +2433,65 @@ export default function HighDesertHub() {
             <div className="hd-head">
               <div className="hd-kick">Grow your business</div>
               <h2 className="hd-h2">Pick your push</h2>
-              <p className="hd-lede">One-time pricing. No monthly lock-ins. Most folks start with the bundle.</p>
+              <p className="hd-lede">Grab a one-time push to get seen, or go monthly for ongoing growth.</p>
             </div>
             <div className="hd-wrap hd-services">
               <div className="hd-card">
                 <div className="hd-card-ico">🎬</div>
                 <h3 className="hd-card-title">Promo video</h3>
                 <p className="hd-card-desc">A short-form video built for your business and your audience.</p>
-                <div className="hd-price">$75</div>
+                <div className="hd-price">$150</div>
                 <div className="hd-price-sub">One-time · yours to keep</div>
                 <ul className="hd-list">
                   <li className="hd-li">Scripted to your brand</li>
                   <li className="hd-li">Reels-ready format</li>
                   <li className="hd-li">Reusable anywhere</li>
                 </ul>
-                <a className="hd-btn-out" href="mailto:highdeserthub@gmail.com?subject=I%20want%20a%20promo%20video%20(%2475)&body=Hi!%20I'd%20like%20a%20promo%20video%20for%20my%20business.%0D%0A%0D%0ABusiness%20name:%0D%0AInstagram:%0D%0AWhat%20I%20sell:">Get a promo video</a>
+                <a className="hd-btn-out" href="mailto:highdeserthub@gmail.com?subject=I%20want%20a%20promo%20video%20(%24150)&body=Hi!%20I'd%20like%20a%20promo%20video%20for%20my%20business.%0D%0A%0D%0ABusiness%20name:%0D%0AInstagram:%0D%0AWhat%20I%20sell:">Get a promo video</a>
               </div>
               <div className="hd-card hd-card-feat">
                 <div className="hd-badge">Most popular</div>
                 <div className="hd-card-ico">🚀</div>
                 <h3 className="hd-card-title">The bundle</h3>
                 <p className="hd-card-desc">Promo video plus a full cross-platform push. The complete launch.</p>
-                <div className="hd-price">$100</div>
+                <div className="hd-price">$200</div>
                 <div className="hd-price-sub">Save $25 vs. à la carte</div>
                 <ul className="hd-list">
                   <li className="hd-li">Everything in the video</li>
                   <li className="hd-li">Everything in the push</li>
                   <li className="hd-li">Priority directory spot</li>
                 </ul>
-                <a className="hd-btn" href="mailto:highdeserthub@gmail.com?subject=I%20want%20the%20bundle%20(%24100)&body=Hi!%20I'd%20like%20the%20bundle%20(promo%20video%20%2B%20cross-platform%20push).%0D%0A%0D%0ABusiness%20name:%0D%0AInstagram:%0D%0AWhat%20I%20sell:">Get the bundle</a>
+                <a className="hd-btn" href="mailto:highdeserthub@gmail.com?subject=I%20want%20the%20bundle%20(%24200)&body=Hi!%20I'd%20like%20the%20bundle%20(promo%20video%20%2B%20cross-platform%20push).%0D%0A%0D%0ABusiness%20name:%0D%0AInstagram:%0D%0AWhat%20I%20sell:">Get the bundle</a>
               </div>
               <div className="hd-card">
                 <div className="hd-card-ico">📣</div>
                 <h3 className="hd-card-title">Cross-platform</h3>
-                <p className="hd-card-desc">Your content shared across Instagram, stories, and the Hub.</p>
-                <div className="hd-price">$50</div>
+                <p className="hd-card-desc">Your content posted across Instagram, TikTok, Facebook, and the Hub.</p>
+                <div className="hd-price">$75</div>
                 <div className="hd-price-sub">One-time launch</div>
                 <ul className="hd-list">
-                  <li className="hd-li">Feed post + story</li>
+                  <li className="hd-li">Posts + stories on each platform</li>
                   <li className="hd-li">Listed in the directory</li>
                   <li className="hd-li">Tagged &amp; credited</li>
                 </ul>
-                <a className="hd-btn-out" href="mailto:highdeserthub@gmail.com?subject=I%20want%20a%20cross-platform%20push%20(%2450)&body=Hi!%20I'd%20like%20a%20cross-platform%20push.%0D%0A%0D%0ABusiness%20name:%0D%0AInstagram:%0D%0AWhat%20I%20sell:">Get a push</a>
+                <a className="hd-btn-out" href="mailto:highdeserthub@gmail.com?subject=I%20want%20a%20cross-platform%20push%20(%2475)&body=Hi!%20I'd%20like%20a%20cross-platform%20push.%0D%0A%0D%0ABusiness%20name:%0D%0AInstagram:%0D%0AWhat%20I%20sell:">Get a push</a>
+              </div>
+            </div>
+            <div className="hd-or">or go monthly</div>
+            <div className="hd-wrap hd-month">
+              <div className="hd-month-l">
+                <div className="hd-month-label">Ready for ongoing growth?</div>
+                <div className="hd-month-name">Monthly growth plan</div>
+                <ul className="hd-month-feat">
+                  <li>4 short-form videos every month</li>
+                  <li>Posted across Instagram, TikTok &amp; Facebook</li>
+                  <li>Sales-focused stories + featured directory spot</li>
+                </ul>
+              </div>
+              <div className="hd-month-r">
+                <div className="hd-month-price">$400<span>/mo</span></div>
+                <div className="hd-month-note">About $100 a video, and we run it all month.</div>
+                <a className="hd-btn" href="mailto:highdeserthub@gmail.com?subject=I'm%20interested%20in%20the%20monthly%20growth%20plan%20(%24400%2Fmo)&body=Hi!%20I'd%20like%20to%20talk%20about%20the%20monthly%20growth%20plan.%0D%0A%0D%0ABusiness%20name:%0D%0AInstagram:%0D%0AWhat%20I%20sell:">Start monthly</a>
               </div>
             </div>
           </section>
@@ -2509,7 +2545,7 @@ export default function HighDesertHub() {
             <div className="hd-foot-inner">
               <div>
                 <div className="hd-foot-logo">High<span>Desert</span>Hub</div>
-                <p style={{fontSize:'0.78rem',fontWeight:500,margin:'10px 0 0',maxWidth:'240px',color:'#7d8794'}}>Built in Victor Valley, for the High Desert.</p>
+                <p style={{fontSize:'0.78rem',fontWeight:500,margin:'10px 0 0',maxWidth:'240px',color:'#7d8794'}}>Built in the Victor Valley, for the High Desert.</p>
               </div>
               <div className="hd-foot-cols">
                 <div className="hd-foot-col"><h4>Explore</h4>
@@ -2518,8 +2554,12 @@ export default function HighDesertHub() {
                   <a onClick={() => setShowLiving(true)}>High Desert Living</a>
                 </div>
                 <div className="hd-foot-col"><h4>Connect</h4>
-                  <a href="https://www.instagram.com/highdeserthub/" target="_blank" rel="noopener noreferrer">@highdeserthub</a>
-                  <a href="mailto:highdeserthub@gmail.com">Email</a>
+                  <div className="hd-social">
+                    <a href="https://www.instagram.com/highdeserthub/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 2h10c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3zm5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-2.5a1 1 0 100 2 1 1 0 000-2z"/></svg></a>
+                    <a href="https://www.tiktok.com/@highdeserthub" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 01-1.01-2.82h-3.21v12.86a2.59 2.59 0 01-2.59 2.46 2.59 2.59 0 01-2.59-2.59 2.59 2.59 0 012.59-2.59c.27 0 .53.04.78.12v-3.28a5.86 5.86 0 00-.78-.05A5.87 5.87 0 004 15.71a5.87 5.87 0 005.87 5.87 5.87 5.87 0 005.87-5.87V9.4a7.35 7.35 0 004.29 1.37V7.56a4.28 4.28 0 01-3.3-1.74z"/></svg></a>
+                    <a href="https://www.facebook.com/profile.php?id=61574362952285" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.898v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
+                    <a href="mailto:highdeserthub@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2v.01L12 13l8-6.99V6H4zm16 12V8.24l-8 6.99-8-6.99V18h16z"/></svg></a>
+                  </div>
                 </div>
               </div>
             </div>
