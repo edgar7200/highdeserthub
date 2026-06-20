@@ -1989,6 +1989,8 @@ body { font-family: 'Outfit', sans-serif; background: #080808; color: #F5F0E8; m
 .hd-month-r .hd-btn { background:#edb036; color:#16273a; }
 .hd-month-r .hd-btn:hover { background:#fff; }
 @media (max-width: 560px) { .hd-month { flex-direction:column; align-items:stretch; text-align:center; } .hd-month-feat li { justify-content:center; } .hd-month-r { width:100%; } }
+.hd-month-email { display:inline-block; margin-top:10px; font-size:0.72rem; font-weight:600; color:#c4b9a4; text-decoration:none; }
+.hd-month-email:hover { color:#edb036; text-decoration:underline; }
 /* END OF CSS */
 `;
 
@@ -2491,7 +2493,8 @@ export default function HighDesertHub() {
               <div className="hd-month-r">
                 <div className="hd-month-price">$400<span>/mo</span></div>
                 <div className="hd-month-note">About $100 a video, and we run it all month.</div>
-                <a className="hd-btn" href="mailto:highdeserthub@gmail.com?subject=I'm%20interested%20in%20the%20monthly%20growth%20plan%20(%24400%2Fmo)&body=Hi!%20I'd%20like%20to%20talk%20about%20the%20monthly%20growth%20plan.%0D%0A%0D%0ABusiness%20name:%0D%0AInstagram:%0D%0AWhat%20I%20sell:">Start monthly</a>
+                <a className="hd-btn" href="https://calendar.app.google/PNVthCk3N2pXe9sq7" target="_blank" rel="noopener noreferrer">Book a call</a>
+                <a className="hd-month-email" href="mailto:highdeserthub@gmail.com?subject=I'm%20interested%20in%20the%20monthly%20growth%20plan%20(%24400%2Fmo)&body=Hi!%20I'd%20like%20to%20talk%20about%20the%20monthly%20growth%20plan.%0D%0A%0D%0ABusiness%20name:%0D%0AInstagram:%0D%0AWhat%20I%20sell:">or email us instead</a>
               </div>
             </div>
           </section>
