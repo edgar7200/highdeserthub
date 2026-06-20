@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const GOOGLE_FONTS = `
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap');
 `;
 
 const CATEGORIES = [
@@ -338,11 +338,11 @@ const BUSINESSES = [
     website: "",
     instagram: "@cmjr.5",
     license: "",
-    services: ["Haircuts", "Free Haircuts — Donations Appreciated"],
+    services: ["Haircuts", "Free Haircuts - Donations Appreciated"],
     hours: "Call to book",
     featured: false,
     tier: "free",
-    description: "Local barber serving the High Desert. Free haircuts — donations appreciated. Scan QR code to book your appointment.",
+    description: "Local barber serving the High Desert. Free haircuts - donations appreciated. Scan QR code to book your appointment.",
     initials: "CB",
     color: "#1B3A5C",
     verified: true,
@@ -398,7 +398,7 @@ const BUSINESSES = [
     hours: "Call for hours",
     featured: false,
     tier: "free",
-    description: "Full-service handyman for the High Desert. Bilingual — Español and English. Free estimates available. Call Alberto today.",
+    description: "Full-service handyman for the High Desert. Bilingual - Español and English. Free estimates available. Call Alberto today.",
     initials: "DT",
     color: "#4A7A8F",
     verified: true,
@@ -538,7 +538,7 @@ const BUSINESSES = [
     hours: "Call or Text for a Free Estimate",
     featured: false,
     tier: "free",
-    description: "Premium epoxy flooring for garages, patios, and interior floors. Metallic and marble finishes available. Serving SoCal — quality you can trust.",
+    description: "Premium epoxy flooring for garages, patios, and interior floors. Metallic and marble finishes available. Serving SoCal - quality you can trust.",
     initials: "HQ",
     color: "#E8A030",
     verified: true,
@@ -594,7 +594,7 @@ const BUSINESSES = [
     hours: "Call for hours",
     featured: false,
     tier: "free",
-    description: "Professional welding services for the High Desert. Mild steel, stainless, and aluminum. Fabrication, modifications, reinforcements, repairs, and custom gates. Bilingual — Español available.",
+    description: "Professional welding services for the High Desert. Mild steel, stainless, and aluminum. Fabrication, modifications, reinforcements, repairs, and custom gates. Bilingual - Español available.",
     initials: "OW",
     color: "#1B3A5C",
     verified: true,
@@ -622,7 +622,7 @@ const BUSINESSES = [
     hours: "Call for hours",
     featured: false,
     tier: "free",
-    description: "Reliable handyman services throughout the High Desert. From plumbing to bathroom remodeling — no job too small. Call for a free estimate.",
+    description: "Reliable handyman services throughout the High Desert. From plumbing to bathroom remodeling - no job too small. Call for a free estimate.",
     initials: "SH",
     color: "#1B3A5C",
     verified: true,
@@ -650,7 +650,7 @@ const BUSINESSES = [
     hours: "Call or Text for hours",
     featured: false,
     tier: "free",
-    description: "State certified driving instruction serving the High Desert. Behind-the-wheel training, driver's ed certification, and DMV vehicle rental. Bilingual — servicio disponible en Español.",
+    description: "State certified driving instruction serving the High Desert. Behind-the-wheel training, driver's ed certification, and DMV vehicle rental. Bilingual - servicio disponible en Español.",
     initials: "SD",
     color: "#0D1B2A",
     verified: true,
@@ -903,7 +903,7 @@ const BUSINESSES = [
     hours: "Call for hours",
     featured: false,
     tier: "free",
-    description: "Licensed mobile mechanic serving the High Desert since 2021. We come to you — repairs done right. Call for an appointment.",
+    description: "Licensed mobile mechanic serving the High Desert since 2021. We come to you - repairs done right. Call for an appointment.",
     initials: "DA",
     color: "#3C3C3C",
     verified: true,
@@ -931,7 +931,7 @@ const BUSINESSES = [
     hours: "Call or Text for a Quote",
     featured: false,
     tier: "free",
-    description: "Licensed and insured full property cleanup for the High Desert. One service for complete cleanup — residential cleaning, junk hauling, and yard cleanup.",
+    description: "Licensed and insured full property cleanup for the High Desert. One service for complete cleanup - residential cleaning, junk hauling, and yard cleanup.",
     initials: "FP",
     color: "#7A4A6B",
     verified: true,
@@ -959,7 +959,7 @@ const BUSINESSES = [
     hours: "Call for hours",
     featured: false,
     tier: "free",
-    description: "Full-service landscaping and property services for the High Desert. Making visions come to life. Senior citizen discounts available. Free estimates — call Joey.",
+    description: "Full-service landscaping and property services for the High Desert. Making visions come to life. Senior citizen discounts available. Free estimates - call Joey.",
     initials: "JC",
     color: "#4A6B3C",
     verified: true,
@@ -1240,7 +1240,7 @@ const BUSINESSES = [
     hours: "Call for a Free Estimate",
     featured: false,
     tier: "free",
-    description: "Licensed, bonded, and insured remodeling contractor for the High Desert. Kitchen, bathroom, room additions, and outdoor living spaces. Up to $500 off — call for a free estimate.",
+    description: "Licensed, bonded, and insured remodeling contractor for the High Desert. Kitchen, bathroom, room additions, and outdoor living spaces. Up to $500 off - call for a free estimate.",
     initials: "TR",
     color: "#C4603A",
     verified: true,
@@ -1380,7 +1380,7 @@ const BUSINESSES = [
     hours: "Call for a Free Estimate",
     featured: false,
     tier: "free",
-    description: "Family owned garage door repair and installation for the High Desert. American workmanship — jobs done right. Free estimates available.",
+    description: "Family owned garage door repair and installation for the High Desert. American workmanship - jobs done right. Free estimates available.",
     initials: "CG",
     color: "#1B3A5C",
     verified: true,
@@ -1464,7 +1464,7 @@ const BUSINESSES = [
     hours: "Call for hours",
     featured: false,
     tier: "free",
-    description: "Professional headlight restoration for the High Desert. Foggy, yellow, and oxidized headlights restored. Bilingual — servicio disponible en Español.",
+    description: "Professional headlight restoration for the High Desert. Foggy, yellow, and oxidized headlights restored. Bilingual - servicio disponible en Español.",
     initials: "MG",
     color: "#8B1A1A",
     verified: true,
@@ -1867,6 +1867,109 @@ body { font-family: 'Outfit', sans-serif; background: #080808; color: #F5F0E8; m
 .contact-popup .form-input, .contact-popup .form-select, .contact-popup .form-textarea { background: #1A1A1A !important; color: #F5F0E8 !important; border: 1px solid rgba(201,168,76,0.2) !important; border-radius: 2px !important; -webkit-appearance: none; }
 .contact-popup .form-input::placeholder, .contact-popup .form-textarea::placeholder { color: rgba(245,240,232,0.3) !important; }
 .contact-popup select option { background: #1A1A1A; color: #F5F0E8; }
+/* ===================== SERVICE LANDING (hd-) ===================== */
+.hd-page { font-family: 'Poppins', system-ui, sans-serif; color: #16273a; background: #edb036; }
+.hd-page * { box-sizing: border-box; }
+.hd-wrap { max-width: 1080px; margin: 0 auto; }
+.hd-btn { display:inline-flex; align-items:center; gap:8px; background:#16273a; color:#f5ead4; padding:13px 22px; font-weight:700; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.04em; border:none; border-radius:5px; cursor:pointer; font-family:inherit; text-decoration:none; transition:background .18s; }
+.hd-btn:hover { background:#b8472a; }
+.hd-btn-out { display:inline-flex; align-items:center; gap:8px; background:transparent; color:#16273a; padding:13px 22px; font-weight:700; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.04em; border:2.5px solid #16273a; border-radius:5px; cursor:pointer; font-family:inherit; text-decoration:none; transition:all .18s; }
+.hd-btn-out:hover { background:#16273a; color:#f5ead4; }
+.hd-hero { padding: 60px 24px 70px; text-align:center; }
+.hd-pill { display:inline-block; background:#16273a; color:#edb036; font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:7px 16px; border-radius:30px; margin-bottom:26px; }
+.hd-h1 { font-weight:900; font-size:clamp(2.5rem,7vw,4.4rem); line-height:0.95; letter-spacing:0.005em; text-transform:uppercase; margin:0 auto 22px; max-width:15ch; }
+.hd-h1 .hd-pop { color:#b8472a; }
+.hd-sub { font-size:1.05rem; font-weight:500; color:#2c3a4d; max-width:520px; margin:0 auto 32px; line-height:1.5; }
+.hd-cta-row { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.hd-stats { background:#16273a; display:grid; grid-template-columns:repeat(4,1fr); }
+.hd-stat { padding:26px 14px; text-align:center; border-right:1px solid rgba(245,234,212,0.12); }
+.hd-stat:last-child { border-right:none; }
+.hd-stat-n { font-weight:900; font-size:2.2rem; color:#edb036; line-height:1; }
+.hd-stat-l { font-size:0.7rem; font-weight:600; color:#c4b9a4; letter-spacing:0.08em; text-transform:uppercase; margin-top:8px; }
+.hd-sec { padding:64px 24px; }
+.hd-sec-gold { background:#edb036; }
+.hd-sec-cream { background:#f5ead4; }
+.hd-head { text-align:center; margin-bottom:44px; }
+.hd-kick { font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#b8472a; margin-bottom:14px; }
+.hd-h2 { font-weight:900; font-size:clamp(1.9rem,4.5vw,2.6rem); letter-spacing:0.01em; text-transform:uppercase; line-height:1; margin:0 0 12px; }
+.hd-lede { font-size:0.98rem; font-weight:500; max-width:460px; margin:0 auto; color:#4a5564; }
+.hd-lede-gold { color:#5a4a28; }
+.hd-proof { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.hd-biz { background:#fff; border:2.5px solid #16273a; border-radius:10px; padding:20px 18px; }
+.hd-biz-top { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.hd-biz-av { width:40px; height:40px; border-radius:50%; background:#edb036; border:2px solid #16273a; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.95rem; color:#16273a; flex-shrink:0; }
+.hd-biz-name { font-weight:700; font-size:0.9rem; line-height:1.1; color:#16273a; }
+.hd-biz-handle { font-size:0.72rem; color:#b8472a; font-weight:600; word-break:break-all; }
+.hd-biz-meta { font-size:0.75rem; color:#5a6472; font-weight:500; padding-top:12px; border-top:1.5px solid #e5d9bf; display:flex; justify-content:space-between; align-items:center; gap:6px; }
+.hd-tag { font-size:0.58rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:3px 8px; border-radius:4px; white-space:nowrap; }
+.hd-tag-client { background:#16273a; color:#edb036; }
+.hd-tag-feat { background:#f3d9a0; color:#8a5512; }
+.hd-services { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; align-items:start; }
+.hd-card { background:#fff; border:2.5px solid #16273a; border-radius:12px; padding:28px 24px; position:relative; }
+.hd-card-feat { background:#16273a; }
+.hd-card-feat .hd-card-title { color:#edb036; }
+.hd-card-feat .hd-card-desc { color:#c4b9a4; }
+.hd-card-feat .hd-li { color:#e5dcc9; border-color:rgba(245,234,212,0.15); }
+.hd-card-feat .hd-li::before { color:#edb036; }
+.hd-card-feat .hd-price { color:#f5ead4; }
+.hd-card-feat .hd-price-sub { color:#c4b9a4; }
+.hd-badge { position:absolute; top:-13px; left:24px; background:#b8472a; color:#fff; font-size:0.62rem; font-weight:700; padding:5px 13px; border-radius:4px; letter-spacing:0.05em; text-transform:uppercase; }
+.hd-card-ico { width:46px; height:46px; border-radius:10px; background:#f3d9a0; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:16px; }
+.hd-card-feat .hd-card-ico { background:rgba(237,176,54,0.18); }
+.hd-card-title { font-weight:800; font-size:1.25rem; text-transform:uppercase; letter-spacing:0.01em; margin:0 0 6px; color:#16273a; }
+.hd-card-desc { font-size:0.85rem; font-weight:500; color:#5a6472; margin:0 0 18px; min-height:40px; line-height:1.45; }
+.hd-price { font-weight:900; font-size:2.4rem; line-height:1; color:#16273a; }
+.hd-price-sub { font-size:0.76rem; font-weight:500; color:#8a5512; margin-top:4px; }
+.hd-list { list-style:none; padding:0; margin:18px 0 22px; }
+.hd-li { font-size:0.82rem; font-weight:500; color:#3a4554; padding:8px 0; border-top:1.5px solid #e5d9bf; display:flex; align-items:flex-start; gap:9px; }
+.hd-li::before { content:'✓'; color:#b8472a; font-weight:800; flex-shrink:0; }
+.hd-card .hd-btn, .hd-card .hd-btn-out { width:100%; justify-content:center; }
+.hd-card-feat .hd-btn { background:#edb036; color:#16273a; }
+.hd-card-feat .hd-btn:hover { background:#fff; }
+.hd-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:40px; }
+.hd-step { text-align:center; }
+.hd-chip { width:78px; height:78px; margin:0 auto 18px; background:#f5ead4; border:3px solid #16273a; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:2rem; position:relative; background-image:radial-gradient(circle, rgba(22,39,58,0.14) 1.2px, transparent 1.2px); background-size:7px 7px; }
+.hd-chip.r1 { transform:rotate(-4deg); } .hd-chip.r2 { transform:rotate(3deg); } .hd-chip.r3 { transform:rotate(-2deg); } .hd-chip.r4 { transform:rotate(4deg); }
+.hd-chip::after { content:''; position:absolute; top:-9px; left:50%; transform:translateX(-50%) rotate(-6deg); width:34px; height:15px; background:rgba(184,71,42,0.35); border-radius:2px; }
+.hd-step-n { font-weight:900; font-size:0.72rem; color:#b8472a; letter-spacing:0.08em; margin-bottom:6px; }
+.hd-step-t { font-weight:800; font-size:0.95rem; text-transform:uppercase; letter-spacing:0.01em; margin-bottom:8px; color:#16273a; }
+.hd-step-d { font-size:0.8rem; font-weight:500; color:#2c3a4d; line-height:1.45; max-width:160px; margin:0 auto; }
+.hd-center { text-align:center; }
+.hd-final { background:#b8472a; padding:70px 24px; text-align:center; }
+.hd-final .hd-h2 { color:#f5ead4; }
+.hd-final p { font-size:1rem; font-weight:500; color:#f3d9c0; max-width:440px; margin:0 auto 28px; }
+.hd-btn-cream { display:inline-flex; align-items:center; gap:8px; background:#f5ead4; color:#b8472a; padding:14px 24px; font-weight:700; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.04em; border:none; border-radius:5px; cursor:pointer; font-family:inherit; text-decoration:none; }
+.hd-btn-cream:hover { background:#fff; }
+.hd-btn-cream-out { display:inline-flex; align-items:center; gap:8px; background:transparent; color:#f5ead4; padding:14px 24px; font-weight:700; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.04em; border:2.5px solid #f5ead4; border-radius:5px; cursor:pointer; font-family:inherit; text-decoration:none; }
+.hd-btn-cream-out:hover { background:#f5ead4; color:#b8472a; }
+.hd-foot { background:#101d2c; color:#c4b9a4; padding:44px 24px 28px; }
+.hd-foot-inner { max-width:1080px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; }
+.hd-foot-logo { font-weight:800; font-size:1.2rem; text-transform:uppercase; color:#f5ead4; letter-spacing:-0.01em; }
+.hd-foot-logo span { color:#edb036; }
+.hd-foot-cols { display:flex; gap:48px; }
+.hd-foot-col h4 { font-weight:800; font-size:0.72rem; color:#edb036; text-transform:uppercase; letter-spacing:0.08em; margin:0 0 12px; }
+.hd-foot-col a { display:block; font-size:0.8rem; font-weight:500; color:#c4b9a4; text-decoration:none; padding:3px 0; cursor:pointer; }
+.hd-foot-col a:hover { color:#f5ead4; }
+.hd-copy { max-width:1080px; margin:16px auto 0; padding-top:22px; border-top:1px solid rgba(245,234,212,0.1); font-size:0.72rem; font-weight:500; color:#7d8794; }
+.hd-nav-link { color: var(--sand); text-decoration:none; font-weight:600; cursor:pointer; }
+.hd-nav-link:hover { color: var(--gold); }
+.hd-nav-cta { background: var(--gold); color:#101010; padding:0.4rem 0.95rem; border-radius:4px; font-weight:700; text-decoration:none; font-size:0.82rem; white-space:nowrap; }
+.hd-nav-cta:hover { background:#fff; }
+@media (max-width: 860px) {
+  .hd-services, .hd-proof, .hd-steps { grid-template-columns:1fr 1fr; }
+  .hd-stats { grid-template-columns:1fr 1fr; }
+  .hd-stat:nth-child(2) { border-right:none; }
+  .hd-stat { border-bottom:1px solid rgba(245,234,212,0.12); }
+}
+@media (max-width: 560px) {
+  .hd-services, .hd-proof, .hd-steps { grid-template-columns:1fr; }
+  .hd-foot-inner { flex-direction:column; }
+}
+.hd-more { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.hd-more .hd-card { display:flex; flex-direction:column; }
+.hd-more .hd-card .hd-card-desc { min-height:auto; }
+.hd-more .hd-card .hd-btn-out { margin-top:auto; }
+@media (max-width: 560px) { .hd-more { grid-template-columns:1fr; } }
 /* END OF CSS */
 `;
 
@@ -1974,13 +2077,14 @@ export default function HighDesertHub() {
 
   const [emailCopied, setEmailCopied] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
+  const [page, setPage] = useState('home');
 
   const scrollToCTA = () => {
     document.querySelector('.cta-banner').scrollIntoView({ behavior: 'smooth' });
   };
 
   const copyEmail = () => {
-    const email = 'admin@highdeserthub.com';
+    const email = 'highdeserthub@gmail.com';
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(email).then(() => {
         setEmailCopied(true);
@@ -2079,7 +2183,7 @@ export default function HighDesertHub() {
     if (!graphicsForm.bizName || !graphicsForm.contact) return;
     setGraphicsLoading(true);
     window.emailjs.send('service_19u4v9n', 'template_x2d6dlk', {
-      business_name: 'GRAPHICS REQUEST — ' + graphicsForm.bizName,
+      business_name: 'GRAPHICS REQUEST - ' + graphicsForm.bizName,
       phone: graphicsForm.contact,
       services: graphicsForm.need || 'Not specified',
       email: graphicsForm.bizType || 'N/A',
@@ -2253,31 +2357,186 @@ export default function HighDesertHub() {
   return (
     <div className="app">
       <nav className="nav">
-        <div className="nav-logo" style={{cursor:"pointer"}} onClick={() => { setActiveCategory(null); setActiveCity("All Cities"); setSearchInput(""); setShowLiving(false); window.scrollTo({top:0,behavior:"smooth"}); }}>High<span>Desert</span>Hub</div>
+        <div className="nav-logo" style={{cursor:"pointer"}} onClick={() => { setActiveCategory(null); setActiveCity("All Cities"); setSearchInput(""); setShowLiving(false); setPage('home'); window.scrollTo({top:0,behavior:"smooth"}); }}>High<span>Desert</span>Hub</div>
         <ul className="nav-links">
-          <li><a href="#" className="nav-btn-gold">Local Events</a></li>
+          <li><a href="#" className="hd-nav-link" onClick={(e) => { e.preventDefault(); setShowLiving(false); setPage('home'); window.scrollTo({top:0,behavior:"smooth"}); }}>Services</a></li>
+          <li><a href="#" className="hd-nav-link" onClick={(e) => { e.preventDefault(); setShowLiving(false); setPage('directory'); window.scrollTo({top:0,behavior:"smooth"}); }}>Directory</a></li>
           <li><a href="#" className="nav-btn-gold" onClick={(e) => { e.preventDefault(); setShowLiving(true); }}>High Desert Living</a></li>
           <li><a href="#" className="nav-btn-terra">Jobs</a></li>
-
+          <li><a className="hd-nav-cta" href="mailto:highdeserthub@gmail.com?subject=I%20want%20to%20get%20featured%20on%20High%20Desert%20Hub&body=Hi!%20I%20run%20a%20local%20business%20and%20I'd%20like%20to%20get%20featured.%0D%0A%0D%0ABusiness%20name:%0D%0AInstagram:%0D%0AWhat%20I%20sell:%0D%0ACity:">Get featured</a></li>
         </ul>
       </nav>
 
       {showBanner && (
         <div className="announcement-banner">
           <span className="announcement-banner-text">
-            <strong>Notice:</strong> We are actively expanding our platform. Some features are being upgraded — thank you for your patience as we improve your experience.
+            <strong>Notice:</strong> We are actively expanding our platform. Some features are being upgraded - thank you for your patience as we improve your experience.
           </span>
           <button className="announcement-banner-dismiss" onClick={() => setShowBanner(false)}>✕</button>
         </div>
       )}
 
+      {page === 'home' && (
+        <div className="hd-page">
+
+          <section className="hd-hero">
+            <span className="hd-pill">Victorville · Hesperia · Apple Valley · Adelanto</span>
+            <h1 className="hd-h1">Grow your business in the <span className="hd-pop">High Desert</span></h1>
+            <p className="hd-sub">Done-for-you promo videos and cross-platform pushes that get local businesses seen. No contracts, no lock-ins.</p>
+            <div className="hd-cta-row">
+              <button className="hd-btn" onClick={() => { const el = document.getElementById('hd-services'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}>See pricing →</button>
+              <button className="hd-btn-out" onClick={() => { setShowLiving(false); setPage('directory'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Browse directory</button>
+            </div>
+          </section>
+
+          <div className="hd-stats">
+            <div className="hd-stat"><div className="hd-stat-n">98</div><div className="hd-stat-l">Local businesses</div></div>
+            <div className="hd-stat"><div className="hd-stat-n">232</div><div className="hd-stat-l">IG community</div></div>
+            <div className="hd-stat"><div className="hd-stat-n">12</div><div className="hd-stat-l">Categories</div></div>
+            <div className="hd-stat"><div className="hd-stat-n">4</div><div className="hd-stat-l">Cities served</div></div>
+          </div>
+
+          <section className="hd-sec hd-sec-gold">
+            <div className="hd-head">
+              <div className="hd-kick">Real local businesses</div>
+              <h2 className="hd-h2">Who we're putting on the map</h2>
+              <p className="hd-lede hd-lede-gold">Businesses we've featured and pushed across our channels.</p>
+            </div>
+            <div className="hd-wrap hd-proof">
+              <div className="hd-biz"><div className="hd-biz-top"><div className="hd-biz-av">AG</div><div><div className="hd-biz-name">Antojos GDL</div><div className="hd-biz-handle">@antojosgdl_</div></div></div><div className="hd-biz-meta">Victorville <span className="hd-tag hd-tag-client">Bundle client</span></div></div>
+              <div className="hd-biz"><div className="hd-biz-top"><div className="hd-biz-av">SH</div><div><div className="hd-biz-name">Sweet Home</div><div className="hd-biz-handle">@sweet_home_sourdough</div></div></div><div className="hd-biz-meta">Hesperia <span className="hd-tag hd-tag-feat">Featured</span></div></div>
+              <div className="hd-biz"><div className="hd-biz-top"><div className="hd-biz-av">JM</div><div><div className="hd-biz-name">Jardin de Matcha</div><div className="hd-biz-handle">@jardin_de_matcha</div></div></div><div className="hd-biz-meta">Apple Valley <span className="hd-tag hd-tag-feat">Featured</span></div></div>
+              <div className="hd-biz"><div className="hd-biz-top"><div className="hd-biz-av">TI</div><div><div className="hd-biz-name">Treats by Isha</div><div className="hd-biz-handle">@treatsby.isha</div></div></div><div className="hd-biz-meta">Hesperia <span className="hd-tag hd-tag-feat">Featured</span></div></div>
+            </div>
+          </section>
+
+          <section className="hd-sec hd-sec-cream" id="hd-services">
+            <div className="hd-head">
+              <div className="hd-kick">Grow your business</div>
+              <h2 className="hd-h2">Pick your push</h2>
+              <p className="hd-lede">One-time pricing. No monthly lock-ins. Most folks start with the bundle.</p>
+            </div>
+            <div className="hd-wrap hd-services">
+              <div className="hd-card">
+                <div className="hd-card-ico">🎬</div>
+                <h3 className="hd-card-title">Promo video</h3>
+                <p className="hd-card-desc">A short-form video built for your business and your audience.</p>
+                <div className="hd-price">$75</div>
+                <div className="hd-price-sub">One-time · yours to keep</div>
+                <ul className="hd-list">
+                  <li className="hd-li">Scripted to your brand</li>
+                  <li className="hd-li">Reels-ready format</li>
+                  <li className="hd-li">Reusable anywhere</li>
+                </ul>
+                <a className="hd-btn-out" href="mailto:highdeserthub@gmail.com?subject=I%20want%20a%20promo%20video%20(%2475)&body=Hi!%20I'd%20like%20a%20promo%20video%20for%20my%20business.%0D%0A%0D%0ABusiness%20name:%0D%0AInstagram:%0D%0AWhat%20I%20sell:">Get a promo video</a>
+              </div>
+              <div className="hd-card hd-card-feat">
+                <div className="hd-badge">Most popular</div>
+                <div className="hd-card-ico">🚀</div>
+                <h3 className="hd-card-title">The bundle</h3>
+                <p className="hd-card-desc">Promo video plus a full cross-platform push. The complete launch.</p>
+                <div className="hd-price">$100</div>
+                <div className="hd-price-sub">Save $25 vs. à la carte</div>
+                <ul className="hd-list">
+                  <li className="hd-li">Everything in the video</li>
+                  <li className="hd-li">Everything in the push</li>
+                  <li className="hd-li">Priority directory spot</li>
+                </ul>
+                <a className="hd-btn" href="mailto:highdeserthub@gmail.com?subject=I%20want%20the%20bundle%20(%24100)&body=Hi!%20I'd%20like%20the%20bundle%20(promo%20video%20%2B%20cross-platform%20push).%0D%0A%0D%0ABusiness%20name:%0D%0AInstagram:%0D%0AWhat%20I%20sell:">Get the bundle</a>
+              </div>
+              <div className="hd-card">
+                <div className="hd-card-ico">📣</div>
+                <h3 className="hd-card-title">Cross-platform</h3>
+                <p className="hd-card-desc">Your content shared across Instagram, stories, and the Hub.</p>
+                <div className="hd-price">$50</div>
+                <div className="hd-price-sub">One-time launch</div>
+                <ul className="hd-list">
+                  <li className="hd-li">Feed post + story</li>
+                  <li className="hd-li">Listed in the directory</li>
+                  <li className="hd-li">Tagged &amp; credited</li>
+                </ul>
+                <a className="hd-btn-out" href="mailto:highdeserthub@gmail.com?subject=I%20want%20a%20cross-platform%20push%20(%2450)&body=Hi!%20I'd%20like%20a%20cross-platform%20push.%0D%0A%0D%0ABusiness%20name:%0D%0AInstagram:%0D%0AWhat%20I%20sell:">Get a push</a>
+              </div>
+            </div>
+          </section>
+
+          <section className="hd-sec hd-sec-gold">
+            <div className="hd-head">
+              <div className="hd-kick">How it works</div>
+              <h2 className="hd-h2">From DM to done</h2>
+            </div>
+            <div className="hd-wrap hd-steps">
+              <div className="hd-step"><div className="hd-chip r1">💬</div><div className="hd-step-n">STEP 01</div><div className="hd-step-t">Reach out</div><div className="hd-step-d">Email or DM us what you sell and who you want to reach.</div></div>
+              <div className="hd-step"><div className="hd-chip r2">💡</div><div className="hd-step-n">STEP 02</div><div className="hd-step-t">We plan &amp; script</div><div className="hd-step-d">We research your niche and script it for you.</div></div>
+              <div className="hd-step"><div className="hd-chip r3">📸</div><div className="hd-step-n">STEP 03</div><div className="hd-step-t">Film &amp; edit</div><div className="hd-step-d">You film the quick parts, we cut it together.</div></div>
+              <div className="hd-step"><div className="hd-chip r4">🚀</div><div className="hd-step-n">STEP 04</div><div className="hd-step-t">Push it live</div><div className="hd-step-d">We launch it across every channel and the Hub.</div></div>
+            </div>
+            <div className="hd-center"><a className="hd-btn" href="mailto:highdeserthub@gmail.com?subject=I%20want%20to%20get%20featured%20on%20High%20Desert%20Hub&body=Hi!%20I%20run%20a%20local%20business%20and%20I'd%20like%20to%20get%20featured.%0D%0A%0D%0ABusiness%20name:%0D%0AInstagram:%0D%0AWhat%20I%20sell:%0D%0ACity:">Book your push →</a></div>
+          </section>
+
+          <section className="hd-sec hd-sec-cream">
+            <div className="hd-head">
+              <div className="hd-kick">More than social</div>
+              <h2 className="hd-h2">More ways we help local businesses</h2>
+              <p className="hd-lede">Got the audience but no website, or buried in busywork? We can fix that too.</p>
+            </div>
+            <div className="hd-wrap hd-more">
+              <div className="hd-card">
+                <div className="hd-card-ico">🌐</div>
+                <h3 className="hd-card-title">Build your website</h3>
+                <p className="hd-card-desc">No website, or one stuck in 2010? We build a clean, fast site so the people who find you online actually trust you and reach out.</p>
+                <a className="hd-btn-out" href="mailto:highdeserthub@gmail.com?subject=I'm%20interested%20in%20a%20website&body=Hi!%20I'd%20like%20to%20talk%20about%20a%20website%20for%20my%20business.%0D%0A%0D%0ABusiness%20name:%0D%0ADo%20you%20have%20a%20site%20now?:%0D%0AWhat%20I%20sell:">Ask about a website</a>
+              </div>
+              <div className="hd-card">
+                <div className="hd-card-ico">⚙️</div>
+                <h3 className="hd-card-title">Automate the busywork</h3>
+                <p className="hd-card-desc">Drowning in DMs, bookings, and follow-ups? We set up simple systems that handle the repetitive stuff, so you get hours back every week.</p>
+                <a className="hd-btn-out" href="mailto:highdeserthub@gmail.com?subject=I'm%20interested%20in%20automation&body=Hi!%20I'd%20like%20to%20talk%20about%20automating%20some%20of%20my%20busywork.%0D%0A%0D%0ABusiness%20name:%0D%0AWhat%20takes%20up%20most%20of%20your%20time?:%0D%0AWhat%20I%20sell:">Ask about automation</a>
+              </div>
+            </div>
+          </section>
+
+          <section className="hd-final">
+            <h2 className="hd-h2">Ready to get seen?</h2>
+            <p>Email highdeserthub@gmail.com or DM @highdeserthub - we usually reply the same day.</p>
+            <div className="hd-cta-row">
+              <a className="hd-btn-cream" href="https://www.instagram.com/highdeserthub/" target="_blank" rel="noopener noreferrer">Message us on Instagram</a>
+              <a className="hd-btn-cream-out" href="mailto:highdeserthub@gmail.com?subject=Question%20for%20High%20Desert%20Hub">Email us</a>
+            </div>
+          </section>
+
+          <footer className="hd-foot">
+            <div className="hd-foot-inner">
+              <div>
+                <div className="hd-foot-logo">High<span>Desert</span>Hub</div>
+                <p style={{fontSize:'0.78rem',fontWeight:500,margin:'10px 0 0',maxWidth:'240px',color:'#7d8794'}}>Built in Victor Valley, for the High Desert.</p>
+              </div>
+              <div className="hd-foot-cols">
+                <div className="hd-foot-col"><h4>Explore</h4>
+                  <a onClick={() => { const el = document.getElementById('hd-services'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}>Services</a>
+                  <a onClick={() => { setShowLiving(false); setPage('directory'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Directory</a>
+                  <a onClick={() => setShowLiving(true)}>High Desert Living</a>
+                </div>
+                <div className="hd-foot-col"><h4>Connect</h4>
+                  <a href="https://www.instagram.com/highdeserthub/" target="_blank" rel="noopener noreferrer">@highdeserthub</a>
+                  <a href="mailto:highdeserthub@gmail.com">Email</a>
+                </div>
+              </div>
+            </div>
+            <div className="hd-copy">© 2026 High Desert Hub · Made in the High Desert.</div>
+          </footer>
+
+        </div>
+      )}
+
+      {page === 'directory' && (<>
       <section className="hero">
         <div className="hero-inner">
           <div className="hero-eyebrow">📍 Victorville · Hesperia · Apple Valley · Adelanto</div>
           <h1 className="hero-title">Your High Desert<br />Business Directory</h1>
           <p className="hero-sub">Helping local businesses get found. Connect with local services across Victorville, Hesperia, Apple Valley, and Adelanto.</p>
           <div style={{display:"flex",gap:"0.75rem",margin:"1.5rem 0",flexWrap:"wrap"}}>
-            <button className="cta-btn-main" onClick={() => { setShowListForm(true); setFormSubmitted(false); }}>List My Business — Free</button>
+            <button className="cta-btn-main" onClick={() => { setShowListForm(true); setFormSubmitted(false); }}>List My Business - Free</button>
             <button className="cta-btn-ghost" onClick={() => setShowPricing(true)} style={{borderColor:"var(--gold)",color:"var(--gold)"}}>Get More Visibility →</button>
           </div>
           <div className="hero-stats">
@@ -2499,9 +2758,9 @@ export default function HighDesertHub() {
       <section className="cta-banner">
         <div className="cta-inner">
           <h2 className="cta-title">Own a Local Business?</h2>
-          <p className="cta-sub">Get listed on the High Desert's #1 local directory. Free to start — be seen by thousands of residents.</p>
+          <p className="cta-sub">Get listed on the High Desert's #1 local directory. Free to start - be seen by thousands of residents.</p>
           <div className="cta-btns">
-            <button className="cta-btn-main" onClick={() => { setShowListForm(true); setFormSubmitted(false); }}>List My Business — Free</button>
+            <button className="cta-btn-main" onClick={() => { setShowListForm(true); setFormSubmitted(false); }}>List My Business - Free</button>
             <button className="cta-btn-ghost" onClick={() => setShowPricing(true)} style={{borderColor:"var(--gold)",color:"var(--gold)"}}>Get More Visibility →</button>
             <button className="cta-btn-ghost" onClick={() => { handlePricingContact("Social Media Graphics"); }}>🎨 Get Social Media Graphics</button>
             <button className="cta-btn-ghost" onClick={() => setShowLiving(true)}>🏡 High Desert Living</button>
@@ -2514,6 +2773,7 @@ export default function HighDesertHub() {
         <p className="footer-sub">Serving Victorville · Hesperia · Apple Valley · Adelanto</p>
         <p className="footer-disclaimer">Listings on HighDesertHub.com are provided for informational purposes only. We do not verify, endorse, or guarantee any business listed. Please conduct your own due diligence.</p>
       </footer>
+      </>)}
 
       {/* BUSINESS MODAL */}
       {selectedBiz && (
@@ -2759,7 +3019,7 @@ export default function HighDesertHub() {
                   <div className="living-item-icon">🥫</div>
                   <div className="living-item-content">
                     <div className="living-item-title">Free Community Resources</div>
-                    <div className="living-item-desc">San Bernardino County offers food assistance, utility bill help, and rental support programs. Contact 211 (dial 2-1-1) for a free referral to local services near you — available 24 hours a day.</div>
+                    <div className="living-item-desc">San Bernardino County offers food assistance, utility bill help, and rental support programs. Contact 211 (dial 2-1-1) for a free referral to local services near you - available 24 hours a day.</div>
                     <a href="https://www.211sb.org" target="_blank" rel="noopener noreferrer" className="living-item-link">→ Visit 211sb.org</a>
                   </div>
                 </div>
@@ -2870,7 +3130,7 @@ export default function HighDesertHub() {
         <div className="admin-gate" style={{position:'fixed',inset:0,zIndex:500}}>
           <div className="admin-gate-box">
             <div className="admin-gate-title">🔒 Admin Access</div>
-            <p className="admin-gate-sub">High Desert Hub — Analytics Dashboard</p>
+            <p className="admin-gate-sub">High Desert Hub - Analytics Dashboard</p>
             <input
               type="password"
               placeholder="Enter password"
@@ -3002,7 +3262,7 @@ export default function HighDesertHub() {
             {!formSubmitted ? (
               <>
                 <div className="form-modal-header">
-                  <div className="form-modal-title">List Your Business — Free</div>
+                  <div className="form-modal-title">List Your Business - Free</div>
                   <div className="form-modal-sub">Fill out the form below and we will add your listing within 24 hours.</div>
                 </div>
                 <div className="form-body">
@@ -3100,7 +3360,7 @@ export default function HighDesertHub() {
                   <button className="btn-primary" onClick={handleFormSubmit} disabled={formLoading}>
                     {formLoading ? 'Sending...' : 'Submit My Business'}
                   </button>
-                  {formError && <p style={{color:'var(--terra)',fontSize:'0.82rem',marginTop:'0.5rem'}}>Something went wrong. Please email hello@highdeserthub.com</p>}
+                  {formError && <p style={{color:'var(--terra)',fontSize:'0.82rem',marginTop:'0.5rem'}}>Something went wrong. Please email highdeserthub@gmail.com</p>}
                   <button className="btn-secondary" onClick={() => setShowListForm(false)}>Cancel</button>
                 </div>
               </>
@@ -3112,7 +3372,7 @@ export default function HighDesertHub() {
                   Thanks for submitting <strong>{formData.name}</strong>. We will review your info and have your listing live within 24 hours. We will reach out to {formData.email} to confirm.
                 </p>
                 <p style={{fontSize:'0.85rem', color:'var(--terra)', background:'rgba(201,168,76,0.06)', border:'1px solid rgba(201,168,76,0.1)', borderRadius:'8px', padding:'0.85rem 1rem', marginTop:'0.5rem', lineHeight:'1.6'}}>
-                  📸 Want to include your business card? Email front and back photos to <strong>listings@highdeserthub.com</strong> with your business name in the subject line.
+                  📸 Want to include your business card? Email front and back photos to <strong>highdeserthub@gmail.com</strong> with your business name in the subject line.
                 </p>
                 <button className="btn-primary" onClick={() => setShowListForm(false)}>Done</button>
               </div>
@@ -3149,7 +3409,7 @@ export default function HighDesertHub() {
                 <div className="pricing-price">$25</div>
                 <div className="pricing-period">per month</div>
                 <div className="pricing-features">
-                  <div className="pricing-feature"><span className="pricing-check">✓</span> Everything in Free — no renewal ever</div>
+                  <div className="pricing-feature"><span className="pricing-check">✓</span> Everything in Free - no renewal ever</div>
                   <div className="pricing-feature" style={{flexDirection:"column",alignItems:"flex-start",gap:"0.5rem"}}>
                     <span><span className="pricing-check">✓</span> Clickable website, Instagram &amp; Facebook</span>
                     <div style={{display:"flex",gap:"0.4rem",marginLeft:"1.2rem"}}>
@@ -3164,7 +3424,7 @@ export default function HighDesertHub() {
                   <div className="pricing-feature"><span className="pricing-check">✓</span> One-tap email copy for customers</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Priority over free listings</div>
                 </div>
-                <a className="pricing-btn" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Standard — $25/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Started</a>
+                <a className="pricing-btn" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Standard - $25/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Started</a>
               </div>
               <div className="pricing-tier popular">
                 <div className="pricing-tier-name">Featured</div>
@@ -3180,7 +3440,7 @@ export default function HighDesertHub() {
                 </div>
                 <div style={{fontSize:"0.75rem",fontStyle:"italic",color:"var(--gold)",marginBottom:"0.5rem",lineHeight:"1.4"}}>Be the first business customers see in your category.</div>
                 <div style={{marginBottom:"0.75rem"}}><span style={{background:"var(--gold)",color:"var(--navy)",fontSize:"0.65rem",fontWeight:700,letterSpacing:"0.08em",textTransform:"uppercase",padding:"0.25rem 0.75rem",borderRadius:"2rem"}}>⭐ Most Popular</span></div>
-                <a className="pricing-btn main" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Featured — $60/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Featured</a>
+                <a className="pricing-btn main" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Featured - $60/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Get Featured</a>
               </div>
               <div className="pricing-tier">
                 <div className="pricing-tier-name">Premium</div>
@@ -3190,15 +3450,15 @@ export default function HighDesertHub() {
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Everything in Featured</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Homepage carousel spot</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Category banner ad</div>
-                  <div className="pricing-feature"><span className="pricing-check">✓</span> Monthly Social Blast — dedicated Instagram and Facebook post written and published for you</div>
+                  <div className="pricing-feature"><span className="pricing-check">✓</span> Monthly Social Blast - dedicated Instagram and Facebook post written and published for you</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Monthly performance report</div>
                   <div className="pricing-feature"><span className="pricing-check">✓</span> Dedicated support</div>
                 </div>
-                <a className="pricing-btn" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Premium — $120/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Go Premium</a>
+                <a className="pricing-btn" href="#" onClick={(e) => { e.preventDefault(); setShowPricing(false); handlePricingContact("Premium - $120/month"); }} style={{textDecoration:"none",textAlign:"center",display:"block"}}>Go Premium</a>
               </div>
             </div>
             <div className="pricing-footer">
-              <span className="pricing-footer-note">📞 Questions? Email us at hello@highdeserthub.com</span>
+              <span className="pricing-footer-note">📞 Questions? Email us at highdeserthub@gmail.com</span>
               <button className="btn-secondary" onClick={() => setShowPricing(false)}>Close</button>
             </div>
           </div>
@@ -3239,7 +3499,7 @@ export default function HighDesertHub() {
                       <option value="Promo or Deal Post">Promo or Deal Post</option>
                       <option value="Both">Both</option>
                     </select>
-                    <textarea className="form-textarea" placeholder="Tell me what you're looking for — describe your business, style, colors, and what you want the graphic to promote" value={graphicsForm.description} onChange={e => setGraphicsForm(p => ({...p, description: e.target.value}))} rows={3} />
+                    <textarea className="form-textarea" placeholder="Tell me what you're looking for - describe your business, style, colors, and what you want the graphic to promote" value={graphicsForm.description} onChange={e => setGraphicsForm(p => ({...p, description: e.target.value}))} rows={3} />
                     <select className="form-select" value={graphicsForm.timeline} onChange={e => setGraphicsForm(p => ({...p, timeline: e.target.value}))}>
                       <option value="">When do you need this? *</option>
                       <option value="ASAP (1-3 days)">ASAP (1-3 days)</option>
@@ -3270,7 +3530,7 @@ export default function HighDesertHub() {
             <div className="contact-popup-btns">
               <a
                 className="btn-primary"
-                href={`mailto:admin@highdeserthub.com?subject=Interested in ${contactTier}&body=Hi, I am interested in upgrading my listing on HighDesertHub.com. Please contact me with next steps.`}
+                href={`mailto:highdeserthub@gmail.com?subject=Interested in ${contactTier}&body=Hi, I am interested in upgrading my listing on HighDesertHub.com. Please contact me with next steps.`}
                 style={{textDecoration:"none",textAlign:"center",display:"block"}}
               >
                 📧 Open Email App
@@ -3292,7 +3552,7 @@ export default function HighDesertHub() {
               <>
                 <div className="report-header">
                   <div className="report-title">⚑ Report a Listing Issue</div>
-                  <div className="report-sub">{reportBiz?.name} — Help us keep the directory accurate</div>
+                  <div className="report-sub">{reportBiz?.name} - Help us keep the directory accurate</div>
                 </div>
                 <div className="report-body">
                   {[
@@ -3339,7 +3599,7 @@ export default function HighDesertHub() {
         <div className="card-viewer-overlay" onClick={() => setCardViewer(null)}>
           <div className="card-viewer-inner" onClick={(e) => e.stopPropagation()}>
             <div style={{display:"flex", alignItems:"center", justifyContent:"space-between", width:"100%"}}>
-              <div className="card-viewer-title">🪪 {cardViewer.name} — Business Card</div>
+              <div className="card-viewer-title">🪪 {cardViewer.name} - Business Card</div>
               <button onClick={() => setCardViewer(null)} style={{position:"fixed", top:"1rem", right:"1rem", zIndex:999, background:"rgba(0,0,0,0.75)", border:"1.5px solid white", color:"white", borderRadius:"8px", padding:"0.5rem 1.25rem", fontSize:"1rem", fontWeight:"600", cursor:"pointer"}}>✕ Close</button>
             </div>
             <div className="card-promo-banner">🏷️ Mention <strong>HighDesertHub</strong> and ask if you qualify for a <strong>5% discount!</strong></div>
