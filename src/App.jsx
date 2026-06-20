@@ -2103,7 +2103,7 @@ export default function HighDesertHub() {
   const [viewLog, setViewLog] = useState({});
   const [categoryLog, setCategoryLog] = useState({});
   const [callLog, setCallLog] = useState({});
-  const ADMIN_PASSWORD = 'Ketchup117!?';
+  const ADMIN_PASSWORD = 'Test1';
 
   const checkAdmin = () => {
     if (adminInput === ADMIN_PASSWORD) {
