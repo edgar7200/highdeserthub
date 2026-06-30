@@ -2039,6 +2039,7 @@ const parseCSV = (text) => {
       facebook: obj.facebook || "",
       otherSocial: obj.otherSocial || "",
       license: obj.license || "",
+      slug: obj.slug || "",
       contact: obj.contact || "",
       cardFront: obj.cardFront ? "/cards/" + obj.cardFront : null,
       cardBack: obj.cardBack ? "/cards/" + obj.cardBack : null,
