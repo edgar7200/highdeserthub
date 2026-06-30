@@ -2084,6 +2084,35 @@ export default function HighDesertHub() {
   const [emailOnly, setEmailOnly] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [selectedBiz, setSelectedBiz] = useState(null);
+  // ============ URL ROUTING (added for SEO) ============
+  // Read the URL path on first load and whenever it changes (back/forward buttons)
+  useEffect(() => {
+    const handleUrlChange = () => {
+      const path = window.location.pathname;
+      const match = path.match(/^\/biz\/([a-z0-9-]+)\/?$/);
+      if (match) {
+        const slug = match[1];
+        // businesses comes from the Google Sheet fetch already in this component
+        const biz = ACTIVE_BUSINESSES.find(b => b.slug === slug);
+        if (biz) {
+          setSelectedBiz(biz);
+          document.title = `${biz.name} | High Desert Hub`;
+          const metaDesc = document.querySelector('meta[name="description"]');
+          if (metaDesc) {
+            metaDesc.setAttribute('content', biz.description || `${biz.name} in the High Desert. View contact info and services on High Desert Hub.`);
+          }
+        }
+      } else {
+        // No /biz/ in URL, make sure no panel is open
+        setSelectedBiz(null);
+        document.title = "High Desert Hub | Local Business Directory";
+      }
+    };
+    handleUrlChange(); // Run once on load
+    window.addEventListener('popstate', handleUrlChange); // Run on back/forward
+    return () => window.removeEventListener('popstate', handleUrlChange);
+  }, [ACTIVE_BUSINESSES]); // Re-run when businesses load from sheet
+  // ============ END URL ROUTING ============
   const [cardViewer, setCardViewer] = useState(null);
   const [showListForm, setShowListForm] = useState(false);
   const [showPricing, setShowPricing] = useState(false);
